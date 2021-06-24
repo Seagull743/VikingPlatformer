@@ -18,8 +18,6 @@ public class Interactive : MonoBehaviour
     private KeyCode interact;
     [SerializeField]
     private KeyCode throwing;
-
-
     private bool isHolding = false;
 
     [SerializeField]
@@ -53,27 +51,41 @@ public class Interactive : MonoBehaviour
                 //player
                 else if (grabcheck.collider != null && grabcheck.collider.tag == "Player")
                 {
+                    grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -90)));
                     grabcheck.collider.gameObject.transform.parent = holdLocation;
                     grabcheck.collider.gameObject.transform.position = holdLocation.position;
                     grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-                    //grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
+                    grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
                     grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
-                    isHolding = true;
+                    isHolding = true;               
                 }
             }
             else if (isHolding)
             {
                 grabcheck.collider.gameObject.transform.parent = null;
                 grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-                grabcheck.collider.gameObject.transform.position = dropLocation.position;
-                isHolding = false;  
+                grabcheck.collider.gameObject.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                isHolding = false;
+                if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
+                {
+                    grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = true;
+                    grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
+                }
             }
         }
         if (Input.GetKeyDown(throwing) && isHolding)
         {
-            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwforce;
-            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             grabcheck.collider.gameObject.transform.parent = null;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false; 
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwforce;
+            grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            isHolding = false;
+            if(grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
+            {
+                grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
+                grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
+            }
         }
+
     }
 }

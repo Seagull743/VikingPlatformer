@@ -26,6 +26,7 @@ public class PlayerController: MonoBehaviour
     private float groundCheckRadius;
     private bool isGrounded;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,10 @@ public class PlayerController: MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
 
+        if (isGrounded)
+        {
+            transform.Rotate(new Vector3(0, 0, 0));
+        }
 
         if (Input.GetKey(left))
         {
@@ -68,6 +73,16 @@ public class PlayerController: MonoBehaviour
         }
     }
 
+    public void controller()
+    {
+        StartCoroutine(playercontrolsActive());
+    }
 
-    
+
+    IEnumerator playercontrolsActive()
+    {
+        yield return new WaitForSeconds(0.4f);
+        gameObject.GetComponent<PlayerController>().enabled = true;
+    }
 }
+
