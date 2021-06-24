@@ -11,11 +11,14 @@ public class Interactive : MonoBehaviour
     [SerializeField]
     private Transform holdLocation;
     [SerializeField]
+    private Transform dropLocation;
+    [SerializeField]
     private float raydist;
     [SerializeField]
     private KeyCode interact;
     [SerializeField]
     private KeyCode throwing;
+
 
     private bool isHolding = false;
 
@@ -39,18 +42,30 @@ public class Interactive : MonoBehaviour
             if (!isHolding)
             {
                 grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist);
+                //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
-                {         
+                {
                     grabcheck.collider.gameObject.transform.parent = holdLocation;
                     grabcheck.collider.gameObject.transform.position = holdLocation.position;
                     grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                     isHolding = true;
-                }           
+                }
+                //player
+                else if (grabcheck.collider != null && grabcheck.collider.tag == "Player")
+                {
+                    grabcheck.collider.gameObject.transform.parent = holdLocation;
+                    grabcheck.collider.gameObject.transform.position = holdLocation.position;
+                    grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                    //grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
+                    grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
+                    isHolding = true;
+                }
             }
             else if (isHolding)
             {
                 grabcheck.collider.gameObject.transform.parent = null;
                 grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+                grabcheck.collider.gameObject.transform.position = dropLocation.position;
                 isHolding = false;  
             }
         }
