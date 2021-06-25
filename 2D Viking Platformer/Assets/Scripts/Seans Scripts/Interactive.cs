@@ -28,13 +28,13 @@ public class Interactive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+     
         
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(interact))
         {
             if (!isHolding)
@@ -42,7 +42,7 @@ public class Interactive : MonoBehaviour
                 grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist);
                 //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
-                {
+                {   
                     grabcheck.collider.gameObject.transform.parent = holdLocation;
                     grabcheck.collider.gameObject.transform.position = holdLocation.position;
                     grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -58,6 +58,11 @@ public class Interactive : MonoBehaviour
                     grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
                     grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
                     isHolding = true;               
+                }
+                //Lever
+                else if(grabcheck.collider != null && grabcheck.collider.tag == "Lever")
+                {
+                    grabcheck.collider.gameObject.GetComponent<Lever>().LeverToggle();
                 }
             }
             else if (isHolding)

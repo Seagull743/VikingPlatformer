@@ -78,7 +78,6 @@ public class PlayerController: MonoBehaviour
         StartCoroutine(playercontrolsActive());
     }
 
-
     IEnumerator playercontrolsActive()
     {
         yield return new WaitForSeconds(0.4f);
