@@ -448,6 +448,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!4 &2094027927 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3864041809481325811, guid: 46cf129adf722b044b9597aaa53a30f6, type: 3}
+  m_PrefabInstance: {fileID: 2101583717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2101583717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -531,6 +536,10 @@ PrefabInstance:
       propertyPath: throwing
       value: 303
       objectReference: {fileID: 0}
+    - target: {fileID: 2133391177334319483, guid: 46cf129adf722b044b9597aaa53a30f6, type: 3}
+      propertyPath: holdCheck
+      value: 
+      objectReference: {fileID: 2094027927}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46cf129adf722b044b9597aaa53a30f6, type: 3}
 --- !u!1001 &196227038086767231
@@ -609,22 +618,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2133391176255534014, guid: 46cf129adf722b044b9597aaa53a30f6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.416
-      objectReference: {fileID: 0}
     - target: {fileID: 2133391177334319474, guid: 46cf129adf722b044b9597aaa53a30f6, type: 3}
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2133391177334319474, guid: 46cf129adf722b044b9597aaa53a30f6, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133391177334319477, guid: 46cf129adf722b044b9597aaa53a30f6, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: d95a2ec5082b7d34f92dc18244332c17, type: 2}
     - target: {fileID: 2133391177334319478, guid: 46cf129adf722b044b9597aaa53a30f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.7600093
