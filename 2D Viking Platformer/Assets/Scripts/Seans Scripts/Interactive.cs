@@ -29,6 +29,11 @@ public class Interactive : MonoBehaviour
 
     private RaycastHit2D grabcheck;
 
+    //throwing
+    [SerializeField]
+    private float holdDownTime;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -92,11 +97,32 @@ public class Interactive : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(throwing) && isHolding)
+
+        if (Input.GetKey(throwing))
+        {
+            throwforce += 0.3f;
+        }
+
+        if(throwforce >= 15f && isHolding)
+        {
+            grabcheck.collider.gameObject.transform.parent = null;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
+            grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            isHolding = false;
+            if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
+            {
+                grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
+                grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
+            }
+            Invoke("ResetThrow", 0.2f);
+        }
+
+        if (Input.GetKeyUp(throwing) && isHolding)
         {
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false; 
-            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwforce;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
             grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             isHolding = false;
             if(grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
@@ -106,5 +132,16 @@ public class Interactive : MonoBehaviour
             }
         }
 
+        if (!isHolding)
+        {
+            throwforce = 0;
+        }
+
+
+    }
+
+    private void ResetThrow()
+    {
+        throwforce = 0;
     }
 }
