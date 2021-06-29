@@ -29,9 +29,7 @@ public class Interactive : MonoBehaviour
     private float throwforce;
 
     [SerializeField]
-    private Image PowerCanvas;
-    [SerializeField]
-    private Image Outline;
+    private Slider PowerCanvas;
 
     private RaycastHit2D grabcheck;
 
@@ -42,15 +40,14 @@ public class Interactive : MonoBehaviour
 
     void Start()
     {
-        PowerCanvas.enabled = false;
-        Outline.enabled = false;
+        PowerCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        PowerCanvas.fillAmount = throwforce;
+        Debug.Log(throwforce);
 
         if (Input.GetKeyDown(interact))
         {
@@ -116,8 +113,8 @@ public class Interactive : MonoBehaviour
         if (Input.GetKey(throwing))
         {
             throwforce += 0.3f;
-            PowerCanvas.enabled = true;
-            Outline.enabled = true;
+            PowerCanvas.gameObject.SetActive(true);
+            PowerCanvas.value = throwforce / 15f;
         }
 
         if(throwforce >= 15f && isHolding)
@@ -147,15 +144,13 @@ public class Interactive : MonoBehaviour
                 grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
                 grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
             }
-            PowerCanvas.enabled = true;
-            Outline.enabled = true;
+            PowerCanvas.gameObject.SetActive(false);
         }
 
         if (!isHolding)
         {
             throwforce = 0;
-            PowerCanvas.enabled = false;
-            Outline.enabled = false;
+            PowerCanvas.gameObject.SetActive(false);
         }
 
 
