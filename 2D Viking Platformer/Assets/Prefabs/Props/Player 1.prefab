@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 2133391177334319473}
   - component: {fileID: 2133391177334319476}
   - component: {fileID: 2133391177334319483}
+  - component: {fileID: 1606987427065053952}
   m_Layer: 9
   m_Name: Player 1
   m_TagString: Player
@@ -517,6 +518,18 @@ MonoBehaviour:
   throwforce: 0
   PowerCanvas: {fileID: 6806920166906177043}
   holdDownTime: 0
+--- !u!114 &1606987427065053952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133391177334319474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6176603863300c4ca9d923e6be9358f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2379494356713239374
 GameObject:
   m_ObjectHideFlags: 0
