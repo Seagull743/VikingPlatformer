@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interactive : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class Interactive : MonoBehaviour
     [SerializeField]
     private float throwforce;
 
+    [SerializeField]
+    private Image PowerCanvas;
+    [SerializeField]
+    private Image Outline;
+
     private RaycastHit2D grabcheck;
 
     //throwing
@@ -34,9 +40,18 @@ public class Interactive : MonoBehaviour
     private float holdDownTime;
 
 
+    void Start()
+    {
+        PowerCanvas.enabled = false;
+        Outline.enabled = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+        PowerCanvas.fillAmount = throwforce;
+
         if (Input.GetKeyDown(interact))
         {
             if (!isHolding)
@@ -101,6 +116,8 @@ public class Interactive : MonoBehaviour
         if (Input.GetKey(throwing))
         {
             throwforce += 0.3f;
+            PowerCanvas.enabled = true;
+            Outline.enabled = true;
         }
 
         if(throwforce >= 15f && isHolding)
@@ -130,11 +147,15 @@ public class Interactive : MonoBehaviour
                 grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
                 grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
             }
+            PowerCanvas.enabled = true;
+            Outline.enabled = true;
         }
 
         if (!isHolding)
         {
             throwforce = 0;
+            PowerCanvas.enabled = false;
+            Outline.enabled = false;
         }
 
 
