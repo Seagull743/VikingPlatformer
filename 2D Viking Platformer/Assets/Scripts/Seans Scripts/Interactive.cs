@@ -30,7 +30,6 @@ public class Interactive : MonoBehaviour
 
     [SerializeField]
     private Slider PowerCanvas;
-
     private RaycastHit2D grabcheck;
 
     //throwing
@@ -46,8 +45,6 @@ public class Interactive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(throwforce);
 
         if (Input.GetKeyDown(interact))
         {
