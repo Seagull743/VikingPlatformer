@@ -26,16 +26,21 @@ public class PlayerController: MonoBehaviour
     private float groundCheckRadius;
     private bool isGrounded;
 
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();       
+        rb = GetComponent<Rigidbody2D>();
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
+        animateChar();
 
         if (isGrounded)
         {
@@ -62,13 +67,13 @@ public class PlayerController: MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     
-        if(rb.velocity.x < 0)
+        if(rb.velocity.x < 0 && transform.localScale.x >= 0)
         {
-            transform.localScale = new Vector3(-0.3375f, 0.725f, 1);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
         }
-        else if(rb.velocity.x > 0)
+        else if(rb.velocity.x > 0 && transform.localScale.x <= 0)
         {
-           transform.localScale = new Vector3(0.3375f, 0.725f, 1);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
         }
     }
 
@@ -81,6 +86,18 @@ public class PlayerController: MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         gameObject.GetComponent<PlayerController>().enabled = true;
+    }
+
+    void animateChar()
+    {
+        if (rb.velocity.x == 0)
+        {
+            anim.SetBool("Run", false);
+        }
+        else
+        {
+            anim.SetBool("Run", true);
+        }
     }
 }
 
