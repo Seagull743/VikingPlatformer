@@ -79,6 +79,7 @@ public class Interactive : MonoBehaviour
                         Rb.isKinematic = true;
                         grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
                         grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
+                        grabcheck.collider.gameObject.GetComponent<Animator>().enabled = false;
                         isHolding = true;
                     }                
                 }
@@ -116,23 +117,24 @@ public class Interactive : MonoBehaviour
 
         if (Input.GetKey(throwing))
         {
-            throwforce += 0.3f;
+            throwforce += 0.1f;
             PowerCanvas.gameObject.SetActive(true);
             fill.color = gradient.Evaluate(1f);
-            PowerCanvas.value = throwforce / 17f;
+            PowerCanvas.value = throwforce / 3f;
             fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
         }
 
-        if(throwforce >= 17f && isHolding)
+        if(throwforce >= 3f && isHolding)
         {
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.3f) * throwforce;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
             grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             isHolding = false;
             if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
             {
                 grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
+                grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
                 grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
             }
             Invoke("ResetThrow", 0.2f);
@@ -149,6 +151,7 @@ public class Interactive : MonoBehaviour
             {
                 grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
                 grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
+                grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
             }
             PowerCanvas.gameObject.SetActive(false);
         }

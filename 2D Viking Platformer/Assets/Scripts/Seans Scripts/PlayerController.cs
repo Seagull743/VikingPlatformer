@@ -25,8 +25,11 @@ public class PlayerController: MonoBehaviour
     [SerializeField]
     private float groundCheckRadius;
     private bool isGrounded;
+    [SerializeField]
+    private GameObject PowerMeter;
 
     Animator anim;
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +65,7 @@ public class PlayerController: MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
-        if (Input.GetKeyDown(jump) && isGrounded)
+        if (Input.GetKeyDown(jump) && isGrounded )
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
