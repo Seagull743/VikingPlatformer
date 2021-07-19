@@ -28,15 +28,20 @@ public class Interactive : MonoBehaviour
     [SerializeField]
     private float throwforce;
 
-    [SerializeField]
-    private Slider PowerCanvas;
     private RaycastHit2D grabcheck;
+
 
     //throwing
     [SerializeField]
     private float holdDownTime;
-
-
+    [SerializeField]
+    private Slider PowerCanvas;
+    [SerializeField]
+    private Gradient gradient;
+    [SerializeField]
+    private Image fill;
+    [SerializeField]
+    private float Offset;
     void Start()
     {
         PowerCanvas.gameObject.SetActive(false);
@@ -45,6 +50,8 @@ public class Interactive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
 
         if (Input.GetKeyDown(interact))
         {
@@ -111,14 +118,16 @@ public class Interactive : MonoBehaviour
         {
             throwforce += 0.3f;
             PowerCanvas.gameObject.SetActive(true);
-            PowerCanvas.value = throwforce / 15f;
+            fill.color = gradient.Evaluate(1f);
+            PowerCanvas.value = throwforce / 17f;
+            fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
         }
 
-        if(throwforce >= 15f && isHolding)
+        if(throwforce >= 17f && isHolding)
         {
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.3f) * throwforce;
             grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             isHolding = false;
             if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)

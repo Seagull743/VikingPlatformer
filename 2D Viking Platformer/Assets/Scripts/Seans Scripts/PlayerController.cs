@@ -26,6 +26,7 @@ public class PlayerController: MonoBehaviour
     private float groundCheckRadius;
     private bool isGrounded;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,11 +65,11 @@ public class PlayerController: MonoBehaviour
     
         if(rb.velocity.x < 0)
         {
-            transform.localScale = new Vector3(-0.3375f, 0.725f, 1);
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
         }
         else if(rb.velocity.x > 0)
         {
-           transform.localScale = new Vector3(0.3375f, 0.725f, 1);
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
     }
 
