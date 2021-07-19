@@ -6,7 +6,8 @@ public class Lever : MonoBehaviour
 {
     private Animator anim;
     private bool isOn = false;
-
+    [SerializeField]
+    private GameObject door;
 
     // Start is called before the first frame update
 
@@ -14,13 +15,6 @@ public class Lever : MonoBehaviour
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
-    }
-
-
-
-    void Start()
-    {
-       
     }
 
 
@@ -41,6 +35,7 @@ public class Lever : MonoBehaviour
     {
         anim.SetBool("Pulled", true);
         isOn = true;
+        door.SetActive(false);
     }
 
 

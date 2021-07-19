@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 669715903}
   - component: {fileID: 669715902}
   - component: {fileID: 669715901}
+  - component: {fileID: 7511495631789824978}
   m_Layer: 5
   m_Name: ChargeCanvas
   m_TagString: Untagged
@@ -99,6 +100,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7511495631789824978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669715899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2bb375c0693a1c47a277c05638a31d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
 --- !u!1 &2133391175453606037
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 10
+  jumpForce: 9
   left: 97
   right: 100
   jump: 119
@@ -516,8 +530,38 @@ MonoBehaviour:
   throwing: 114
   isHolding: 0
   throwforce: 0
-  PowerCanvas: {fileID: 6806920166906177043}
   holdDownTime: 0
+  PowerCanvas: {fileID: 6806920166906177043}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.87243414, b: 0, a: 1}
+    key1: {r: 0.990566, g: 0.58804137, b: 0, a: 1}
+    key2: {r: 1, g: 0, b: 0, a: 0}
+    key3: {r: 1, g: 0, b: 0, a: 0}
+    key4: {r: 1, g: 0.1273585, b: 0.1273585, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 21010
+    ctime1: 43369
+    ctime2: 65535
+    ctime3: 65535
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 1
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+  fill: {fileID: 8342267680682578609}
 --- !u!114 &1606987427065053952
 MonoBehaviour:
   m_ObjectHideFlags: 0
