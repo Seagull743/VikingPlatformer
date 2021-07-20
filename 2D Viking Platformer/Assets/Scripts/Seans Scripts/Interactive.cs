@@ -71,6 +71,7 @@ public class Interactive : MonoBehaviour
                 {
                     if(grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
                     {
+                        
                         var Rb = grabcheck.collider.gameObject.GetComponent<Rigidbody2D>();
                         Rb.velocity = Vector3.zero;
                         grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -90)));
@@ -104,6 +105,7 @@ public class Interactive : MonoBehaviour
                         if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
                         {
                             grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = true;
+                            grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
                             grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
                         }
                     }             

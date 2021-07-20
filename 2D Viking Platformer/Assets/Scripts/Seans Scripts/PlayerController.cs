@@ -95,6 +95,13 @@ public class PlayerController: MonoBehaviour
         gameObject.GetComponent<PlayerController>().enabled = true;
     }
 
+
+    public void TurnOffAnim()
+    {
+        anim.SetBool("Run", false);
+    }
+
+
     void animateChar()
     {
         if (rb.velocity.x == 0)
