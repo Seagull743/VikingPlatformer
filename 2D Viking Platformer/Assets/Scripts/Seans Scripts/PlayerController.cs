@@ -30,6 +30,9 @@ public class PlayerController: MonoBehaviour
 
     Animator anim;
 
+    [SerializeField]
+    private Transform collisionDection;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,7 @@ public class PlayerController: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
         animateChar();
 
