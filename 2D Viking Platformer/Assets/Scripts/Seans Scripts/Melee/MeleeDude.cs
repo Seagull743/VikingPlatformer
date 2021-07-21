@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class MeleeDude : MonoBehaviour
 {
-    [SerializeField]
-    private Transform raycast;
-    [SerializeField]
-    private LayerMask raycastMask;
-    [SerializeField]
-    private float raycastLength;
+    
     [SerializeField]
     private float attackDistance;
     [SerializeField]
@@ -20,19 +15,24 @@ public class MeleeDude : MonoBehaviour
     private Transform waypoint1;
     [SerializeField]
     private Transform waypoint2;
+  
+    [HideInInspector]  public Transform target;
+    [HideInInspector]  public bool inRange;
+    
+    public GameObject hotZone;
+    public  GameObject triggerArea;
 
-    private RaycastHit2D hit;
-    private Transform target;
     private Animator anim;
     private float distance;
     private bool attackMode;
-    private bool inRange;
+    
     private bool cooling;
     private float intTimer;
 
 
     private void Awake()
     {
+        SelectTarget();
         intTimer = attackTimer;
     }
 
@@ -52,36 +52,13 @@ public class MeleeDude : MonoBehaviour
         }
 
 
-        if (inRange)
-        {
-            hit = Physics2D.Raycast(raycast.position, Vector2.right, raycastLength, raycastMask);
-            RayCastDebugger();
-        }
-
-        //Player Detection
-        if(hit.collider != null)
+        if(inRange)
         {
             EnemyLogic();
         }
-        else if(hit.collider == null)
-        {
-            inRange = false;
-        }
-    
-        if(inRange == false)
-        {
-            StopAttack();
-        }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            target = other.transform;
-            inRange = true;
-        }
-    }
+   
 
     void EnemyLogic()
     {
@@ -145,26 +122,42 @@ public class MeleeDude : MonoBehaviour
     }
 
 
-    void RayCastDebugger()
-    {
-        if(distance > attackDistance)
-        {
-            Debug.DrawRay(raycast.position, Vector2.right * raycastLength, Color.red);
-        }
-        else if(attackDistance > distance)
-        {
-            Debug.DrawRay(raycast.position, Vector2.right * raycastLength, Color.green);
-        }
-    }
-
     private bool InsideWayPoints()
     {
         return transform.position.x > waypoint1.position.x && transform.position.x < waypoint2.position.x;
     }
 
 
-    void SelectTarget()
+    public void SelectTarget()
     {
         float distanceToLeft = Vector2.Distance(transform.position, waypoint1.position);
+        float distanceToRight = Vector2.Distance(transform.position, waypoint2.position);
+
+        if(distanceToLeft > distanceToRight)
+        {
+            target = waypoint1;
+        }
+        else
+        {
+            target = waypoint2;
+        }
+
+        Flip();
+    }
+
+
+    public void Flip()
+    {
+        Vector3 rotation = transform.eulerAngles;
+        if(transform.position.x > target.position.x)
+        {
+            rotation.y = 180f;
+        }
+        else
+        {
+            rotation.y = 0f;
+        }
+
+        transform.eulerAngles = rotation;
     }
 }
