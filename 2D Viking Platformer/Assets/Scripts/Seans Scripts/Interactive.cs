@@ -60,7 +60,8 @@ public class Interactive : MonoBehaviour
                 grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist);
                 //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
-                {   
+                {
+                    this.gameObject.GetComponent<PlayerController>().canJump = false;
                     grabcheck.collider.gameObject.transform.parent = holdLocation;
                     grabcheck.collider.gameObject.transform.position = holdLocation.position;
                     grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -71,7 +72,7 @@ public class Interactive : MonoBehaviour
                 {
                     if(grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
                     {
-                        
+                        this.gameObject.GetComponent<PlayerController>().canJump = false;
                         var Rb = grabcheck.collider.gameObject.GetComponent<Rigidbody2D>();
                         Rb.velocity = Vector3.zero;
                         grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -90)));
@@ -98,6 +99,7 @@ public class Interactive : MonoBehaviour
                     RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist);
                     if(placeCheck.collider == null)
                     {
+                        this.gameObject.GetComponent<PlayerController>().canJump = true;
                         grabcheck.collider.gameObject.transform.parent = null;
                         grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                         grabcheck.collider.gameObject.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
@@ -128,6 +130,7 @@ public class Interactive : MonoBehaviour
 
         if(throwforce >= 3f && isHolding)
         {
+            this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
@@ -144,6 +147,7 @@ public class Interactive : MonoBehaviour
 
         if (Input.GetKeyUp(throwing) && isHolding)
         {
+            this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false; 
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;

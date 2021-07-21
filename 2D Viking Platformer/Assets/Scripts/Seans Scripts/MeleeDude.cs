@@ -16,9 +16,13 @@ public class MeleeDude : MonoBehaviour
     private float moveSpeed;
     [SerializeField]
     private float attackTimer;
+    [SerializeField]
+    private Transform waypoint1;
+    [SerializeField]
+    private Transform waypoint2;
 
     private RaycastHit2D hit;
-    private GameObject target;
+    private Transform target;
     private Animator anim;
     private float distance;
     private bool attackMode;
@@ -35,9 +39,22 @@ public class MeleeDude : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!attackMode)
+        {
+            Move();
+        }
+       
+        //need to put !inside anim current anim state etc
+        if(!InsideWayPoints() && !inRange)
+        {
+            SelectTarget();
+        }
+
+
         if (inRange)
         {
-            hit = Physics2D.Raycast(raycast.position, Vector2.left, raycastLength, raycastMask);
+            hit = Physics2D.Raycast(raycast.position, Vector2.right, raycastLength, raycastMask);
             RayCastDebugger();
         }
 
@@ -61,18 +78,17 @@ public class MeleeDude : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            target = other.gameObject;
+            target = other.transform;
             inRange = true;
         }
     }
 
     void EnemyLogic()
     {
-        distance = Vector2.Distance(transform.position, target.transform.position);
+        distance = Vector2.Distance(transform.position, target.position);
 
         if (distance > attackDistance)
         {
-            Move();
             StopAttack();
         }
         else if(attackDistance >= distance && cooling == false)
@@ -90,7 +106,7 @@ public class MeleeDude : MonoBehaviour
 
     private void Move()
     {
-        Vector2 targetPostition = new Vector2(target.transform.position.x, transform.position.y);
+        Vector2 targetPostition = new Vector2(target.position.x, transform.position.y);
         transform.position = Vector2.MoveTowards(transform.position, targetPostition, moveSpeed * Time.deltaTime);
 
         //set anim move to true
@@ -133,11 +149,22 @@ public class MeleeDude : MonoBehaviour
     {
         if(distance > attackDistance)
         {
-            Debug.DrawRay(raycast.position, Vector2.left * raycastLength, Color.red);
+            Debug.DrawRay(raycast.position, Vector2.right * raycastLength, Color.red);
         }
         else if(attackDistance > distance)
         {
-            Debug.DrawRay(raycast.position, Vector2.left * raycastLength, Color.green);
+            Debug.DrawRay(raycast.position, Vector2.right * raycastLength, Color.green);
         }
+    }
+
+    private bool InsideWayPoints()
+    {
+        return transform.position.x > waypoint1.position.x && transform.position.x < waypoint2.position.x;
+    }
+
+
+    void SelectTarget()
+    {
+        float distanceToLeft = Vector2.Distance(transform.position, waypoint1.position);
     }
 }

@@ -25,6 +25,8 @@ public class PlayerController: MonoBehaviour
     [SerializeField]
     private float groundCheckRadius;
     private bool isGrounded;
+    public bool canJump;
+
     [SerializeField]
     private GameObject PowerMeter;
 
@@ -37,6 +39,10 @@ public class PlayerController: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
+        canJump = true;
+        
         rb = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
@@ -69,7 +75,7 @@ public class PlayerController: MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
-        if (Input.GetKeyDown(jump) && isGrounded )
+        if (Input.GetKeyDown(jump) && isGrounded && canJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
