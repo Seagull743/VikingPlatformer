@@ -42,8 +42,11 @@ public class Interactive : MonoBehaviour
     private Image fill;
     [SerializeField]
     private float Offset;
+    private Animator anim;
+
     void Start()
     {
+        anim = GetComponent<Animator>();
         PowerCanvas.gameObject.SetActive(false);
     }
 
@@ -51,12 +54,21 @@ public class Interactive : MonoBehaviour
     void Update()
     {
 
+        if (!isHolding)
+        {
+            anim.SetBool("holdrun", false);
+            anim.SetBool("pickup", false);
+            anim.SetBool("drop", false);
+        }
+
+
         PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
 
         if (Input.GetKeyDown(interact))
         {
             if (!isHolding)
             {
+                anim.SetBool("pickup", true);
                 grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist);
                 //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
@@ -99,6 +111,7 @@ public class Interactive : MonoBehaviour
                     RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist);
                     if(placeCheck.collider == null)
                     {
+                        anim.SetBool("drop", true);
                         this.gameObject.GetComponent<PlayerController>().canJump = true;
                         grabcheck.collider.gameObject.transform.parent = null;
                         grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;

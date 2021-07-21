@@ -112,11 +112,25 @@ public class PlayerController: MonoBehaviour
     {
         if (rb.velocity.x == 0)
         {
-            anim.SetBool("Run", false);
+            if (this.gameObject.GetComponent<Interactive>().isHolding)
+            {
+                anim.SetBool("holdrun", false);
+            }
+            else if(this.gameObject.GetComponent<Interactive>().isHolding == false)
+            {
+                anim.SetBool("Run", false);
+            }     
         }
         else
         {
-            anim.SetBool("Run", true);
+            if(this.gameObject.GetComponent<Interactive>().isHolding == false)
+            {
+                anim.SetBool("Run", true);
+            }
+            else if (this.gameObject.GetComponent<Interactive>().isHolding)
+            {
+                anim.SetBool("holdrun", true);
+            }
         }
     }
 }
