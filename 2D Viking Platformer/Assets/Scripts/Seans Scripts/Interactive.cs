@@ -60,7 +60,8 @@ public class Interactive : MonoBehaviour
                 grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist);
                 //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
-                {   
+                {
+                    this.gameObject.GetComponent<PlayerController>().canJump = false;
                     grabcheck.collider.gameObject.transform.parent = holdLocation;
                     grabcheck.collider.gameObject.transform.position = holdLocation.position;
                     grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -71,6 +72,7 @@ public class Interactive : MonoBehaviour
                 {
                     if(grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
                     {
+                        this.gameObject.GetComponent<PlayerController>().canJump = false;
                         var Rb = grabcheck.collider.gameObject.GetComponent<Rigidbody2D>();
                         Rb.velocity = Vector3.zero;
                         grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -90)));
@@ -79,6 +81,7 @@ public class Interactive : MonoBehaviour
                         Rb.isKinematic = true;
                         grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
                         grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
+                        grabcheck.collider.gameObject.GetComponent<Animator>().enabled = false;
                         isHolding = true;
                     }                
                 }
@@ -96,6 +99,7 @@ public class Interactive : MonoBehaviour
                     RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist);
                     if(placeCheck.collider == null)
                     {
+                        this.gameObject.GetComponent<PlayerController>().canJump = true;
                         grabcheck.collider.gameObject.transform.parent = null;
                         grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                         grabcheck.collider.gameObject.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
@@ -103,6 +107,7 @@ public class Interactive : MonoBehaviour
                         if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
                         {
                             grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = true;
+                            grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
                             grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
                         }
                     }             
@@ -116,23 +121,25 @@ public class Interactive : MonoBehaviour
 
         if (Input.GetKey(throwing))
         {
-            throwforce += 0.3f;
+            throwforce += 0.1f;
             PowerCanvas.gameObject.SetActive(true);
             fill.color = gradient.Evaluate(1f);
-            PowerCanvas.value = throwforce / 17f;
+            PowerCanvas.value = throwforce / 3f;
             fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
         }
 
-        if(throwforce >= 17f && isHolding)
+        if(throwforce >= 3f && isHolding)
         {
+            this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.3f) * throwforce;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
             grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             isHolding = false;
             if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
             {
                 grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
+                grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
                 grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
             }
             Invoke("ResetThrow", 0.2f);
@@ -140,6 +147,7 @@ public class Interactive : MonoBehaviour
 
         if (Input.GetKeyUp(throwing) && isHolding)
         {
+            this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false; 
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
@@ -149,6 +157,7 @@ public class Interactive : MonoBehaviour
             {
                 grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
                 grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
+                grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
             }
             PowerCanvas.gameObject.SetActive(false);
         }

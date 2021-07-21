@@ -25,12 +25,24 @@ public class PlayerController: MonoBehaviour
     [SerializeField]
     private float groundCheckRadius;
     private bool isGrounded;
+    public bool canJump;
+
+    [SerializeField]
+    private GameObject PowerMeter;
 
     Animator anim;
+
+    [SerializeField]
+    private Transform collisionDection;
+
 
     // Start is called before the first frame update
     void Start()
     {
+
+
+        canJump = true;
+        
         rb = GetComponent<Rigidbody2D>();
 
         anim = GetComponent<Animator>();
@@ -39,6 +51,7 @@ public class PlayerController: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
         animateChar();
 
@@ -62,7 +75,7 @@ public class PlayerController: MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
-        if (Input.GetKeyDown(jump) && isGrounded)
+        if (Input.GetKeyDown(jump) && isGrounded && canJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -87,6 +100,13 @@ public class PlayerController: MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         gameObject.GetComponent<PlayerController>().enabled = true;
     }
+
+
+    public void TurnOffAnim()
+    {
+        anim.SetBool("Run", false);
+    }
+
 
     void animateChar()
     {
