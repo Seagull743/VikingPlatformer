@@ -30,7 +30,6 @@ public class Interactive : MonoBehaviour
 
     private RaycastHit2D grabcheck;
 
-
     //throwing
     [SerializeField]
     private float holdDownTime;
@@ -44,6 +43,7 @@ public class Interactive : MonoBehaviour
     private float Offset;
     private Animator anim;
 
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -53,12 +53,14 @@ public class Interactive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (!isHolding)
         {
-            anim.SetBool("holdrun", false);
-            anim.SetBool("pickup", false);
-            anim.SetBool("drop", false);
+            anim.SetBool("isholding", false);
+        }
+        else
+        {
+            anim.SetBool("isholding", true);
         }
 
 
@@ -68,16 +70,21 @@ public class Interactive : MonoBehaviour
         {
             if (!isHolding)
             {
-                anim.SetBool("pickup", true);
+               
                 grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist);
                 //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
                 {
-                    this.gameObject.GetComponent<PlayerController>().canJump = false;
-                    grabcheck.collider.gameObject.transform.parent = holdLocation;
-                    grabcheck.collider.gameObject.transform.position = holdLocation.position;
-                    grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-                    isHolding = true;
+                    {                    
+                        StartCoroutine(InteractStop());
+                        isHolding = true;
+                        this.gameObject.GetComponent<PlayerController>().canJump = false;
+                        
+                        //grabcheck.collider.gameObject.transform.parent = holdLocation;
+                       //grabcheck.collider.gameObject.transform.position = holdLocation.position;
+                        //grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                        //isHolding = true;
+                    }                 
                 }
                 //player
                 else if (grabcheck.collider != null && grabcheck.collider.tag == "Player")
@@ -111,18 +118,20 @@ public class Interactive : MonoBehaviour
                     RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist);
                     if(placeCheck.collider == null)
                     {
-                        anim.SetBool("drop", true);
-                        this.gameObject.GetComponent<PlayerController>().canJump = true;
-                        grabcheck.collider.gameObject.transform.parent = null;
-                        grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-                        grabcheck.collider.gameObject.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                         isHolding = false;
-                        if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
-                        {
-                            grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = true;
-                            grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
-                            grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
-                        }
+                        //GameObject interactive = grabcheck.collider.gameObject;
+                        //StartCoroutine(InteractStop());
+                        //this.gameObject.GetComponent<PlayerController>().canJump = true;
+                        //interactive.transform.parent = null;
+                       // interactive.GetComponent<Rigidbody2D>().isKinematic = false;
+                       // interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                       // isHolding = false;
+                       // if (interactive.gameObject.GetComponent<PlayerController>() != null)
+                       // {
+                       //     interactive.gameObject.GetComponent<PlayerController>().enabled = true;
+                        //    interactive.gameObject.GetComponent<Animator>().enabled = true;
+                       //     interactive.gameObject.GetComponent<Interactive>().enabled = true;
+                       // }
                     }             
                 }
                 else
@@ -174,14 +183,42 @@ public class Interactive : MonoBehaviour
             }
             PowerCanvas.gameObject.SetActive(false);
         }
-
         if (!isHolding)
         {
             throwforce = 0;
             PowerCanvas.gameObject.SetActive(false);
         }
+    }
+    private void Drop()
+    {
+        GameObject interactive = grabcheck.collider.gameObject;
+        StartCoroutine(InteractStop());
+        this.gameObject.GetComponent<PlayerController>().canJump = true;
+        interactive.transform.parent = null;
+         interactive.GetComponent<Rigidbody2D>().isKinematic = false;
+         interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+         isHolding = false;
+         if (interactive.gameObject.GetComponent<PlayerController>() != null)
+         {
+             interactive.gameObject.GetComponent<PlayerController>().enabled = true;
+            interactive.gameObject.GetComponent<Animator>().enabled = true;
+             interactive.gameObject.GetComponent<Interactive>().enabled = true;
+         }
+    }
 
+    private void PickUpBox()
+    {
+        grabcheck.collider.gameObject.transform.parent = holdLocation;
+        grabcheck.collider.gameObject.transform.position = holdLocation.position;
+        grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        isHolding = true;
+    }
 
+    IEnumerator InteractStop()
+    {
+        this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
+        yield return new WaitForSeconds(0.5f);
+        this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
     }
 
     private void ResetThrow()

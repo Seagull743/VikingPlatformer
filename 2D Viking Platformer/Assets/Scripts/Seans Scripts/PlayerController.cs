@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController: MonoBehaviour
 {
 
-    [SerializeField]
-    private float moveSpeed;
+    
+    public float moveSpeed;
     [SerializeField]
     private float jumpForce;
     private Rigidbody2D rb;
@@ -111,26 +111,12 @@ public class PlayerController: MonoBehaviour
     void animateChar()
     {
         if (rb.velocity.x == 0)
-        {
-            if (this.gameObject.GetComponent<Interactive>().isHolding)
-            {
-                anim.SetBool("holdrun", false);
-            }
-            else if(this.gameObject.GetComponent<Interactive>().isHolding == false)
-            {
-                anim.SetBool("Run", false);
-            }     
+        {     
+            anim.SetBool("Run", false);    
         }
         else
-        {
-            if(this.gameObject.GetComponent<Interactive>().isHolding == false)
-            {
-                anim.SetBool("Run", true);
-            }
-            else if (this.gameObject.GetComponent<Interactive>().isHolding)
-            {
-                anim.SetBool("holdrun", true);
-            }
+        {        
+            anim.SetBool("Run", true);       
         }
     }
 }
