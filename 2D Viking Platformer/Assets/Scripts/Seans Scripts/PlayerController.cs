@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController: MonoBehaviour
 {
 
-    [SerializeField]
-    private float moveSpeed;
+    
+    public float moveSpeed;
     [SerializeField]
     private float jumpForce;
     private Rigidbody2D rb;
@@ -35,11 +35,18 @@ public class PlayerController: MonoBehaviour
     [SerializeField]
     private Transform collisionDection;
 
+    private BoxCollider2D coll;
+    public  bool collidlingLeft = false;
+    public bool collidingRight = false;
+    public LayerMask lm;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        coll = GetComponent<BoxCollider2D>();
 
         canJump = true;
         
@@ -48,7 +55,14 @@ public class PlayerController: MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+
+    private void FixedUpdate()
+    {
+        collidlingLeft = CollisionLeft();
+    }
+
+
+
     void Update()
     {
 
@@ -60,7 +74,7 @@ public class PlayerController: MonoBehaviour
             transform.Rotate(new Vector3(0, 0, 0));
         }
 
-        if (Input.GetKey(left))
+        if (Input.GetKey(left) && !collidlingLeft)
         {
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
       
@@ -110,14 +124,31 @@ public class PlayerController: MonoBehaviour
 
     void animateChar()
     {
-        if (rb.velocity.x == 0)
-        {
-            anim.SetBool("Run", false);
+        if ((rb.velocity.x > 0.1f || rb.velocity.x < -0.1f) && isGrounded)
+
+        {     
+            anim.SetBool("Run", true);    
         }
         else
-        {
-            anim.SetBool("Run", true);
+        {        
+            anim.SetBool("Run", false);       
         }
+        
+    }
+
+    private bool CollisionLeft()
+    {
+        if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.left, 0.01f, lm))
+            return true;
+        else return false;        
+    }
+
+    private bool CollisionRight()
+    {
+        if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.right, 0.01f, lm))
+            return true;
+        else return false;
+
     }
 }
 
