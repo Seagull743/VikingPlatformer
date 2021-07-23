@@ -18,6 +18,8 @@ public class Interactive : MonoBehaviour
     [SerializeField]
     private Transform dropLocation;
     [SerializeField]
+    private Transform dropPlayer;
+    [SerializeField]
     private float raydist;
     [SerializeField]
     private KeyCode interact;
@@ -91,17 +93,8 @@ public class Interactive : MonoBehaviour
                 {
                     if(grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
                     {
-                        this.gameObject.GetComponent<PlayerController>().canJump = false;
-                        var Rb = grabcheck.collider.gameObject.GetComponent<Rigidbody2D>();
-                        Rb.velocity = Vector3.zero;
-                        grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-                        grabcheck.collider.gameObject.transform.parent = holdLocation;
-                        grabcheck.collider.gameObject.transform.position = holdLocation.position;
-                        Rb.isKinematic = true;
-                        grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
-                        grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
-                        grabcheck.collider.gameObject.GetComponent<Animator>().enabled = false;
                         isHolding = true;
+                        this.gameObject.GetComponent<PlayerController>().canJump = false;
                     }                
                 }
                 //Lever
@@ -195,14 +188,16 @@ public class Interactive : MonoBehaviour
         StartCoroutine(InteractStop());
         this.gameObject.GetComponent<PlayerController>().canJump = true;
         interactive.transform.parent = null;
-         interactive.GetComponent<Rigidbody2D>().isKinematic = false;
-         interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-         isHolding = false;
+        interactive.GetComponent<Rigidbody2D>().isKinematic = false;
+        interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        isHolding = false;
          if (interactive.gameObject.GetComponent<PlayerController>() != null)
          {
-             interactive.gameObject.GetComponent<PlayerController>().enabled = true;
+
+            interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            interactive.gameObject.GetComponent<PlayerController>().enabled = true;
             interactive.gameObject.GetComponent<Animator>().enabled = true;
-             interactive.gameObject.GetComponent<Interactive>().enabled = true;
+            interactive.gameObject.GetComponent<Interactive>().enabled = true;
          }
     }
 
@@ -212,6 +207,26 @@ public class Interactive : MonoBehaviour
         grabcheck.collider.gameObject.transform.position = holdLocation.position;
         grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         isHolding = true;
+    }
+
+
+    private void PickUpPlayer()
+    {
+        this.gameObject.GetComponent<PlayerController>().canJump = false;
+        var Rb = grabcheck.collider.gameObject.GetComponent<Rigidbody2D>();
+        Rb.velocity = Vector3.zero;
+        grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+        grabcheck.collider.gameObject.transform.parent = holdLocation;
+        grabcheck.collider.gameObject.transform.position = holdLocation.position;
+        Rb.isKinematic = true;
+        if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
+        {
+            grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
+            grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
+            grabcheck.collider.gameObject.GetComponent<Animator>().enabled = false;
+            isHolding = true;
+        }
+        
     }
 
     IEnumerator InteractStop()
