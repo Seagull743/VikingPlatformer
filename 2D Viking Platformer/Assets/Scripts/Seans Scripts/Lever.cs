@@ -7,7 +7,8 @@ public class Lever : MonoBehaviour
     private Animator anim;
     private bool isOn = false;
     [SerializeField]
-    private GameObject door;
+    private Door door;
+
 
     // Start is called before the first frame update
 
@@ -20,11 +21,7 @@ public class Lever : MonoBehaviour
 
     public void LeverToggle()
     {
-        if (isOn)
-        {
-            LeverOff();
-        }
-        else if (!isOn)
+        if (!isOn)
         {
             LeverOn();
         }
@@ -35,14 +32,9 @@ public class Lever : MonoBehaviour
     {
         anim.SetBool("Pulled", true);
         isOn = true;
-        door.SetActive(false);
+        door.OpenDoor();
     }
 
 
-    public void LeverOff()
-    {
-        anim.SetBool("Pulled", false);
-        isOn = false;
-    }
 
 }
