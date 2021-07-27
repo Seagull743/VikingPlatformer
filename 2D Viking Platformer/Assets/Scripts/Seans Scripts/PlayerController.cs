@@ -41,8 +41,6 @@ public class PlayerController: MonoBehaviour
     public LayerMask lm;
 
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +63,7 @@ public class PlayerController: MonoBehaviour
 
     void Update()
     {
+
 
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
         animateChar();
