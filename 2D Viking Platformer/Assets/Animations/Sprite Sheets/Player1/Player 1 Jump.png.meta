@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 3ce39f51b9d9d7d4788622071397fab4
+guid: ced923331f1e9ed4297740527199f9b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7328130678404857502
-    second: Player 2 Throw_0
+      213: -8048094752588008307
+    second: Player 1 Jump_0
   - first:
-      213: -8749180968567231458
-    second: Player 2 Throw_1
+      213: -2453133660060581042
+    second: Player 1 Jump_1
   - first:
-      213: -8945026005374701686
-    second: Player 2 Throw_2
+      213: 8391227022866130271
+    second: Player 1 Jump_2
   - first:
-      213: -8906676853589229186
-    second: Player 2 Throw_3
+      213: 6899319679590100891
+    second: Player 1 Jump_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,55 +101,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player 2 Throw_0
+      name: Player 1 Jump_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 16
-        width: 25
-        height: 44
+        x: 7
+        y: 75
+        width: 23
+        height: 43
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9eb6f1a600c2b560800000000000000
-      internalID: 7328130678404857502
+      spriteID: d847e41967c6f4090800000000000000
+      internalID: -8048094752588008307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player 2 Throw_1
+      name: Player 1 Jump_1
       rect:
         serializedVersion: 2
-        x: 45
-        y: 16
-        width: 24
-        height: 44
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1c21f4a34aa49680800000000000000
-      internalID: -8749180968567231458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player 2 Throw_2
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 16
-        width: 25
-        height: 44
+        x: 35
+        y: 75
+        width: 27
+        height: 43
       alignment: 9
       pivot: {x: 0.53, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,29 +136,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8f620bad32ecd380800000000000000
-      internalID: -8945026005374701686
+      spriteID: e430985fee7b4fdd0800000000000000
+      internalID: -2453133660060581042
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player 2 Throw_3
+      name: Player 1 Jump_2
       rect:
         serializedVersion: 2
-        x: 118
-        y: 16
-        width: 27
-        height: 44
-      alignment: 9
-      pivot: {x: 0.37, y: 0.5}
+        x: 68
+        y: 75
+        width: 24
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e71ce9c5790256480800000000000000
-      internalID: -8906676853589229186
+      spriteID: f552897c480a37470800000000000000
+      internalID: 8391227022866130271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player 1 Jump_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 75
+        width: 23
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f64d5c1be4fbf50800000000000000
+      internalID: 6899319679590100891
       vertices: []
       indices: 
       edges: []

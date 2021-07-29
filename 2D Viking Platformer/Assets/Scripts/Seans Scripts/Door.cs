@@ -2,27 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : MonoBehaviour
+public class Door : MonoBehaviour
 {
     private Animator anim;
-    [SerializeField]
-    private Door door;
-
-
+    
     // Start is called before the first frame update
-
-
-    private void Awake()
+    void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    public void LeverOn()
+    public void OpenDoor()
     {
-        anim.SetBool("Pulled", true);
-        door.OpenDoor();
+        anim.SetBool("opened", true);
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
-
-
-
 }
