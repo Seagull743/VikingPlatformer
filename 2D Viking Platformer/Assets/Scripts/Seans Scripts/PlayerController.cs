@@ -57,6 +57,7 @@ public class PlayerController: MonoBehaviour
     private void FixedUpdate()
     {
         collidlingLeft = CollisionLeft();
+        collidingRight = CollisionRight();
     }
 
 
@@ -76,12 +77,10 @@ public class PlayerController: MonoBehaviour
         if (Input.GetKey(left) && !collidlingLeft)
         {
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-      
         }
-        else if (Input.GetKey(right))
+        else if (Input.GetKey(right) && !collidingRight)
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-
         }
         else
         {
@@ -137,14 +136,14 @@ public class PlayerController: MonoBehaviour
 
     private bool CollisionLeft()
     {
-        if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.left, 0.01f, lm))
+        if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.left, 0.05f, lm))
             return true;
         else return false;        
     }
 
     private bool CollisionRight()
     {
-        if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.right, 0.01f, lm))
+        if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.right, 0.05f, lm))
             return true;
         else return false;
 
