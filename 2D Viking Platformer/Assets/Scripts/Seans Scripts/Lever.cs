@@ -5,7 +5,6 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
     private Animator anim;
-    private bool isOn = false;
     [SerializeField]
     private Door door;
 
@@ -18,20 +17,9 @@ public class Lever : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-
-    public void LeverToggle()
-    {
-        if (!isOn)
-        {
-            LeverOn();
-        }
-    }
-
-
     public void LeverOn()
     {
         anim.SetBool("Pulled", true);
-        isOn = true;
         door.OpenDoor();
     }
 
