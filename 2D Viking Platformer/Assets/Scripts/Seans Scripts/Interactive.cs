@@ -139,19 +139,19 @@ public class Interactive : MonoBehaviour
             throwforce += 0.1f;
             PowerCanvas.gameObject.SetActive(true);
             fill.color = gradient.Evaluate(1f);
-            PowerCanvas.value = throwforce / 3f;
+            PowerCanvas.value = throwforce / 9f;
             fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
         }
 
-        if (Input.GetKeyUp(throwing) && throwforce <= 0.9f)
+        if (Input.GetKeyUp(throwing) && throwforce <= 2.6f)
         {
-            throwforce = 1f;
+            throwforce = 2.7f;
         }
 
-        if (throwforce >= 3f && isHolding)
+        if (throwforce >= 9f && isHolding)
         {
             anim.SetBool("thrown", true);
-            throwforce = 3f;
+            throwforce = 9f;
         }
         if (Input.GetKeyUp(throwing) && isHolding)
         {
