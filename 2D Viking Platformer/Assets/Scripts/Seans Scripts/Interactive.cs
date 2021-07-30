@@ -51,8 +51,11 @@ public class Interactive : MonoBehaviour
     [SerializeField]
     private GameObject crate;
 
+    private Animation anima;
+
     void Start()
     {
+        anima = GetComponent<Animation>();
         anim = GetComponent<Animator>();
         PowerCanvas.gameObject.SetActive(false);
     }
@@ -165,7 +168,6 @@ public class Interactive : MonoBehaviour
     private void Drop()
     {
         Physics2D.IgnoreCollision(crate.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
-        grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
         GameObject interactive = grabcheck.collider.gameObject;
         StartCoroutine(InteractStop());
         this.gameObject.GetComponent<PlayerController>().canJump = true;
@@ -187,7 +189,6 @@ public class Interactive : MonoBehaviour
     {
         GameObject box = grabcheck.collider.gameObject;
         Physics2D.IgnoreCollision(crate.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
-        box.GetComponent<Rigidbody2D>().simulated = false;
         box.transform.parent = holdLocation;
         box.transform.position = holdLocation.position;
         box.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -195,10 +196,9 @@ public class Interactive : MonoBehaviour
     }
 
     private void PickUpPlayer()
-    {
+    { 
         this.gameObject.GetComponent<PlayerController>().canJump = false;
-        grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = false;
-       var Rb = grabcheck.collider.gameObject.GetComponent<Rigidbody2D>();
+        var Rb = grabcheck.collider.gameObject.GetComponent<Rigidbody2D>();
         Rb.velocity = Vector3.zero;
         grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -90)));
         grabcheck.collider.gameObject.transform.parent = holdLocation;
@@ -206,6 +206,7 @@ public class Interactive : MonoBehaviour
         Rb.isKinematic = true;
         if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
         {
+            grabcheck.collider.gameObject.GetComponent<Animation>().Play("Hold");
             grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
             grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
             grabcheck.collider.gameObject.GetComponent<Animator>().enabled = false;
