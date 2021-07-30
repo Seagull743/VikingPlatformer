@@ -51,11 +51,11 @@ public class Interactive : MonoBehaviour
     [SerializeField]
     private GameObject crate;
 
-    private Animation anima;
+    //private Animation anima;
 
     void Start()
     {
-        anima = GetComponent<Animation>();
+        //anima = GetComponent<Animation>();
         anim = GetComponent<Animator>();
         PowerCanvas.gameObject.SetActive(false);
     }
@@ -206,7 +206,7 @@ public class Interactive : MonoBehaviour
         Rb.isKinematic = true;
         if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
         {
-            grabcheck.collider.gameObject.GetComponent<Animation>().Play("Hold");
+            //grabcheck.collider.gameObject.GetComponent<Animation>().Play("Hold");
             grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
             grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
             grabcheck.collider.gameObject.GetComponent<Animator>().enabled = false;
