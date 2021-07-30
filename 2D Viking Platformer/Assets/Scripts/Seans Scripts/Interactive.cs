@@ -93,12 +93,7 @@ public class Interactive : MonoBehaviour
                     {                    
                         StartCoroutine(InteractStop());
                         isHolding = true;
-                        this.gameObject.GetComponent<PlayerController>().canJump = false;
-                        
-                        //grabcheck.collider.gameObject.transform.parent = holdLocation;
-                       //grabcheck.collider.gameObject.transform.position = holdLocation.position;
-                        //grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-                        //isHolding = true;
+                        this.gameObject.GetComponent<PlayerController>().canJump = false;              
                     }                 
                 }
                 //player
@@ -166,6 +161,7 @@ public class Interactive : MonoBehaviour
             PowerCanvas.gameObject.SetActive(false);
         }
     }
+
     private void Drop()
     {
         Physics2D.IgnoreCollision(crate.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
@@ -191,7 +187,7 @@ public class Interactive : MonoBehaviour
     {
         GameObject box = grabcheck.collider.gameObject;
         Physics2D.IgnoreCollision(crate.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
-        grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        box.GetComponent<Rigidbody2D>().simulated = false;
         box.transform.parent = holdLocation;
         box.transform.position = holdLocation.position;
         box.GetComponent<Rigidbody2D>().isKinematic = true;

@@ -64,7 +64,15 @@ public class PlayerController: MonoBehaviour
 
     void Update()
     {
-
+        if (!isGrounded)
+        {
+            anim.SetBool("isjumping", true);
+        }
+        else if (isGrounded)
+        {
+            anim.SetBool("isjumping", false);
+        }
+        
 
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
         animateChar();
@@ -89,8 +97,10 @@ public class PlayerController: MonoBehaviour
 
         if (Input.GetKeyDown(jump) && isGrounded && canJump)
         {
+            anim.SetTrigger("takeoff");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+        
     
         if(rb.velocity.x < 0 && transform.localScale.x >= 0)
         {
