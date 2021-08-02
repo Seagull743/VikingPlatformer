@@ -165,6 +165,10 @@ public class Interactive : MonoBehaviour
         }
     }
 
+    //get rid of the crate thing 
+    //make the crate up the right way 
+
+    
     private void Drop()
     {
         Physics2D.IgnoreCollision(crate.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
