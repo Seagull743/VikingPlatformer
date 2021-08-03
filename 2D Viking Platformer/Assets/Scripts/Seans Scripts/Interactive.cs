@@ -16,6 +16,8 @@ public class Interactive : MonoBehaviour
     [SerializeField]
     private Transform holdLocation;
     [SerializeField]
+    private Transform playerHold;
+    [SerializeField]
     private Transform dropLocation;
     [SerializeField]
     private Transform dropPlayer;
@@ -26,7 +28,6 @@ public class Interactive : MonoBehaviour
     [SerializeField]
     private KeyCode throwing;
     public bool isHolding = false;
-
 
     private bool isthrowing = false;
 
@@ -48,14 +49,8 @@ public class Interactive : MonoBehaviour
     private float Offset;
     private Animator anim;
 
-    [SerializeField]
-    private GameObject crate;
-
-    //private Animation anima;
-
     void Start()
     {
-        //anima = GetComponent<Animation>();
         anim = GetComponent<Animator>();
         PowerCanvas.gameObject.SetActive(false);
     }
@@ -63,7 +58,7 @@ public class Interactive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (!isHolding)
         {
             anim.SetBool("isholding", false);
@@ -76,7 +71,6 @@ public class Interactive : MonoBehaviour
             anim.SetBool("isholding", true);
         }
 
-
         if (isthrowing)
         {
             anim.SetBool("throwing", true);
@@ -84,7 +78,7 @@ public class Interactive : MonoBehaviour
 
         PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
 
-        if (Input.GetKeyDown(interact))
+        if (Input.GetKeyDown(interact) && throwforce == 0)
         {
             if (!isHolding)
             {
@@ -104,6 +98,7 @@ public class Interactive : MonoBehaviour
                 {
                     if(grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
                     {
+                        
                         isHolding = true;
                         this.gameObject.GetComponent<PlayerController>().canJump = false;
                     }                
@@ -155,6 +150,7 @@ public class Interactive : MonoBehaviour
         }
         if (Input.GetKeyUp(throwing) && isHolding)
         {
+            throwforce += 0;
             StartCoroutine(PlayerThrowStop());
             anim.SetBool("thrown", true);
         }
@@ -165,14 +161,10 @@ public class Interactive : MonoBehaviour
         }
     }
 
-    //get rid of the crate thing 
-    //make the crate up the right way 
-
-    
     private void Drop()
     {
-        Physics2D.IgnoreCollision(crate.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
         GameObject interactive = grabcheck.collider.gameObject;
+        Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
         StartCoroutine(InteractStop());
         this.gameObject.GetComponent<PlayerController>().canJump = true;
         interactive.transform.parent = null;
@@ -183,42 +175,41 @@ public class Interactive : MonoBehaviour
          {
 
             interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);
             interactive.gameObject.GetComponent<PlayerController>().enabled = true;
             interactive.gameObject.GetComponent<Animator>().enabled = true;
             interactive.gameObject.GetComponent<Interactive>().enabled = true;
          }
     }
 
-    private void PickUpBox()
+    private void PickUp()
     {
-        GameObject box = grabcheck.collider.gameObject;
-        Physics2D.IgnoreCollision(crate.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
-        box.transform.parent = holdLocation;
-        box.transform.position = holdLocation.position;
-        box.GetComponent<Rigidbody2D>().isKinematic = true;
-        isHolding = true;
-    }
-
-    private void PickUpPlayer()
-    { 
-        this.gameObject.GetComponent<PlayerController>().canJump = false;
-        var Rb = grabcheck.collider.gameObject.GetComponent<Rigidbody2D>();
-        Rb.velocity = Vector3.zero;
-        grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-        grabcheck.collider.gameObject.transform.parent = holdLocation;
-        grabcheck.collider.gameObject.transform.position = holdLocation.position;
-        Rb.isKinematic = true;
-        if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
+        GameObject interactive = grabcheck.collider.gameObject;
+        if(interactive.GetComponent<PlayerController>() != null)
         {
-            //grabcheck.collider.gameObject.GetComponent<Animation>().Play("Hold");
-            grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = false;
-            grabcheck.collider.gameObject.GetComponent<PlayerController>().enabled = false;
-            grabcheck.collider.gameObject.GetComponent<Animator>().enabled = false;
             isHolding = true;
+            interactive.GetComponent<PlayerController>().enabled = false;
+            this.gameObject.GetComponent<PlayerController>().canJump = false;
+            interactive.GetComponent<Animator>().SetBool("playerholding", true);
+            interactive.GetComponent<Interactive>().enabled = false;
+            interactive.transform.SetPositionAndRotation(playerHold.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            interactive.transform.parent = playerHold;
+            interactive.transform.position = playerHold.position;
+            Rigidbody2D Rb = interactive.GetComponent<Rigidbody2D>();
+            Rb.velocity = Vector3.zero;
+            Rb.isKinematic = true;
         }
+        else
+        {
+            isHolding = true;
+            Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
+            interactive.transform.parent = holdLocation;
+            interactive.transform.position = holdLocation.position;
+            interactive.GetComponent<Rigidbody2D>().isKinematic = true;         
+        }     
     }
 
-    public void Throw()
+    private void Throw()
     {
         StartCoroutine(PlayerThrowStop());
         isHolding = false;
@@ -230,12 +221,12 @@ public class Interactive : MonoBehaviour
         grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             if(grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
             {
+                grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);
                 grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
                 grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
                 grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
             }
         Invoke("ResetThrow", 0.5f);
-        
     }
 
     IEnumerator InteractStop()
@@ -250,11 +241,14 @@ public class Interactive : MonoBehaviour
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
         yield return new WaitForSeconds(1f);
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
+        
     }
 
     private void ResetThrow()
     {
         throwforce = 0;
-        Physics2D.IgnoreCollision(crate.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
+        Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
     }
+
+
 }
