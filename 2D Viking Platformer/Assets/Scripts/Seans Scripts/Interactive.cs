@@ -33,6 +33,8 @@ public class Interactive : MonoBehaviour
 
     [SerializeField]
     private float throwforce;
+    [SerializeField]
+    private float maxThrowForce;
 
     private RaycastHit2D grabcheck;
 
@@ -134,7 +136,7 @@ public class Interactive : MonoBehaviour
             throwforce += 0.1f;
             PowerCanvas.gameObject.SetActive(true);
             fill.color = gradient.Evaluate(1f);
-            PowerCanvas.value = throwforce / 9f;
+            PowerCanvas.value = throwforce / maxThrowForce;
             fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
         }
 
@@ -143,10 +145,10 @@ public class Interactive : MonoBehaviour
             throwforce = 2.7f;
         }
 
-        if (throwforce >= 9f && isHolding)
+        if (throwforce >= maxThrowForce && isHolding)
         {
             anim.SetBool("thrown", true);
-            throwforce = 9f;
+            throwforce = maxThrowForce;
         }
         if (Input.GetKeyUp(throwing) && isHolding)
         {
