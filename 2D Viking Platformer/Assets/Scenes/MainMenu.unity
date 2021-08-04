@@ -286,6 +286,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65042abee3ea0644a8705a4d95131e71, type: 3}
+--- !u!1001 &1901282959
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.06162846
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70441604
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.70441604
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.06162846
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930091, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999166803369930092, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
+      propertyPath: m_Name
+      value: Particle System
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dee46f078f449474bbbd2d39a3c88c86, type: 3}
 --- !u!1 &2037026053
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +379,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.3286312, g: 0.3292369, b: 0.3301887, a: 0}
+  m_BackGroundColor: {r: 0.44370773, g: 0.5566038, b: 0.5533865, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

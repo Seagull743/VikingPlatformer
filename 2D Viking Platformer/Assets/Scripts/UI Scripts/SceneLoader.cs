@@ -12,6 +12,8 @@ public class SceneLoader : MonoBehaviour
 
     public void BacktoMenu()
     {
+        Time.timeScale = 1f;
+        PauseMenu.GameIsPause = false;
         SceneManager.LoadScene("MainMenu");
     }
 
