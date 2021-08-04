@@ -133,7 +133,7 @@ public class Interactive : MonoBehaviour
         {
             StartCoroutine(PlayerThrowStop());
             isthrowing = true;
-            throwforce += 0.1f;
+            throwforce += 0.2f;
             PowerCanvas.gameObject.SetActive(true);
             fill.color = gradient.Evaluate(1f);
             PowerCanvas.value = throwforce / maxThrowForce;
