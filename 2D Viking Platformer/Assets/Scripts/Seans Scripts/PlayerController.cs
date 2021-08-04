@@ -38,6 +38,7 @@ public class PlayerController: MonoBehaviour
     private BoxCollider2D coll;
     public  bool collidlingLeft = false;
     public bool collidingRight = false;
+    public bool collidingUp = false;
     public LayerMask lm;
 
 
@@ -58,6 +59,7 @@ public class PlayerController: MonoBehaviour
     {
         collidlingLeft = CollisionLeft();
         collidingRight = CollisionRight();
+        collidingUp = CollisionTop();
     }
 
 
@@ -95,7 +97,7 @@ public class PlayerController: MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
-        if (Input.GetKeyDown(jump) && isGrounded && canJump)
+        if (Input.GetKeyDown(jump) && isGrounded && canJump && !collidingUp)
         {
             anim.SetTrigger("takeoff");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -142,6 +144,13 @@ public class PlayerController: MonoBehaviour
             anim.SetBool("Run", false);       
         }
         
+    }
+
+    private bool CollisionTop()
+    {
+        if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.up, 0.10f, lm))
+            return true;
+        else return false;
     }
 
     private bool CollisionLeft()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     private void ResetGame()
     {
         Debug.Log("Game Over");
+        //SceneManager.LoadScene("SeanScene");
     }
 
 }
