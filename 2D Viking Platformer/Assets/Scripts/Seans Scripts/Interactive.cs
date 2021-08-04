@@ -163,6 +163,7 @@ public class Interactive : MonoBehaviour
 
     private void Drop()
     {
+        
         GameObject interactive = grabcheck.collider.gameObject;
         Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
         StartCoroutine(InteractStop());
@@ -170,7 +171,6 @@ public class Interactive : MonoBehaviour
         interactive.transform.parent = null;
         interactive.GetComponent<Rigidbody2D>().isKinematic = false;
         interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-        isHolding = false;
          if (interactive.gameObject.GetComponent<PlayerController>() != null)
          {
 
@@ -219,7 +219,8 @@ public class Interactive : MonoBehaviour
         grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
         grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
         grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            if(grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
+            
+        if(grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
             {
                 grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);
                 grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
