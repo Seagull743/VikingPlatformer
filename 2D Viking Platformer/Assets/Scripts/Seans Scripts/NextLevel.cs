@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
     private bool Player1 = false;
     private bool Player2 = false;
-
+    [SerializeField]
+    private GameObject youWonCanvas;
     private bool loadscene;
     void Start()
     {
         loadscene = false;
+        youWonCanvas.SetActive(false);
     }
 
     private void Update()
@@ -19,7 +22,8 @@ public class NextLevel : MonoBehaviour
         {
             if (!loadscene)
             {
-                LoadScene();
+                youWonCanvas.SetActive(true);
+                Invoke("LoadScene", 2f);
             }
         }
     }
@@ -35,7 +39,6 @@ public class NextLevel : MonoBehaviour
         {
             Player2 = true;
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
