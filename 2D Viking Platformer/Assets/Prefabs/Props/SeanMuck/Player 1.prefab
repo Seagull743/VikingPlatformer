@@ -173,13 +173,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8202259647923639755}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.0010000048, y: 0.322, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.001000005, y: 0.695, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8202259648194624552}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8202259648194624556
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 8791658439641437790}
   - component: {fileID: 8202259648194624553}
   m_Layer: 9
-  m_Name: Player 1 1
+  m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,6 +350,7 @@ MonoBehaviour:
   collisionDection: {fileID: 3664593451063745346}
   collidlingLeft: 0
   collidingRight: 0
+  collidingUp: 0
   lm:
     serializedVersion: 2
     m_Bits: 256
@@ -369,6 +370,7 @@ MonoBehaviour:
   grabDetect: {fileID: 8202259647125923552}
   placeChecker: {fileID: 3664593451063745346}
   holdLocation: {fileID: 8202259648957224519}
+  playerHold: {fileID: 8202259647923639754}
   dropLocation: {fileID: 8202259647686751091}
   dropPlayer: {fileID: 1186036415219450979}
   raydist: 0.3
@@ -409,7 +411,6 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   fill: {fileID: 0}
   Offset: 1.3
-  crate: {fileID: 0}
 --- !u!114 &8791658439641437790
 MonoBehaviour:
   m_ObjectHideFlags: 0
