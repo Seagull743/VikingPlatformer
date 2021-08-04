@@ -22,8 +22,8 @@ public class NextLevel : MonoBehaviour
         {
             if (!loadscene)
             {
-                youWonCanvas.SetActive(true);
-                Invoke("LoadScene", 2f);
+                StartCoroutine(Sceneloader());
+                
             }
         }
     }
@@ -51,5 +51,11 @@ public class NextLevel : MonoBehaviour
     {
         loadscene = true;
         SceneManager.LoadScene("MainMenu");
+    }
+    IEnumerator Sceneloader()
+    {
+        yield return new WaitForSeconds(2);
+        youWonCanvas.SetActive(true);
+        Invoke("LoadScene", 2f);
     }
 }
