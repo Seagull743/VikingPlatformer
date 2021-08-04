@@ -50,6 +50,6 @@ public class NextLevel : MonoBehaviour
     void LoadScene()
     {
         loadscene = true;
-        Debug.Log("Next Level");
+        SceneManager.LoadScene("MainMenu");
     }
 }

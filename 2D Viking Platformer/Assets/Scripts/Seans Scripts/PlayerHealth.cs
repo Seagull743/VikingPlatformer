@@ -22,8 +22,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void ResetGame()
     {
-        Debug.Log("Game Over");
-        //SceneManager.LoadScene("SeanScene");
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

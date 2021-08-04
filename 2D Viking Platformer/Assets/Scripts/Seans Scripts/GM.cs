@@ -17,7 +17,7 @@ public class GM : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("Resting Level");
+            SceneManager.LoadScene("Prototype");
         }
     }
 }
