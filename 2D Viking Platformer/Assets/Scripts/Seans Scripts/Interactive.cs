@@ -51,6 +51,10 @@ public class Interactive : MonoBehaviour
     private float Offset;
     private Animator anim;
 
+    [SerializeField]
+    private LayerMask CamLayer;
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -85,7 +89,7 @@ public class Interactive : MonoBehaviour
             if (!isHolding)
             {
                
-                grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist);
+                grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
                 //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
                 {
@@ -113,10 +117,10 @@ public class Interactive : MonoBehaviour
             }
             else if (isHolding)
             {
-                RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist);
+                RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
                 if ((grabRay.collider != null && grabRay.collider.tag == "Box" || grabRay.collider != null && grabRay.collider.tag == "Player"))
                 {
-                    RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist);
+                    RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
                     if(placeCheck.collider == null)
                     {
                         isHolding = false;
