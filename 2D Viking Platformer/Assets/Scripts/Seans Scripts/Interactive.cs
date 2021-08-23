@@ -112,7 +112,7 @@ public class Interactive : MonoBehaviour
                 //Lever
                 else if(grabcheck.collider != null && grabcheck.collider.tag == "Lever")
                 {
-                    grabcheck.collider.gameObject.GetComponent<Lever>().LeverOn();
+                   grabcheck.collider.gameObject.GetComponent<Lever>().LeverOn();
                 }
             }
             else if (isHolding)

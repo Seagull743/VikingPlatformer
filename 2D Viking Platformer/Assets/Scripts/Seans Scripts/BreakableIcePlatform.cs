@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BreakableIcePlatform : MonoBehaviour
 {
-   
-    private float timer;
 
-    private bool startTimer = false;
+    private bool start = false;
+    private bool broken = false;
 
     private Animator anim;
    
@@ -20,33 +19,21 @@ public class BreakableIcePlatform : MonoBehaviour
     void Update()
     {
         
-        if(startTimer)
-        {
-            timer += Time.deltaTime;
-            if(timer >= 3)
-            {
-                timer = 3;
-                anim.SetTrigger("broken"); 
-            }
+        if(start)
+        {       
+            anim.SetTrigger("broken");
         }
-        else if(!startTimer)
-        {
-            if(timer > 0)
-            {
-                timer -= Time.deltaTime;
-            if(timer == 0)
-            {
-                timer = 0;
-            }
-            }           
-        }   
     }
       
     void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Player")
         {
-            startTimer = true;
+            start = true;
+            if(start)
+            {
+                anim.enabled = true;
+            }
         }
     }
 
@@ -54,8 +41,15 @@ public class BreakableIcePlatform : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            startTimer = false;
+            if(start && !broken)
+            anim.enabled = false;
         }
+    }
+
+    void BreakingPlatformstage1()
+    {
+        broken = true;
+        anim.enabled = true;
     }
 
     void BoxColliderbreak()
