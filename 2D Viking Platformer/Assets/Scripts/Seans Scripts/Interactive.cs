@@ -30,11 +30,12 @@ public class Interactive : MonoBehaviour
     public bool isHolding = false;
 
     private bool isthrowing = false;
+    [HideInInspector]
+    public static bool thrownMug = false;
 
     [SerializeField]
     private float throwforce;
-    [SerializeField]
-    private float maxThrowForce;
+    public float maxThrowForce;
 
     private RaycastHit2D grabcheck;
 
@@ -93,26 +94,36 @@ public class Interactive : MonoBehaviour
                 //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
                 {
-                    {                    
+                    {
                         StartCoroutine(InteractStop());
                         isHolding = true;
-                        this.gameObject.GetComponent<PlayerController>().canJump = false;              
-                    }                 
+                        this.gameObject.GetComponent<PlayerController>().canJump = false;
+                    }
                 }
                 //player
                 else if (grabcheck.collider != null && grabcheck.collider.tag == "Player")
                 {
-                    if(grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
+                    if (grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
                     {
-                        
+
                         isHolding = true;
                         this.gameObject.GetComponent<PlayerController>().canJump = false;
-                    }                
+                    }
                 }
                 //Lever
-                else if(grabcheck.collider != null && grabcheck.collider.tag == "Lever")
+                else if (grabcheck.collider != null && grabcheck.collider.tag == "Lever")
                 {
-                   grabcheck.collider.gameObject.GetComponent<Lever>().LeverOn();
+                    grabcheck.collider.gameObject.GetComponent<Lever>().LeverOn();
+                }
+                //Axe
+                else if (grabcheck.collider != null && grabcheck.collider.tag == "Axe")
+                {
+                    isHolding = true;
+                }
+                //PowerThrowForce
+                else if (grabcheck.collider != null && grabcheck.collider.tag == "Mug")
+                {
+                    isHolding = true;
                 }
             }
             else if (isHolding)
@@ -233,9 +244,17 @@ public class Interactive : MonoBehaviour
                 grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
                 grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
             }
+        else if(grabcheck.collider.gameObject.GetComponent<Axe>() != null)
+        {
+            grabcheck.collider.gameObject.GetComponent<Axe>().thrown = true;
+        }
+        else if(grabcheck.collider.gameObject.GetComponent<MeadPowerUp>() != null)
+        {
+            thrownMug = true;
+            grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().thrown = true;
+        }
         Invoke("ResetThrow", 0.5f);
     }
-
     IEnumerator InteractStop()
     {
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
@@ -247,14 +266,31 @@ public class Interactive : MonoBehaviour
     {
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
         yield return new WaitForSeconds(1f);
-        this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
-        
+        this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;  
     }
 
     private void ResetThrow()
     {
-        throwforce = 0;
-        Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
+        if (thrownMug)
+        {
+            throwforce = 0;
+        }
+        else
+        {
+            Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
+        }
+    }
+
+    public void StartThrowForce()
+    {
+        StartCoroutine(PowerUpThrow());
+    }
+    
+    IEnumerator PowerUpThrow()
+    {
+        maxThrowForce = 15f;
+        yield return new WaitForSeconds(10f);
+        maxThrowForce = 11f;
     }
 
 

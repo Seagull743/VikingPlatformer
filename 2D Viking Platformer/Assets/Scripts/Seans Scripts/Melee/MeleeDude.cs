@@ -29,36 +29,44 @@ public class MeleeDude : MonoBehaviour
     private bool cooling;
     private float intTimer;
 
-
+    [SerializeField]
+    private float groundCheckRadius;
+    [SerializeField]
+    private Transform ground;
+    [SerializeField]
+    private LayerMask groundLayer;
+    private bool isGrounded;
+    
+    
     private void Awake()
     {
         SelectTarget();
         intTimer = attackTimer;
+        isGrounded = Physics2D.OverlapCircle(ground.position, groundCheckRadius, groundLayer);
     }
 
+    
+    
     // Update is called once per frame
     void Update()
     {
 
-        if (!attackMode)
+        if (!attackMode && isGrounded)
         {
             Move();
         }
        
         //need to put !inside anim current anim state etc
-        if(!InsideWayPoints() && !inRange)
+        if(!InsideWayPoints() && !inRange && isGrounded)
         {
             SelectTarget();
         }
 
-
-        if(inRange)
+        if(inRange && isGrounded)
         {
             EnemyLogic();
         }
     }
-
-   
 
     void EnemyLogic()
     {
@@ -82,10 +90,10 @@ public class MeleeDude : MonoBehaviour
 
 
     private void Move()
-    {
-        Vector2 targetPostition = new Vector2(target.position.x, transform.position.y);
-        transform.position = Vector2.MoveTowards(transform.position, targetPostition, moveSpeed * Time.deltaTime);
-
+    {    
+            Vector2 targetPostition = new Vector2(target.position.x, transform.position.y);
+            transform.position = Vector2.MoveTowards(transform.position, targetPostition, moveSpeed * Time.deltaTime);
+       
         //set anim move to true
         // if (!anim.GetCurrentAnimatorStateInfo(0).IsName("animName"))
         {

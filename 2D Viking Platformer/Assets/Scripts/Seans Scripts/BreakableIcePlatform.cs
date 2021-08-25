@@ -9,10 +9,12 @@ public class BreakableIcePlatform : MonoBehaviour
     private bool broken = false;
 
     private Animator anim;
+    [SerializeField]
+    private GameObject IceCollider;
    
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInParent<Animator>();
     }
    
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class BreakableIcePlatform : MonoBehaviour
         }
     }
       
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Player")
@@ -55,6 +58,8 @@ public class BreakableIcePlatform : MonoBehaviour
     void BoxColliderbreak()
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        IceCollider.GetComponent<BoxCollider2D>().enabled = false;
+
     }
 
 
