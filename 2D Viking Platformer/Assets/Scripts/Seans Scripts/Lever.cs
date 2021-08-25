@@ -23,6 +23,12 @@ public class Lever : MonoBehaviour
         door.OpenDoor();
     }
 
-
+    //void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if(other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
+      //  {          
+      //      LeverOn();
+    //    }
+  //  }
 
 }

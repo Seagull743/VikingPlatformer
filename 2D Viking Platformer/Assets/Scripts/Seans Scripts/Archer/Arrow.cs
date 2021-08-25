@@ -7,12 +7,13 @@ public class Arrow : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 5f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if(collision.gameObject)
+        if(other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
         }
