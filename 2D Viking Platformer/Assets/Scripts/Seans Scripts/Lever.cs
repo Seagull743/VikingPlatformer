@@ -20,6 +20,7 @@ public class Lever : MonoBehaviour
     public void LeverOn()
     {
         anim.SetBool("Pulled", true);
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         door.OpenDoor();
     }
 

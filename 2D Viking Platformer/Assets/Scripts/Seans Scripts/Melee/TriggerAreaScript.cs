@@ -13,7 +13,7 @@ public class TriggerAreaScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
             gameObject.SetActive(false);
             enemyParent.target = collision.transform;

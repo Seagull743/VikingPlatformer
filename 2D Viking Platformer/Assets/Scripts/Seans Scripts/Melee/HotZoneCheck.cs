@@ -6,18 +6,18 @@ public class HotZoneCheck : MonoBehaviour
 {
     private MeleeDude enemyParent;
     private bool inRange;
-    //private Aimator anim;
+    private Animator anim;
 
     private void Awake()
     {
         enemyParent = GetComponentInParent<MeleeDude>();
-        //get anim
+        anim = GetComponentInParent<Animator>();
     }
 
     private void Update()
     {
         //anim state current thing
-        if (inRange)
+        if (inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5"))
         {
             enemyParent.Flip();
         }

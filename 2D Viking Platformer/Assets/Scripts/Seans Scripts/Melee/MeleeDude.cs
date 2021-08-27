@@ -16,13 +16,12 @@ public class MeleeDude : MonoBehaviour
     [SerializeField]
     private Transform waypoint2;
   
-    [HideInInspector]  public Transform target;
-    [HideInInspector]  public bool inRange;
+     public Transform target;
+     public bool inRange;
     
     public GameObject hotZone;
     public  GameObject triggerArea;
 
-    private Animator anim;
     private float distance;
     private bool attackMode;
     
@@ -36,8 +35,19 @@ public class MeleeDude : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer;
     private bool isGrounded;
+
+    [SerializeField]
+    private Animator anim;
+
+    [SerializeField]
+    private BoxCollider2D enemyBody;
+
+    private GameObject player;
     
-    
+    //public GameObject AxeBox;
+
+    private bool hit;
+
     private void Awake()
     {
         SelectTarget();
@@ -45,11 +55,15 @@ public class MeleeDude : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(ground.position, groundCheckRadius, groundLayer);
     }
 
-    
-    
     // Update is called once per frame
     void Update()
     {
+        float WaypointDistance = Vector2.Distance(waypoint1.position, waypoint2.position);
+
+        if (!isGrounded)
+        {
+            SelectTarget();
+        }
 
         if (!attackMode && isGrounded)
         {
@@ -57,7 +71,7 @@ public class MeleeDude : MonoBehaviour
         }
        
         //need to put !inside anim current anim state etc
-        if(!InsideWayPoints() && !inRange && isGrounded)
+        if(!InsideWayPoints() && !inRange && isGrounded && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5"))
         {
             SelectTarget();
         }
@@ -84,22 +98,17 @@ public class MeleeDude : MonoBehaviour
         if (cooling)
         {
             CoolDown();
-            //turn off attack anim
+            anim.SetBool("Attack", false);
         }
     }
 
-
     private void Move()
-    {    
+    {
+        if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5"))
+        {
             Vector2 targetPostition = new Vector2(target.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetPostition, moveSpeed * Time.deltaTime);
-       
-        //set anim move to true
-        // if (!anim.GetCurrentAnimatorStateInfo(0).IsName("animName"))
-        {
-            //Vector2 targetPostition = new Vector2(target.transform.position.x, transform.position.y);
-            // transform.position = Vector2.MoveTowards(transform.position, targetPostition, moveSpeed * Time.deltaTime);
-        }
+        } 
     }
 
     void CoolDown()
@@ -117,18 +126,15 @@ public class MeleeDude : MonoBehaviour
     {
         attackTimer = intTimer;
         attackMode = true;
-
-        //stop walk anim
-        //play attack anim
+        anim.SetBool("Attack", true);
     }
 
     void StopAttack()
     {
         cooling = false;
         attackMode = false;
-        //ser attack anim to false
+        anim.SetBool("Attack", false);
     }
-
 
     private bool InsideWayPoints()
     {
@@ -153,7 +159,6 @@ public class MeleeDude : MonoBehaviour
         Flip();
     }
 
-
     public void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
@@ -168,4 +173,61 @@ public class MeleeDude : MonoBehaviour
 
         transform.eulerAngles = rotation;
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            hit = true;
+            player = other.gameObject; 
+        }
+    }
+
+    private void DamagePlayer()
+    {
+        if (hit)
+        {
+            Debug.Log("HitPlayer");
+            player.GetComponent<PlayerHealth>().PlayerDamaged();
+        }
+    }
+
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            hit = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Box")
+        {
+            anim.SetBool("Death", true);
+            moveSpeed = 0;
+            enemyBody.enabled = false;
+        }
+    }
+
+    private void TriggerCooling()
+    {
+        cooling = true;
+    }
+    
+
+    public void EnemyDieing()
+    {
+        moveSpeed = 0;
+        anim.SetBool("Death", true);
+        enemyBody.enabled = false;
+    }
+
+    public void KillEnemy()
+    {
+        moveSpeed = 0;
+        enemyBody.enabled = false;
+    }
+
 }
