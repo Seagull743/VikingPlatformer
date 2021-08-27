@@ -228,15 +228,30 @@ public class Interactive : MonoBehaviour
 
     private void Throw()
     {
-        StartCoroutine(PlayerThrowStop());
-        isHolding = false;
-        this.gameObject.GetComponent<PlayerController>().canJump = true;
-        grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
-        grabcheck.collider.gameObject.transform.parent = null;
-        grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-        grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
-        grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            
+        
+        if(grabcheck.collider.gameObject.layer == 15)
+        {
+            StartCoroutine(PlayerThrowStop());
+            isHolding = false;
+            this.gameObject.GetComponent<PlayerController>().canJump = true;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            grabcheck.collider.gameObject.transform.parent = null;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.2f) * throwforce;
+            grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        }
+        else
+        {
+            StartCoroutine(PlayerThrowStop());
+            isHolding = false;
+            this.gameObject.GetComponent<PlayerController>().canJump = true;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            grabcheck.collider.gameObject.transform.parent = null;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
+            grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        }
+        
         if(grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
             {
                 grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);

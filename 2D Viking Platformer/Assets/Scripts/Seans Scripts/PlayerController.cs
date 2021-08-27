@@ -27,6 +27,11 @@ public class PlayerController: MonoBehaviour
     private bool isGrounded;
     public bool canJump;
 
+    [HideInInspector]
+    public bool facingLeft;
+    [HideInInspector]
+    public bool facingRight;
+
     [SerializeField]
     private GameObject PowerMeter;
 
@@ -54,15 +59,12 @@ public class PlayerController: MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-
     private void FixedUpdate()
     {
         collidlingLeft = CollisionLeft();
         collidingRight = CollisionRight();
         collidingUp = CollisionTop();
     }
-
-
 
     void Update()
     {
@@ -104,17 +106,19 @@ public class PlayerController: MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         
-    
         if(rb.velocity.x < 0 && transform.localScale.x >= 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+            facingLeft = true;
+            facingRight = false;
         }
         else if(rb.velocity.x > 0 && transform.localScale.x <= 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+            facingLeft = false;
+            facingRight = true;
         }
     }
-
     public void controller()
     {
         StartCoroutine(playercontrolsActive());
@@ -126,12 +130,10 @@ public class PlayerController: MonoBehaviour
         gameObject.GetComponent<PlayerController>().enabled = true;
     }
 
-
     public void TurnOffAnim()
     {
         anim.SetBool("Run", false);
     }
-
 
     void animateChar()
     {

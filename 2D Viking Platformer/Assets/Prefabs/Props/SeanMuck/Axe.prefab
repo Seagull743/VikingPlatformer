@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7458256552266935463}
   - component: {fileID: 7904214433905093871}
   - component: {fileID: 8455013694834458785}
-  m_Layer: 0
+  - component: {fileID: 406850986}
+  m_Layer: 15
   m_Name: Axe
-  m_TagString: Untagged
+  m_TagString: Axe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7774665763347249756}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38811567, w: 0.9216107}
+  m_LocalRotation: {x: 0, y: 0, z: -0.3881188, w: 0.9216094}
   m_LocalPosition: {x: -1.22, y: -2.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -118,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021580808, y: 0.031345934}
+  m_Offset: {x: 0.021580815, y: 0.036385715}
   m_SpriteTilingProperty:
     border: {x: 0.475, y: 0.675, z: 2.375, w: 2.1000001}
     pivot: {x: 0.1966122, y: 0.26606497}
@@ -129,5 +130,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.39805287, y: 0.45298648}
+  m_Size: {x: 0.39805287, y: 0.44290692}
   m_EdgeRadius: 0
+--- !u!114 &406850986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774665763347249756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cffc716b70ded428a4edf2de82e081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrown: 0
