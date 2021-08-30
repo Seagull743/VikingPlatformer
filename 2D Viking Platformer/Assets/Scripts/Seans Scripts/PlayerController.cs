@@ -27,15 +27,10 @@ public class PlayerController: MonoBehaviour
     private bool isGrounded;
     public bool canJump;
 
-    [HideInInspector]
-    public bool facingLeft;
-    [HideInInspector]
-    public bool facingRight;
-
     [SerializeField]
     private GameObject PowerMeter;
 
-    Animator anim;
+    private ChangeAnimationStateController stateC;
 
     [SerializeField]
     private Transform collisionDection;
@@ -53,10 +48,9 @@ public class PlayerController: MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
 
         canJump = true;
-        
-        rb = GetComponent<Rigidbody2D>();
+        stateC = GetComponent<ChangeAnimationStateController>();
 
-        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -71,14 +65,15 @@ public class PlayerController: MonoBehaviour
            
         if (!isGrounded)
         {
-            anim.SetBool("isjumping", true);
+            //anim.SetBool("isjumping", true);
+            stateC.Jump();
+
         }
         else if (isGrounded)
         {
-            anim.SetBool("isjumping", false);
+            //anim.SetBool("isjumping", false);
         }
         
-
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
         animateChar();
 
@@ -102,21 +97,18 @@ public class PlayerController: MonoBehaviour
 
         if (Input.GetKeyDown(jump) && isGrounded && canJump && !collidingUp)
         {
-            anim.SetTrigger("takeoff");
+            stateC.Jump();
+            //anim.SetTrigger("takeoff");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         
         if(rb.velocity.x < 0 && transform.localScale.x >= 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
-            facingLeft = true;
-            facingRight = false;
         }
         else if(rb.velocity.x > 0 && transform.localScale.x <= 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
-            facingLeft = false;
-            facingRight = true;
         }
     }
     public void controller()
@@ -132,22 +124,29 @@ public class PlayerController: MonoBehaviour
 
     public void TurnOffAnim()
     {
-        anim.SetBool("Run", false);
+        //anim.SetBool("Run", false);
     }
 
     void animateChar()
     {
-        if ((rb.velocity.x > 0.1f || rb.velocity.x < -0.1f) && isGrounded)
-
-        {     
-            anim.SetBool("Run", true);    
+        if (isGrounded)
+        {
+            if (rb.velocity.x > 0.01f || rb.velocity.x < -0.1f)
+            {
+                // anim.SetBool("Run", true);
+                //ChangeAnimationState(PlayerRun);
+                stateC.Run();
+            }
+            else
+            {
+                //ChangeAnimationState(PlayerIdle);
+                stateC.Idle();
+            }
         }
-        else
-        {        
-            anim.SetBool("Run", false);       
-        }
-        
     }
+
+  
+
 
     private bool CollisionTop()
     {
