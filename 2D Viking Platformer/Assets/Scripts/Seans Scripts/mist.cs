@@ -6,6 +6,13 @@ public class mist : MonoBehaviour
 {
 
     private float timer = 5f;
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        anim.SetBool("active", true);
+    }
 
 
     private void Update()
@@ -14,7 +21,7 @@ public class mist : MonoBehaviour
         {
             if(timer <= 0)
             {
-                Destroy(gameObject);
+                anim.SetBool("active", false);                 
             }
         }
     }
@@ -32,4 +39,8 @@ public class mist : MonoBehaviour
         }
     }
 
+    private void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
 }

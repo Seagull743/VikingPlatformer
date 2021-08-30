@@ -8,9 +8,11 @@ public class Archer : MonoBehaviour
     public Transform arrowInstantiate;
     public bool fired = false;
     private Animator anim;
+    private BoxCollider2D SkeleCollider;
     void Start()
     {
         anim = GetComponent<Animator>();
+        SkeleCollider = GetComponent<BoxCollider2D>();
     }
 
     
@@ -52,5 +54,12 @@ public class Archer : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    public void EnemyDieing()
+    {
+        anim.SetBool("Death", true);
+        SkeleCollider.enabled = false;
+        fired = true;
+    }
+        
 }

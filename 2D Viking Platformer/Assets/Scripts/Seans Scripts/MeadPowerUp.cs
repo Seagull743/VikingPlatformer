@@ -8,6 +8,7 @@ public class MeadPowerUp : MonoBehaviour
     public bool thrown = false;
     [SerializeField]
     private GameObject Mist;
+    private bool active = true;
 
     // Start is called before the first frame update
     void Start()
