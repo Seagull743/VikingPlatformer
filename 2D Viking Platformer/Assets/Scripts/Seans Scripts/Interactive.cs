@@ -50,37 +50,40 @@ public class Interactive : MonoBehaviour
     private Image fill;
     [SerializeField]
     private float Offset;
-    private Animator anim;
 
     [SerializeField]
     private LayerMask CamLayer;
 
+    private ChangeAnimationStateController stateC;
+
 
     void Start()
     {
-        anim = GetComponent<Animator>();
         PowerCanvas.gameObject.SetActive(false);
+        stateC = GetComponent<ChangeAnimationStateController>();
     }
-
     // Update is called once per frame
     void Update()
     {
-
+     
+           
         if (!isHolding)
         {
-            anim.SetBool("isholding", false);
-            anim.SetBool("throwing", false);
-            anim.SetBool("thrown", false);
+            //anim.SetBool("isholding", false);
+            //anim.SetBool("throwing", false);
+            //anim.SetBool("thrown", false);
             isthrowing = false;
         }
-        else
+       
+        else if(isHolding)
         {
-            anim.SetBool("isholding", true);
+            
+            //anim.SetBool("isholding", true);
         }
 
         if (isthrowing)
         {
-            anim.SetBool("throwing", true);
+            //anim.SetBool("throwing", true);
         }
 
         PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
@@ -89,13 +92,13 @@ public class Interactive : MonoBehaviour
         {
             if (!isHolding)
             {
-               
                 grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
                 //box
                 if (grabcheck.collider != null && grabcheck.collider.tag == "Box")
                 {
                     {
                         StartCoroutine(InteractStop());
+                        stateC.Pickup();
                         isHolding = true;
                         this.gameObject.GetComponent<PlayerController>().canJump = false;
                     }
@@ -105,7 +108,7 @@ public class Interactive : MonoBehaviour
                 {
                     if (grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
                     {
-
+                        stateC.Pickup();
                         isHolding = true;
                         this.gameObject.GetComponent<PlayerController>().canJump = false;
                     }
@@ -128,6 +131,7 @@ public class Interactive : MonoBehaviour
             }
             else if (isHolding)
             {
+                //update this for the other throwables  
                 RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
                 if ((grabRay.collider != null && grabRay.collider.tag == "Box" || grabRay.collider != null && grabRay.collider.tag == "Player"))
                 {
@@ -135,6 +139,7 @@ public class Interactive : MonoBehaviour
                     if(placeCheck.collider == null)
                     {
                         isHolding = false;
+                        stateC.PutDown();
                     }             
                 }
                 else
@@ -143,10 +148,10 @@ public class Interactive : MonoBehaviour
                 }
             }
         }
-
         if (Input.GetKey(throwing) && isHolding)
         {
             StartCoroutine(PlayerThrowStop());
+            stateC.ChargeThrow();
             isthrowing = true;
             throwforce += 0.2f;
             PowerCanvas.gameObject.SetActive(true);
@@ -162,14 +167,16 @@ public class Interactive : MonoBehaviour
 
         if (throwforce >= maxThrowForce && isHolding)
         {
-            anim.SetBool("thrown", true);
+            //anim.SetBool("thrown", true);
+            stateC.Thrown();
             throwforce = maxThrowForce;
         }
         if (Input.GetKeyUp(throwing) && isHolding)
         {
             throwforce += 0;
+            stateC.Thrown();
             StartCoroutine(PlayerThrowStop());
-            anim.SetBool("thrown", true);
+            //anim.SetBool("thrown", true);
         }
         if (!isHolding)
         {
@@ -177,7 +184,7 @@ public class Interactive : MonoBehaviour
             PowerCanvas.gameObject.SetActive(false);
         }
     }
-
+    
     private void Drop()
     {
         
@@ -198,13 +205,12 @@ public class Interactive : MonoBehaviour
             interactive.gameObject.GetComponent<Interactive>().enabled = true;
          }
     }
-
     private void PickUp()
     {
         GameObject interactive = grabcheck.collider.gameObject;
         if(interactive.GetComponent<PlayerController>() != null)
         {
-            isHolding = true;
+            //isHolding = true;
             interactive.GetComponent<PlayerController>().enabled = false;
             this.gameObject.GetComponent<PlayerController>().canJump = false;
             interactive.GetComponent<Animator>().SetBool("playerholding", true);
@@ -218,7 +224,7 @@ public class Interactive : MonoBehaviour
         }
         else
         {
-            isHolding = true;
+            //isHolding = true;
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
             interactive.transform.parent = holdLocation;
             interactive.transform.position = holdLocation.position;
@@ -253,12 +259,12 @@ public class Interactive : MonoBehaviour
         }
         
         if(grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
-            {
-                grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);
-                grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
-                grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
-                grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
-            }
+        {
+            grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);
+            grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
+            grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
+            grabcheck.collider.gameObject.GetComponent<Interactive>().enabled = true;
+         }
         else if(grabcheck.collider.gameObject.GetComponent<Axe>() != null)
         {
             grabcheck.collider.gameObject.GetComponent<Axe>().thrown = true;
@@ -272,16 +278,20 @@ public class Interactive : MonoBehaviour
     }
     IEnumerator InteractStop()
     {
-        this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
-        yield return new WaitForSeconds(0.5f);
-        this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
+        gameObject.GetComponent<PlayerController>().enabled = false;
+        //this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
+        yield return new WaitForSeconds(0.3f);
+        gameObject.GetComponent<PlayerController>().enabled = true;
+        //this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
     }
 
     IEnumerator PlayerThrowStop()
     {
+        //gameObject.GetComponent<PlayerController>().enabled = false;
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
         yield return new WaitForSeconds(1f);
-        this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;  
+        this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
+        //gameObject.GetComponent<PlayerController>().enabled = true;
     }
 
     private void ResetThrow()

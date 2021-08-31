@@ -134,19 +134,14 @@ public class PlayerController: MonoBehaviour
             if (rb.velocity.x > 0.01f || rb.velocity.x < -0.1f)
             {
                 // anim.SetBool("Run", true);
-                //ChangeAnimationState(PlayerRun);
                 stateC.Run();
             }
             else
             {
-                //ChangeAnimationState(PlayerIdle);
                 stateC.Idle();
             }
         }
     }
-
-  
-
 
     private bool CollisionTop()
     {

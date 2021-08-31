@@ -20,12 +20,14 @@ public class ChangeAnimationStateController : MonoBehaviour
     public string PlayerHoldingIdle = "Player1 holdingIdle";
     public string PlayerHoldingRun = "Player 1 holding Run";
     public string PlayerPutDown = "Player 1 Put Down";
-    public string PlayerBoxPlayerThrow = "Player 1 Throw";
-    public string PlayerThrowAction = "Player 1 Throw Action";
+    public string PlayerBoxPlayerChargeThrow = "Player 1 Throw";
+    public string PlayerThrowActionBoxPlayer = "Player 1 Throw Action";
 
 
-    public bool isholding = false;
-
+    private bool isholding = false;
+    private bool isrunning = false;
+    private bool ChargingThrow = false;
+    private bool thrownAction = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,35 +41,74 @@ public class ChangeAnimationStateController : MonoBehaviour
         
     }
 
-
     public void Jump()
     {
-        if (!isholding)
+      
         ChangeAnimationState(PlayerJump);
     }
 
     public void Idle()
     {
-        if(!isholding)
-        ChangeAnimationState(PlayerIdle);
+        isrunning = false;
+        if (isholding)
+        {
+            ChangeAnimationState(PlayerHoldingIdle);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerIdle);
+        }       
     }
-
     public void Run()
     {
-        if(!isholding)
-        ChangeAnimationState(PlayerRun);
+        isrunning = true;
+        if (isholding)
+        {
+            ChangeAnimationState(PlayerHoldingRun);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerRun);
+        }   
     }
 
+   
+    public void ChargeThrow()
+    {
+        ChargingThrow = true;
+        if(isholding && ChargingThrow)
+        {
+            ChangeAnimationState(PlayerBoxPlayerChargeThrow);
+        }
+    }
+    
+    public void Thrown()
+    {
+        thrownAction = true;
+        if (isholding && ChargingThrow && thrownAction)
+        {
+            ChangeAnimationState(PlayerThrowActionBoxPlayer);
+        }
+    }
+    
     public void Pickup()
     {
-        ChangeAnimationState(PlayerPickup);
         isholding = true;
+        ChangeAnimationState(PlayerPickup);
     }
 
-    public void HoldingIdle()
+    public void PutDown()
     {
-        isholding = true;
-        ChangeAnimationState(PlayerHoldingIdle);   
+        ChangeAnimationState(PlayerPutDown);
+    }
+
+
+
+   
+    //Animation Event on Put Down
+    public void IsHoldingFalse()
+    {
+        isholding = false;
     }
 
     public void ChangeAnimationState(string newState)
