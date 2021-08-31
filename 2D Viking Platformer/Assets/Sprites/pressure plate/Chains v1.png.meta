@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: c9fba9d28f82c8c4aa897e3d39632d3b
+guid: b51c76523699e884b936beee69001e19
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5345100868597085051
-    second: Attack anim v5_0
+      213: 4427531510904208412
+    second: Chains v1_0
   - first:
-      213: 7479560267383941463
-    second: Attack anim v5_1
+      213: -933017495666818256
+    second: Chains v1_1
   - first:
-      213: 6761086150196273533
-    second: Attack anim v5_2
+      213: 3883136128935083646
+    second: Chains v1_2
   - first:
-      213: 8810422905516960176
-    second: Attack anim v5_3
+      213: -1551406161232185060
+    second: Chains v1_3
   - first:
-      213: -8841076702008367708
-    second: Attack anim v5_4
-  - first:
-      213: -7488999701644535016
-    second: Attack anim v5_5
+      213: 5247757696564048091
+    second: Chains v1_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +61,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,7 +78,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -93,18 +90,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -119,106 +104,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Attack anim v5_0
+      name: Chains v1_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 193
-        width: 42
-        height: 55
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49090907}
+        x: 2
+        y: 39
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b737c51abec9d2a40800000000000000
-      internalID: 5345100868597085051
+      spriteID: c1c3b4b7370c17d30800000000000000
+      internalID: 4427531510904208412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack anim v5_1
+      name: Chains v1_1
       rect:
         serializedVersion: 2
-        x: 153
-        y: 193
-        width: 42
-        height: 55
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49090907}
+        x: 27
+        y: 39
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 759ab8d4f6cbcc760800000000000000
-      internalID: 7479560267383941463
+      spriteID: 0330e81f7814d03f0800000000000000
+      internalID: -933017495666818256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack anim v5_2
+      name: Chains v1_2
       rect:
         serializedVersion: 2
-        x: 196
-        y: 194
-        width: 42
-        height: 55
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49090907}
+        x: 52
+        y: 39
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d712346280434dd50800000000000000
-      internalID: 6761086150196273533
+      spriteID: e7e39ab4cbba3e530800000000000000
+      internalID: 3883136128935083646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack anim v5_3
+      name: Chains v1_3
       rect:
         serializedVersion: 2
-        x: 142
-        y: 134
-        width: 48
-        height: 55
-      alignment: 9
-      pivot: {x: 0.4375, y: 0.49090907}
+        x: 77
+        y: 39
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b9ad44f3f8e44a70800000000000000
-      internalID: 8810422905516960176
+      spriteID: c193769e05c487ae0800000000000000
+      internalID: -1551406161232185060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack anim v5_4
+      name: Chains v1_4
       rect:
         serializedVersion: 2
-        x: 191
-        y: 134
-        width: 46
-        height: 55
-      alignment: 9
-      pivot: {x: 0.45652175, y: 0.49090907}
+        x: 102
+        y: 39
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a52fc0e49f2e4580800000000000000
-      internalID: -8841076702008367708
+      spriteID: bd0b50b32d7c3d840800000000000000
+      internalID: 5247757696564048091
       vertices: []
       indices: 
       edges: []
