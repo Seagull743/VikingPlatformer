@@ -23,23 +23,101 @@ public class ChangeAnimationStateController : MonoBehaviour
     public string PlayerBoxPlayerChargeThrow = "Player 1 Throw";
     public string PlayerThrowActionBoxPlayer = "Player 1 Throw Action";
 
+    //isGrounded && canJump
 
-    private bool isholding = false;
-    private bool isrunning = false;
-    private bool ChargingThrow = false;
-    private bool thrownAction = false;
+    private PlayerController PC;
+    private Interactive Interact;
+   
+    //Bools PlayerController
+    private bool isrunning;
+    private bool isGrounded;
+    private bool CanJump;
+    private bool isjumping;
+
+    //Bools Interactive
+    private bool isholding;
+    private bool isThrowing;
+    private bool isthrown;
+    private bool pickuped;
+    private bool putDown;
+
+
+
+   //  [HideInInspector] public bool pickup = false;
+   //  [HideInInspector] public bool isHolding = false;
+   //  [HideInInspector] public bool isthrowing = false;
+   //  [HideInInspector] public bool putdown = false;
+   //  [HideInInspector] public bool Thrown = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        PC = GetComponent<PlayerController>();
+        Interact = GetComponent<Interactive>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Player controller Bools
+        isrunning = PC.isRunning;
+        isjumping = PC.isJumping;
+        isGrounded = PC.isGrounded;
+        CanJump = PC.canJump;
+
+        //Interactive Bools
+        isholding = Interact.isHolding;
+        isThrowing = Interact.isthrowing;
+        isthrown = Interact.Thrown;
+        pickuped = Interact.pickup;
+        putDown = Interact.putdown;
+
+        //Running Animations
+        if (isrunning && isGrounded && !pickuped && !isholding)
+        {
+            Run();
+        }
+        else if (isrunning && isGrounded && isholding && !isThrowing) //pickuped
+        {
+            HoldingRun();
+        }
+        else if (!isrunning && isGrounded && !pickuped && !isholding)
+        {
+            Idle();
+        }
+        else if (!isrunning && isGrounded && isholding && !putDown && !isThrowing) //pickuped
+        {
+            HoldingIdle();
+        }
+
+        //Jumping Animations
+        if (!isGrounded)
+        {
+            Jump();
+        }
+
+        //PickUp and dropping
+        if(!isholding && pickuped && isGrounded)
+        {
+            Pickup();
+        }
+        else if(isholding && pickuped && isGrounded && putDown)
+        {
+            PutDown();
+        }
+
+        //Throwing
+        if(isholding && isThrowing && !isthrown)
+        {
+            ChargeThrow();
+        }
+        else if(isholding && isThrowing && isthrown)
+        {
+            Thrown();
+        }
     }
+    
 
     public void Jump()
     {
@@ -49,51 +127,35 @@ public class ChangeAnimationStateController : MonoBehaviour
 
     public void Idle()
     {
-        isrunning = false;
-        if (isholding)
-        {
-            ChangeAnimationState(PlayerHoldingIdle);
-        }
-        else
-        {
-            ChangeAnimationState(PlayerIdle);
-        }       
-    }
-    public void Run()
-    {
-        isrunning = true;
-        if (isholding)
-        {
-            ChangeAnimationState(PlayerHoldingRun);
-        }
-        else
-        {
-            ChangeAnimationState(PlayerRun);
-        }   
+        ChangeAnimationState(PlayerIdle);   
     }
 
-   
+    public void HoldingIdle()
+    {
+        ChangeAnimationState(PlayerHoldingIdle);
+    }
+
+    public void Run()
+    {
+         ChangeAnimationState(PlayerRun);
+    }
+
+    public void HoldingRun()
+    {
+        ChangeAnimationState(PlayerHoldingRun);
+    }
     public void ChargeThrow()
     {
-        ChargingThrow = true;
-        if(isholding && ChargingThrow)
-        {
-            ChangeAnimationState(PlayerBoxPlayerChargeThrow);
-        }
+        ChangeAnimationState(PlayerBoxPlayerChargeThrow);
     }
     
     public void Thrown()
     {
-        thrownAction = true;
-        if (isholding && ChargingThrow && thrownAction)
-        {
-            ChangeAnimationState(PlayerThrowActionBoxPlayer);
-        }
+        ChangeAnimationState(PlayerThrowActionBoxPlayer);
     }
     
     public void Pickup()
     {
-        isholding = true;
         ChangeAnimationState(PlayerPickup);
     }
 
@@ -103,13 +165,18 @@ public class ChangeAnimationStateController : MonoBehaviour
     }
 
 
-
-   
-    //Animation Event on Put Down
+   // Animation Event on Put Down
     public void IsHoldingFalse()
     {
         isholding = false;
+        pickuped = false;
     }
+
+    //Animation Event on PickUp
+   // public void IsHoldingTrue()
+   // {
+    //    isholding = true;
+   // }
 
     public void ChangeAnimationState(string newState)
     {
