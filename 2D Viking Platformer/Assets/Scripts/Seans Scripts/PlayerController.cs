@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController: MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
-    
+
     public float moveSpeed;
     [SerializeField]
     private float jumpForce;
@@ -24,8 +24,13 @@ public class PlayerController: MonoBehaviour
     private LayerMask ground;
     [SerializeField]
     private float groundCheckRadius;
-    private bool isGrounded;
-    public bool canJump;
+
+
+
+    [HideInInspector] public bool isGrounded;
+    [HideInInspector] public bool canJump;
+    [HideInInspector] public bool isRunning;
+    [HideInInspector] public bool isJumping;
 
     [SerializeField]
     private GameObject PowerMeter;
@@ -66,12 +71,12 @@ public class PlayerController: MonoBehaviour
         if (!isGrounded)
         {
             //anim.SetBool("isjumping", true);
-            stateC.Jump();
-
+            isJumping = true;
         }
         else if (isGrounded)
         {
             //anim.SetBool("isjumping", false);
+            isJumping = false;
         }
         
         isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
@@ -97,7 +102,7 @@ public class PlayerController: MonoBehaviour
 
         if (Input.GetKeyDown(jump) && isGrounded && canJump && !collidingUp)
         {
-            stateC.Jump();
+            isJumping = true;
             //anim.SetTrigger("takeoff");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -125,6 +130,7 @@ public class PlayerController: MonoBehaviour
     public void TurnOffAnim()
     {
         //anim.SetBool("Run", false);
+        isRunning = false;
     }
 
     void animateChar()
@@ -134,11 +140,11 @@ public class PlayerController: MonoBehaviour
             if (rb.velocity.x > 0.01f || rb.velocity.x < -0.1f)
             {
                 // anim.SetBool("Run", true);
-                stateC.Run();
+                isRunning = true;
             }
             else
             {
-                stateC.Idle();
+                isRunning = false;
             }
         }
     }

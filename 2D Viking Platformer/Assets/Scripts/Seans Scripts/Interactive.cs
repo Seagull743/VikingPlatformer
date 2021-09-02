@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Interactive : MonoBehaviour
 {
-
     [SerializeField]
     private Transform holdCheck;
     [SerializeField]
@@ -27,10 +26,11 @@ public class Interactive : MonoBehaviour
     private KeyCode interact;
     [SerializeField]
     private KeyCode throwing;
-    public bool isHolding = false;
 
-    private bool isthrowing = false;
-    [HideInInspector]
+    [HideInInspector] public bool isHolding = false;
+    [HideInInspector] public bool isthrowing = false;
+    [HideInInspector] public bool Thrown = false;
+
     public static bool thrownMug = false;
 
     [SerializeField]
@@ -57,6 +57,9 @@ public class Interactive : MonoBehaviour
     private ChangeAnimationStateController stateC;
 
 
+    [HideInInspector]
+    public bool pickedUpAxe = false;
+
     void Start()
     {
         PowerCanvas.gameObject.SetActive(false);
@@ -64,27 +67,21 @@ public class Interactive : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
-     
-           
-        if (!isHolding)
-        {
+    {       
+       // if (!isHolding)
+       // {
             //anim.SetBool("isholding", false);
             //anim.SetBool("throwing", false);
             //anim.SetBool("thrown", false);
-            isthrowing = false;
-        }
-       
-        else if(isHolding)
-        {
-            
-            //anim.SetBool("isholding", true);
-        }
+            //isthrowing = false;
+            //Thrown = false;
+      //  }
+   
+       // else if(isHolding)
+        //{
 
-        if (isthrowing)
-        {
-            //anim.SetBool("throwing", true);
-        }
+            //anim.SetBool("isholding", true);      
+      //  }
 
         PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
 
@@ -98,7 +95,6 @@ public class Interactive : MonoBehaviour
                 {
                     {
                         StartCoroutine(InteractStop());
-                        stateC.Pickup();
                         isHolding = true;
                         this.gameObject.GetComponent<PlayerController>().canJump = false;
                     }
@@ -108,7 +104,6 @@ public class Interactive : MonoBehaviour
                 {
                     if (grabcheck.collider.gameObject.GetComponent<Interactive>().isHolding == false)
                     {
-                        stateC.Pickup();
                         isHolding = true;
                         this.gameObject.GetComponent<PlayerController>().canJump = false;
                     }
@@ -122,36 +117,38 @@ public class Interactive : MonoBehaviour
                 else if (grabcheck.collider != null && grabcheck.collider.tag == "Axe")
                 {
                     isHolding = true;
+                    pickedUpAxe = true;
+                    grabcheck.collider.gameObject.GetComponent<Axe>().TurnOff();
+                    grabcheck.collider.gameObject.GetComponent<Axe>().enabled = false;
+
                 }
                 //PowerThrowForce
                 else if (grabcheck.collider != null && grabcheck.collider.tag == "Mug")
                 {
-                    isHolding = true;
+                    //isHolding = true;
                 }
             }
             else if (isHolding)
             {
                 //update this for the other throwables  
                 RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
-                if ((grabRay.collider != null && grabRay.collider.tag == "Box" || grabRay.collider != null && grabRay.collider.tag == "Player"))
+                if ((grabRay.collider != null && grabRay.collider.tag == "Box" || grabRay.collider != null && grabRay.collider.tag == "Player") || grabRay.collider != null && grabRay.collider.tag == "Axe")
                 {
                     RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
                     if(placeCheck.collider == null)
                     {
                         isHolding = false;
-                        stateC.PutDown();
                     }             
                 }
-                else
-                {
-                    isHolding = false;
-                }
+                //else
+                //
+                   // isHolding = false;
+                //}
             }
         }
         if (Input.GetKey(throwing) && isHolding)
         {
             StartCoroutine(PlayerThrowStop());
-            stateC.ChargeThrow();
             isthrowing = true;
             throwforce += 0.2f;
             PowerCanvas.gameObject.SetActive(true);
@@ -160,23 +157,23 @@ public class Interactive : MonoBehaviour
             fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
         }
 
-        if (Input.GetKeyUp(throwing) && throwforce <= 2.6f)
+        if (Input.GetKeyUp(throwing) && throwforce <= 2.6f && isthrowing)
         {
             throwforce = 2.7f;
+            Thrown = true;
         }
-
-        if (throwforce >= maxThrowForce && isHolding)
+        if (throwforce >= maxThrowForce && isHolding && isthrowing)
         {
             //anim.SetBool("thrown", true);
-            stateC.Thrown();
+            Thrown = true;
             throwforce = maxThrowForce;
         }
-        if (Input.GetKeyUp(throwing) && isHolding)
+        if (Input.GetKeyUp(throwing) && isHolding && isthrowing)
         {
             throwforce += 0;
-            stateC.Thrown();
             StartCoroutine(PlayerThrowStop());
             //anim.SetBool("thrown", true);
+            Thrown = true;
         }
         if (!isHolding)
         {
@@ -184,10 +181,8 @@ public class Interactive : MonoBehaviour
             PowerCanvas.gameObject.SetActive(false);
         }
     }
-    
     private void Drop()
     {
-        
         GameObject interactive = grabcheck.collider.gameObject;
         Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
         StartCoroutine(InteractStop());
@@ -197,23 +192,30 @@ public class Interactive : MonoBehaviour
         interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
          if (interactive.gameObject.GetComponent<PlayerController>() != null)
          {
-
             interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);
+            //grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);
             interactive.gameObject.GetComponent<PlayerController>().enabled = true;
             interactive.gameObject.GetComponent<Animator>().enabled = true;
             interactive.gameObject.GetComponent<Interactive>().enabled = true;
          }
+        if (pickedUpAxe)
+        {
+            interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, -66)));
+            pickedUpAxe = false;
+            interactive.GetComponent<Axe>().enabled = false;
+            interactive.GetComponent<Axe>().TurnOn();
+        }
+        isHolding = false;
     }
     private void PickUp()
     {
         GameObject interactive = grabcheck.collider.gameObject;
-        if(interactive.GetComponent<PlayerController>() != null)
+        isHolding = true;
+        if (interactive.GetComponent<PlayerController>() != null)
         {
-            //isHolding = true;
             interactive.GetComponent<PlayerController>().enabled = false;
             this.gameObject.GetComponent<PlayerController>().canJump = false;
-            interactive.GetComponent<Animator>().SetBool("playerholding", true);
+            //interactive.GetComponent<Animator>().SetBool("playerholding", true);
             interactive.GetComponent<Interactive>().enabled = false;
             interactive.transform.SetPositionAndRotation(playerHold.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             interactive.transform.parent = playerHold;
@@ -224,21 +226,21 @@ public class Interactive : MonoBehaviour
         }
         else
         {
-            //isHolding = true;
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
             interactive.transform.parent = holdLocation;
             interactive.transform.position = holdLocation.position;
             interactive.GetComponent<Rigidbody2D>().isKinematic = true;         
         }     
     }
-
     private void Throw()
     {
-        
-        if(grabcheck.collider.gameObject.layer == 15)
+        isHolding = false;
+        isthrowing = false;
+        Thrown = false;
+        Invoke("ResetThrow", 0.2f);
+        if (grabcheck.collider.gameObject.layer == 15)
         {
             StartCoroutine(PlayerThrowStop());
-            isHolding = false;
             this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
             grabcheck.collider.gameObject.transform.parent = null;
@@ -249,7 +251,6 @@ public class Interactive : MonoBehaviour
         else
         {
             StartCoroutine(PlayerThrowStop());
-            isHolding = false;
             this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
             grabcheck.collider.gameObject.transform.parent = null;
@@ -267,24 +268,25 @@ public class Interactive : MonoBehaviour
          }
         else if(grabcheck.collider.gameObject.GetComponent<Axe>() != null)
         {
+            grabcheck.collider.gameObject.GetComponent<Axe>().enabled = true;
+            grabcheck.collider.gameObject.GetComponent<Axe>().TurnOn();
             grabcheck.collider.gameObject.GetComponent<Axe>().thrown = true;
+            pickedUpAxe = false;
         }
         else if(grabcheck.collider.gameObject.GetComponent<MeadPowerUp>() != null)
         {
             thrownMug = true;
             grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().thrown = true;
         }
-        Invoke("ResetThrow", 0.5f);
     }
     IEnumerator InteractStop()
     {
-        gameObject.GetComponent<PlayerController>().enabled = false;
-        //this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
+        //gameObject.GetComponent<PlayerController>().enabled = false;
+        this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
         yield return new WaitForSeconds(0.3f);
-        gameObject.GetComponent<PlayerController>().enabled = true;
-        //this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
+        //gameObject.GetComponent<PlayerController>().enabled = true;
+        this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
     }
-
     IEnumerator PlayerThrowStop()
     {
         //gameObject.GetComponent<PlayerController>().enabled = false;

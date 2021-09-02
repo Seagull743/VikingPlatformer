@@ -18,14 +18,6 @@ public class Axe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (thrown)
-        {
-            transform.Rotate(0, 0, 1);
-        }
-        else if (!thrown)
-        {
-            transform.Rotate(0, 0, 0);
-        }      
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -51,4 +43,17 @@ public class Axe : MonoBehaviour
             thrown = false;
         }
     }
+
+    public void TurnOff()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void TurnOn()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+    }
 }
+
+

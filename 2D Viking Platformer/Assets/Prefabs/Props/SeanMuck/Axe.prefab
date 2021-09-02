@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7904214433905093871}
   - component: {fileID: 8455013694834458785}
   - component: {fileID: 406850986}
-  - component: {fileID: 1725964770}
+  - component: {fileID: 2584278646350782145}
   m_Layer: 15
   m_Name: Axe
   m_TagString: Axe
@@ -120,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03658974, y: 0.036589146}
+  m_Offset: {x: -0.037136793, y: 0.011366844}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18135095, y: 0.5106578}
+  m_Size: {x: 0.033897877, y: 0.46021318}
   m_EdgeRadius: 0
 --- !u!114 &406850986
 MonoBehaviour:
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrown: 0
---- !u!61 &1725964770
+--- !u!61 &2584278646350782145
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,10 +156,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03232348, y: 0.07850027}
+  m_Offset: {x: 0.055437446, y: 0.18384838}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -170,5 +170,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.53100896, y: 0.71571493}
+  m_Size: {x: 0.14330173, y: 0.20852852}
   m_EdgeRadius: 0
