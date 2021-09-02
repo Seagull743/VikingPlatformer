@@ -19,7 +19,14 @@ public class Arrow : MonoBehaviour
         }
         else if (other.gameObject.layer == 8)
         {
-            Destroy(gameObject);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            Invoke("WaitDestroy", 3f);
         }
     }
+
+    public void WaitDestroy()
+    {
+        Destroy(gameObject);
+    }
+
 }

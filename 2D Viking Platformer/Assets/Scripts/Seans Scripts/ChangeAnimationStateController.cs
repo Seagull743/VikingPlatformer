@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Holdables
+{
+    nothing, Crate, Player, Axe, Spear, Mug
+}
+
 public class ChangeAnimationStateController : MonoBehaviour
 {
-
+    public Holdables held = Holdables.nothing;
 
     [SerializeField]
     private Animator anim;
@@ -23,31 +28,33 @@ public class ChangeAnimationStateController : MonoBehaviour
     public string PlayerBoxPlayerChargeThrow = "Player 1 Throw";
     public string PlayerThrowActionBoxPlayer = "Player 1 Throw Action";
 
+    //Axe Animations
+    public string AxeIdle = "P1 Axe Idle";
+    public string AxeJump = "P1 Axe Jump";
+    public string AxeRun = "P1 Axe Run";
+    public string AxeThrowAction = "P1 Axe Throw Action";
+    public string AxeChargeThrow = "P1 Axe Throw";
+
+
+
     //isGrounded && canJump
 
     private PlayerController PC;
     private Interactive Interact;
-   
+
     //Bools PlayerController
-    private bool isrunning;
-    private bool isGrounded;
-    private bool CanJump;
-    private bool isjumping;
-
+    [SerializeField] private bool isrunning;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private bool CanJump;
+    [SerializeField] private bool isjumping;
     //Bools Interactive
-    private bool isholding;
-    private bool isThrowing;
-    private bool isthrown;
-    private bool pickuped;
-    private bool putDown;
+    [SerializeField] private bool isholding;
+    [SerializeField] private bool isThrowing;
+    [SerializeField] private bool isthrown;
+    [SerializeField] private bool pickuped;
+    [SerializeField] private bool putDown;
 
-
-
-   //  [HideInInspector] public bool pickup = false;
-   //  [HideInInspector] public bool isHolding = false;
-   //  [HideInInspector] public bool isthrowing = false;
-   //  [HideInInspector] public bool putdown = false;
-   //  [HideInInspector] public bool Thrown = false;
+    [SerializeField] private bool pickedupAxe;
 
 
     // Start is called before the first frame update
@@ -55,6 +62,7 @@ public class ChangeAnimationStateController : MonoBehaviour
     {
         PC = GetComponent<PlayerController>();
         Interact = GetComponent<Interactive>();
+        putDown = true;
     }
 
     // Update is called once per frame
@@ -70,59 +78,103 @@ public class ChangeAnimationStateController : MonoBehaviour
         isholding = Interact.isHolding;
         isThrowing = Interact.isthrowing;
         isthrown = Interact.Thrown;
-        pickuped = Interact.pickup;
-        putDown = Interact.putdown;
+
+        pickedupAxe = Interact.pickedUpAxe;
 
         //Running Animations
-        if (isrunning && isGrounded && !pickuped && !isholding)
+        if (!isholding)
         {
-            Run();
+            if (!putDown)
+            {
+                PutDown();
+            }
+            else if (putDown)
+            {
+                if (isGrounded)
+                {
+                    if (isrunning)
+                    {
+                        Run();
+                    }
+                    else if (!isrunning)
+                    {
+                        Idle();
+                    }
+                }
+                else if (!isGrounded)
+                {
+                    Jump();
+                }
+            }        
         }
-        else if (isrunning && isGrounded && isholding && !isThrowing) //pickuped
+        else if (isholding)
         {
-            HoldingRun();
-        }
-        else if (!isrunning && isGrounded && !pickuped && !isholding)
-        {
-            Idle();
-        }
-        else if (!isrunning && isGrounded && isholding && !putDown && !isThrowing) //pickuped
-        {
-            HoldingIdle();
+            if (!pickuped)
+            {
+                Pickup();
+            }
+            else if(pickuped)
+            {
+                if (isGrounded)
+                {
+                    if (isThrowing)
+                    {
+                        if (!isthrown)
+                        {
+                            ChargeThrow();
+                        }
+                        else if (isthrown)
+                        {
+                            Thrown();
+                        }
+                    }
+                    else if (!isThrowing)
+                    {
+                        if (isrunning)
+                        {
+                            HoldingRun();
+                        }
+                        else if (!isrunning)
+                        {
+                            HoldingIdle();
+                        }
+                    }
+                }
+                else if (!isGrounded)
+                {
+                    Jump();
+                }
+            }       
         }
 
-        //Jumping Animations
-        if (!isGrounded)
-        {
-            Jump();
-        }
-
-        //PickUp and dropping
-        if(!isholding && pickuped && isGrounded)
-        {
-            Pickup();
-        }
-        else if(isholding && pickuped && isGrounded && putDown)
-        {
-            PutDown();
-        }
-
-        //Throwing
-        if(isholding && isThrowing && !isthrown)
-        {
-            ChargeThrow();
-        }
-        else if(isholding && isThrowing && isthrown)
-        {
-            Thrown();
-        }
+        //Throwing Script
+       //if (isholding)
+        //{
+        //    //if (isThrowing)
+        //    {
+        //        if (!isthrown)
+        //        {
+        //            ChargeThrow();
+        //        }
+        //        else if (isthrown)
+        //        {
+        //            Thrown();
+        //        }
+        //    }
+        //}
     }
     
 
     public void Jump()
     {
-      
-        ChangeAnimationState(PlayerJump);
+        if (pickedupAxe)
+        {
+            ChangeAnimationState(AxeJump);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerJump);
+        }  
     }
 
     public void Idle()
@@ -132,9 +184,17 @@ public class ChangeAnimationStateController : MonoBehaviour
 
     public void HoldingIdle()
     {
-        ChangeAnimationState(PlayerHoldingIdle);
+        if (pickedupAxe)
+        {
+            ChangeAnimationState(AxeIdle);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerHoldingIdle);
+        }     
     }
 
+   //Could get rid of this method if you do a if !holding same with idle
     public void Run()
     {
          ChangeAnimationState(PlayerRun);
@@ -142,41 +202,70 @@ public class ChangeAnimationStateController : MonoBehaviour
 
     public void HoldingRun()
     {
-        ChangeAnimationState(PlayerHoldingRun);
+        if (pickedupAxe)
+        {
+            ChangeAnimationState(AxeRun);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerHoldingRun);
+        }    
     }
     public void ChargeThrow()
     {
-        ChangeAnimationState(PlayerBoxPlayerChargeThrow);
+        if (pickedupAxe)
+        {
+            ChangeAnimationState(AxeChargeThrow);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerBoxPlayerChargeThrow);
+        } 
+        //if holding a box play that throw charge etc
     }
     
     public void Thrown()
     {
-        ChangeAnimationState(PlayerThrowActionBoxPlayer);
+        if (pickedupAxe)
+        {
+            ChangeAnimationState(AxeThrowAction);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerThrowActionBoxPlayer);
+        }   
+        //if I'm holding a bxo play that throw anim etc
     }
     
     public void Pickup()
     {
+        //if(held == Holdables.Axe)
+        //{
+        //}
+
         ChangeAnimationState(PlayerPickup);
+        // If I'm holding a box play box pickup animation
+        // If holding an axe play axe pickup animation
     }
 
     public void PutDown()
     {
         ChangeAnimationState(PlayerPutDown);
+        // If I'm holding a box play box putdown animation
+        // If holding an axe play axe putdown animation
     }
 
-
-   // Animation Event on Put Down
-    public void IsHoldingFalse()
+    public void FinshedPickUp()
     {
-        isholding = false;
+        pickuped = true;
+        putDown = false;     
+    }
+
+    public void FinishedDrop()
+    {
+        putDown = true;
         pickuped = false;
     }
-
-    //Animation Event on PickUp
-   // public void IsHoldingTrue()
-   // {
-    //    isholding = true;
-   // }
 
     public void ChangeAnimationState(string newState)
     {

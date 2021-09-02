@@ -132,7 +132,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.41697192, y: 0.8308437}
+  m_Offset: {x: 1.211925, y: 0.8308437}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -143,7 +143,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.6962476, y: 3.829359}
+  m_Size: {x: 4.1063414, y: 3.829359}
   m_EdgeRadius: 0
 --- !u!114 &2675058752792212728
 MonoBehaviour:
@@ -202,7 +202,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3158333, y: 0.16211867}
+  m_Offset: {x: -0.11306378, y: 0.16211867}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -213,7 +213,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9242015, y: 0.67576265}
+  m_Size: {x: 1.5186625, y: 0.67576265}
   m_EdgeRadius: 0
 --- !u!114 &2675058752850461837
 MonoBehaviour:
@@ -366,7 +366,6 @@ MonoBehaviour:
     m_Bits: 256
   anim: {fileID: 2675058753114360455}
   enemyBody: {fileID: 431675660}
-  AxeBox: {fileID: 0}
 --- !u!95 &2675058753114360455
 Animator:
   serializedVersion: 3
