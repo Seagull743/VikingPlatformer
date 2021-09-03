@@ -17,7 +17,7 @@ public class Arrow : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (other.gameObject.layer == 8)
+        else if (other.gameObject)
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Invoke("WaitDestroy", 3f);
