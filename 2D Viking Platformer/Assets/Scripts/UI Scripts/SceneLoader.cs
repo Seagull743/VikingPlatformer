@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene("DanScene");
     }
 
     public void BacktoMenu()
