@@ -9,6 +9,9 @@ public class Archer : MonoBehaviour
     public bool fired = false;
     private Animator anim;
     private BoxCollider2D SkeleCollider;
+    [SerializeField]
+    private float SkeletonRange = 3.5f;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -18,7 +21,7 @@ public class Archer : MonoBehaviour
     
     void Update()
     {
-        RaycastHit2D Vision = Physics2D.Raycast(arrowInstantiate.position, Vector2.right * transform.localScale, 3.5f);
+        RaycastHit2D Vision = Physics2D.Raycast(arrowInstantiate.position, Vector2.right * transform.localScale, SkeletonRange);
         if (Vision.collider != null && Vision.collider.tag == "Player")
         {
             if (!fired)
