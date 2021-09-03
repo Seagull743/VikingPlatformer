@@ -5,32 +5,33 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     private bool opened = false;
-    
-    
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
-        {
+    [SerializeField]
+    private Animator anim;
 
-            if (!opened)
-            {
-                Debug.Log("On");
-                opened = true;
-            }
-            
-        }
+    private void Start()
+    {
+       
     }
 
 
-    void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
-        {
-            if (opened)
-            {
-                Debug.Log("Off");
-                opened = false;
-            }
+     {
+         if (!opened)
+         {
+             opened = true;
+             anim.SetBool("isActivated", true);
+         }      
+     }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (opened)
+        { 
+            opened = false;
+            anim.SetBool("isActivated", true);
         }
     }
 }
