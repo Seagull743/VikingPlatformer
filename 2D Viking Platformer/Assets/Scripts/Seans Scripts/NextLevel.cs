@@ -50,7 +50,8 @@ public class NextLevel : MonoBehaviour
     void LoadScene()
     {
         loadscene = true;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene("MainMenu");
     }
     IEnumerator Sceneloader()
     {
