@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 7035153014594533191}
   - component: {fileID: 7671770985688816956}
   - component: {fileID: 7035153014594533195}
+  - component: {fileID: 8750285930631972478}
   m_Layer: 9
   m_Name: Player 2
   m_TagString: Player
@@ -285,7 +286,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundCheckRadius: 0.2
+  isGrounded: 0
   canJump: 0
+  isRunning: 0
+  isJumping: 0
   PowerMeter: {fileID: 0}
   collisionDection: {fileID: 2499187207624282144}
   collidlingLeft: 0
@@ -317,6 +321,8 @@ MonoBehaviour:
   interact: 305
   throwing: 303
   isHolding: 0
+  isthrowing: 0
+  Thrown: 0
   throwforce: 0
   maxThrowForce: 11
   holdDownTime: 0
@@ -355,6 +361,7 @@ MonoBehaviour:
   CamLayer:
     serializedVersion: 2
     m_Bits: 0
+  pickedUpAxe: 0
 --- !u!114 &7671770985688816956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +384,7 @@ Animator:
   m_GameObject: {fileID: 7035153014594533198}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c80e37a43a79416428934536ea17a3d0, type: 2}
+  m_Controller: {fileID: 9100000, guid: af15eba6490a1ce4cb5699c582e9d329, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -386,6 +393,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8750285930631972478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035153014594533198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f62067632f7b2d4686b857c83d5fd7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 1
+  anim: {fileID: 7035153014594533195}
+  isrunning: 0
+  isGrounded: 0
+  CanJump: 0
+  isjumping: 0
+  isholding: 0
+  isThrowing: 0
+  isthrown: 0
+  pickuped: 0
+  putDown: 0
+  pickedupAxe: 0
 --- !u!1 &7035153014786120998
 GameObject:
   m_ObjectHideFlags: 0

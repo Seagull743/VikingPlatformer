@@ -2,40 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Holdables
+public enum Players
 {
-    nothing, Crate, Player, Axe, Spear, Mug
+   P1, P2
 }
 
 public class ChangeAnimationStateController : MonoBehaviour
 {
-    public Holdables held = Holdables.nothing;
+    public Players player;
 
     [SerializeField]
     private Animator anim;
     private string currentState;
     //Animation states;
-    public string PlayerIdle = "Player 1 Idle";
-    public string PlayerRun = "Player1 Run";
-    public string PlayerTakeOff = "Player 1 Take off";
-    public string PlayerJump = "Player 1 Jump";
-    public string PlayerLanding = "Player1Landing";
+    private string PlayerIdle = "Player 1 Idle";
+    private string PlayerRun = "Player1 Run";
+    private string PlayerTakeOff = "Player 1 Take off";
+    private string PlayerJump = "Player 1 Jump";
+    private string PlayerLanding = "Player1Landing";
     //Interactive animations
-    public string PlayerPickup = "Player1 Box Pickup";
-    public string PlayerHoldingIdle = "Player1 holdingIdle";
-    public string PlayerHoldingRun = "Player 1 holding Run";
-    public string PlayerPutDown = "Player 1 Put Down";
-    public string PlayerBoxPlayerChargeThrow = "Player 1 Throw";
-    public string PlayerThrowActionBoxPlayer = "Player 1 Throw Action";
+    private string PlayerPickup = "Player1 Box Pickup";
+    private string PlayerHoldingIdle = "Player1 holdingIdle";
+    private string PlayerHoldingRun = "Player 1 holding Run";
+    private string PlayerPutDown = "Player 1 Put Down";
+    private string PlayerBoxPlayerChargeThrow = "Player 1 Throw";
+    private string PlayerThrowActionBoxPlayer = "Player 1 Throw Action";
 
     //Axe Animations
-    public string AxeIdle = "P1 Axe Idle";
-    public string AxeJump = "P1 Axe Jump";
-    public string AxeRun = "P1 Axe Run";
-    public string AxeThrowAction = "P1 Axe Throw Action";
-    public string AxeChargeThrow = "P1 Axe Throw";
-
-
+    private string AxeIdle = "P1 Axe Idle";
+    private string AxeJump = "P1 Axe Jump";
+    private string AxeRun = "P1 Axe Run";
+    private string AxeThrowAction = "P1 Axe Throw Action";
+    private string AxeThrow = "P1 Axe Throw";
 
     //isGrounded && canJump
 
@@ -53,9 +51,50 @@ public class ChangeAnimationStateController : MonoBehaviour
     [SerializeField] private bool isthrown;
     [SerializeField] private bool pickuped;
     [SerializeField] private bool putDown;
-
     [SerializeField] private bool pickedupAxe;
 
+    private void Awake()
+    {
+        switch (player)
+        {
+            case Players.P1:
+                PlayerIdle = "Player 1 Idle";
+                PlayerRun = "Player1 Run";
+                PlayerTakeOff = "Player 1 Take off";
+                PlayerJump = "Player 1 Jump";
+                PlayerLanding = "Player1Landing";
+                PlayerPickup = "Player1 Box Pickup";
+                PlayerHoldingIdle = "Player1 holdingIdle";
+                PlayerHoldingRun = "Player 1 holding Run";
+                PlayerPutDown = "Player 1 Put Down";
+                PlayerBoxPlayerChargeThrow = "Player 1 Throw";
+                PlayerThrowActionBoxPlayer = "Player 1 Throw Action";
+                AxeIdle = "P1 Axe Idle";
+                AxeJump = "P1 Axe Jump";
+                AxeRun = "P1 Axe Run";
+                AxeThrowAction = "P1 Axe Throw Action";
+                AxeThrow = "P1 Axe Throw";
+                break;
+            case Players.P2:
+                PlayerIdle = "Player 2 Idle";
+                PlayerRun = "Player 2 Run";
+                PlayerTakeOff = "Player 2 Take Off";
+                PlayerJump = "Player 2 jump";
+                PlayerLanding = "Player 2 Landing";
+                PlayerPickup = "Player 2 Pickup";
+                PlayerHoldingIdle = "Player 2 holding Idle";
+                PlayerHoldingRun = "Player 2 holding Run";
+                PlayerPutDown = "Player 2 Put Down";
+                PlayerBoxPlayerChargeThrow = "Player 2 Throw";
+                PlayerThrowActionBoxPlayer = "Player 2 Throw Action";
+                AxeIdle = "P2 Axe Idle";
+                AxeJump = "P2 Axe Jump";
+                AxeRun = "P2 Axe Run";
+                AxeThrowAction = "P2 Axe Throw Action";
+                AxeThrow = "P2 Axe Throw";
+                break;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -163,7 +202,8 @@ public class ChangeAnimationStateController : MonoBehaviour
         //    }
         //}
     }
-    
+
+
 
     public void Jump()
     {
@@ -215,7 +255,7 @@ public class ChangeAnimationStateController : MonoBehaviour
     {
         if (pickedupAxe)
         {
-            ChangeAnimationState(AxeChargeThrow);
+            ChangeAnimationState(AxeThrow);
         }
         else
         {
@@ -237,6 +277,12 @@ public class ChangeAnimationStateController : MonoBehaviour
         //if I'm holding a bxo play that throw anim etc
     }
     
+
+  //public void PlayerHelpPose()
+  //{
+  //    ChangeAnimationState(HOld)
+  //}
+
     public void Pickup()
     {
         //if(held == Holdables.Axe)
