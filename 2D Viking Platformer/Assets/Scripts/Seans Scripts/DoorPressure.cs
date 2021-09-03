@@ -5,11 +5,18 @@ using UnityEngine;
 public class DoorPressure : MonoBehaviour
 {
     private Animator anim;
-    
+
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         anim = GetComponent<Animator>();
+        anim.SetBool("isOpen", false);
+    }
+
+    void Start()
+    {
+        
     }
 
 
