@@ -9,6 +9,8 @@ public class PressurePlate : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private rune runeobject;
+    [SerializeField]
+    private DoorPressure DP;
 
     private void Start()
     {
@@ -24,6 +26,7 @@ public class PressurePlate : MonoBehaviour
                 opened = true;
                 anim.SetBool("isActivated", true);
                 runeobject.ToggleRuneOn();
+                DP.OpenDoor();
             }
         }
     }
@@ -35,6 +38,7 @@ public class PressurePlate : MonoBehaviour
             opened = false;
             anim.SetBool("isActivated", false);
             runeobject.ToggleRuneOff();
+            DP.CloseDoor();
         }
     }
 
