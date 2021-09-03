@@ -262,7 +262,7 @@ public class Interactive : MonoBehaviour
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.2f) * throwforce;
+            grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.1f) * throwforce;
             grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 
             if (grabcheck.collider.gameObject.GetComponent<Axe>() != null)

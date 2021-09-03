@@ -62,5 +62,10 @@ public class BreakableIcePlatform : MonoBehaviour
 
     }
 
+    void DestroyIce()
+    {
+        Destroy(gameObject);
+    }
+
 
 }

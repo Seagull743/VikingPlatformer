@@ -7,31 +7,37 @@ public class PressurePlate : MonoBehaviour
     private bool opened = false;
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private rune runeobject;
 
     private void Start()
     {
-       
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
-     {
-         if (!opened)
-         {
-             opened = true;
-             anim.SetBool("isActivated", true);
-         }      
-     }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (opened)
-        { 
-            opened = false;
-            anim.SetBool("isActivated", true);
+        {
+            if (!opened)
+            {
+                opened = true;
+                anim.SetBool("isActivated", true);
+                runeobject.ToggleRuneOn();
+            }
         }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (opened)
+        {
+            opened = false;
+            anim.SetBool("isActivated", false);
+            runeobject.ToggleRuneOff();
+        }
+    }
+
+
+    
 }
