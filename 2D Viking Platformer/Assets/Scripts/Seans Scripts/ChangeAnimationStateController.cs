@@ -290,7 +290,7 @@ public class ChangeAnimationStateController : MonoBehaviour
         if (pickedupAxe)
         {
             ChangeAnimationState(AxeThrowAction);
-        }
+        }       
         else if (pickedUpSpear)
         {
             ChangeAnimationState(SpearThrowAction);
