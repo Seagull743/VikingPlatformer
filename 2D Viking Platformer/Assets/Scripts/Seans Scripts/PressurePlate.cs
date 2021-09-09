@@ -12,15 +12,13 @@ public class PressurePlate : MonoBehaviour
     [SerializeField]
     private DoorPressure DP;
 
-    private void Start()
-    {
-    
-    }
+    private List<GameObject> CollisionItems = new List<GameObject>();
 
 
-    private void OnCollisionEnter2D(Collision2D other)
+
+    private void Update()
     {
-        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
+        if(CollisionItems.Count >= 1)
         {
             if (!opened)
             {
@@ -30,17 +28,32 @@ public class PressurePlate : MonoBehaviour
                 DP.OpenDoor();
             }
         }
+        else if(CollisionItems.Count <= 0)
+        {
+            if (opened)
+            {
+                opened = false;
+                anim.SetBool("isActivated", false);
+                runeobject.ToggleRuneOff();
+                DP.CloseDoor();
+            }
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (opened)
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
         {
-            opened = false;
-            anim.SetBool("isActivated", false);
-            runeobject.ToggleRuneOff();
-            DP.CloseDoor();
+            CollisionItems.Add(other.gameObject);
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
+        {
+            CollisionItems.Remove(other.gameObject);
+        }    
     }
 
 

@@ -25,4 +25,12 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+ //private void OnCollisionEnter2D(Collision2D collision)
+ //{
+ //    if(collision.gameObject.tag == "Arrow")
+ //    {
+ //        PlayerDamaged();
+ //    }
+ //}
+
 }
