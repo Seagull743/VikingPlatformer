@@ -59,7 +59,8 @@ public class Interactive : MonoBehaviour
 
     [HideInInspector]
     public bool pickedUpAxe = false;
-
+    [HideInInspector]
+    public bool pickedUpSpear = false;
     void Start()
     {
         PowerCanvas.gameObject.SetActive(false);
@@ -68,21 +69,6 @@ public class Interactive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {       
-       // if (!isHolding)
-       // {
-            //anim.SetBool("isholding", false);
-            //anim.SetBool("throwing", false);
-            //anim.SetBool("thrown", false);
-            //isthrowing = false;
-            //Thrown = false;
-      //  }
-   
-       // else if(isHolding)
-        //{
-
-            //anim.SetBool("isholding", true);      
-      //  }
-
         PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
 
         if (Input.GetKeyDown(interact) && throwforce == 0)
@@ -124,6 +110,14 @@ public class Interactive : MonoBehaviour
                     grabcheck.collider.gameObject.GetComponent<Axe>().TurnOff();
                     grabcheck.collider.gameObject.GetComponent<Axe>().enabled = false;
 
+                }
+                //Spear
+                else if(grabcheck.collider.tag == "Spear")
+                {
+                    isHolding = true;
+                    pickedUpSpear = true;
+                    //grabcheck.collider.gameObject.GetComponent<Spear>().TurnOff();
+                   // grabcheck.collider.gameObject.GetComponent<Spear>().enabled = false;
                 }
                 //PowerThrowForce
                 else if (grabcheck.collider.tag == "Mug")
@@ -206,11 +200,20 @@ public class Interactive : MonoBehaviour
         {
             interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, -66)));
             pickedUpAxe = false;
+            //might need to be changed 
             interactive.GetComponent<Axe>().enabled = false;
             interactive.GetComponent<Axe>().TurnOn();
         }
+        else if (pickedUpSpear)
+        {
+            pickedUpSpear = false;
+            //might need to be changed
+            interactive.GetComponent<Spear>().enabled = false;
+            interactive.GetComponent<Spear>().TurnOn();
+        }
         isHolding = false;
     }
+
     private void PickUp()
     {
         GameObject interactive = grabcheck.collider.gameObject;
@@ -239,7 +242,7 @@ public class Interactive : MonoBehaviour
             interactive.transform.parent = holdLocation;
             interactive.transform.position = holdLocation.position;
             interactive.GetComponent<Rigidbody2D>().isKinematic = true;         
-        }     
+        }      
     }
     private void Throw()
     {
@@ -276,6 +279,13 @@ public class Interactive : MonoBehaviour
             {
                 thrownMug = true;
                 grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().thrown = true;
+            }
+            else if(grabcheck.collider.gameObject.GetComponent<Spear>() != null)
+            {
+                grabcheck.collider.gameObject.GetComponent<Spear>().enabled = true;
+                grabcheck.collider.gameObject.GetComponent<Spear>().TurnOn();
+                grabcheck.collider.gameObject.GetComponent<Spear>().thrown = true;
+                pickedUpSpear = false;
             }
         }
         else

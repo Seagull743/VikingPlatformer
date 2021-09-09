@@ -35,6 +35,14 @@ public class ChangeAnimationStateController : MonoBehaviour
     private string AxeThrowAction = "P1 Axe Throw Action";
     private string AxeThrow = "P1 Axe Throw";
 
+    //Spear Animations
+    private string SpearIdle = "P1 Spear idle";
+    private string SpearJump = "P1 Spear Jump";
+    private string SpearRun = "P1 Spear Run";
+    private string SpearThrow = "P1 Spear Throw";
+    private string SpearThrowAction = "P1 Spear Throw Action";
+
+
     //isGrounded && canJump
 
     private PlayerController PC;
@@ -52,6 +60,7 @@ public class ChangeAnimationStateController : MonoBehaviour
     [SerializeField] private bool pickuped;
     [SerializeField] private bool putDown;
     [SerializeField] private bool pickedupAxe;
+    [SerializeField] private bool pickedUpSpear; 
 
     private void Awake()
     {
@@ -74,6 +83,11 @@ public class ChangeAnimationStateController : MonoBehaviour
                 AxeRun = "P1 Axe Run";
                 AxeThrowAction = "P1 Axe Throw Action";
                 AxeThrow = "P1 Axe Throw";
+                SpearIdle = "P1 Spear idle";
+                SpearJump = "P1 Spear Jump";
+                SpearRun = "P1 Spear Run";
+                SpearThrow = "P1 Spear Throw";
+                SpearThrowAction = "P1 Spear Throw Action";
                 break;
             case Players.P2:
                 PlayerIdle = "Player 2 Idle";
@@ -92,6 +106,11 @@ public class ChangeAnimationStateController : MonoBehaviour
                 AxeRun = "P2 Axe Run";
                 AxeThrowAction = "P2 Axe Throw Action";
                 AxeThrow = "P2 Axe Throw";
+                SpearIdle = "P2 Spear idle";
+                SpearJump = "P2 Spear Jump";
+                SpearRun = "P2 Spear Run";
+                SpearThrow = "P2 Spear Throw";
+                SpearThrowAction = "P2 Spear Throw Action";
                 break;
         }
     }
@@ -102,6 +121,7 @@ public class ChangeAnimationStateController : MonoBehaviour
         PC = GetComponent<PlayerController>();
         Interact = GetComponent<Interactive>();
         putDown = true;
+
     }
 
     // Update is called once per frame
@@ -119,6 +139,7 @@ public class ChangeAnimationStateController : MonoBehaviour
         isthrown = Interact.Thrown;
 
         pickedupAxe = Interact.pickedUpAxe;
+        pickedUpSpear = Interact.pickedUpSpear;
 
         //Running Animations
         if (!isholding)
@@ -185,22 +206,6 @@ public class ChangeAnimationStateController : MonoBehaviour
                 }
             }       
         }
-
-        //Throwing Script
-       //if (isholding)
-        //{
-        //    //if (isThrowing)
-        //    {
-        //        if (!isthrown)
-        //        {
-        //            ChargeThrow();
-        //        }
-        //        else if (isthrown)
-        //        {
-        //            Thrown();
-        //        }
-        //    }
-        //}
     }
 
 
@@ -210,6 +215,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         if (pickedupAxe)
         {
             ChangeAnimationState(AxeJump);
+        }
+        else if (pickedUpSpear)
+        {
+            ChangeAnimationState(SpearJump);
         }
         else
         {
@@ -227,6 +236,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         if (pickedupAxe)
         {
             ChangeAnimationState(AxeIdle);
+        }
+        else if (pickedUpSpear)
+        {
+            ChangeAnimationState(SpearIdle);
         }
         else
         {
@@ -246,6 +259,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(AxeRun);
         }
+        else if (pickedUpSpear)
+        {
+            ChangeAnimationState(SpearRun);
+        }
         else
         {
             ChangeAnimationState(PlayerHoldingRun);
@@ -256,6 +273,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         if (pickedupAxe)
         {
             ChangeAnimationState(AxeThrow);
+        }
+        else if (pickedUpSpear)
+        {
+            ChangeAnimationState(SpearThrow);
         }
         else
         {
@@ -269,6 +290,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         if (pickedupAxe)
         {
             ChangeAnimationState(AxeThrowAction);
+        }
+        else if (pickedUpSpear)
+        {
+            ChangeAnimationState(SpearThrowAction);
         }
         else
         {
