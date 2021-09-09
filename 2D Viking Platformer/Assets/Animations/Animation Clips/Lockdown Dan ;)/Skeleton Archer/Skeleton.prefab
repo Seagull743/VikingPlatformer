@@ -120,6 +120,7 @@ MonoBehaviour:
   arrow: {fileID: 211910375998571107, guid: 889bb3b3bb52e454ab70f3431d967047, type: 3}
   arrowInstantiate: {fileID: 1592576061757114062}
   fired: 0
+  SkeletonRange: 3.5
 --- !u!61 &1592576061692366468
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25988021, y: 0.47500002}
+  m_Offset: {x: -0.33573475, y: 0.47500002}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.3888889, y: 0.04761905}
@@ -144,7 +145,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5802396, y: 1.05}
+  m_Size: {x: 0.4285305, y: 1.05}
   m_EdgeRadius: 0
 --- !u!1 &1592576061757114065
 GameObject:

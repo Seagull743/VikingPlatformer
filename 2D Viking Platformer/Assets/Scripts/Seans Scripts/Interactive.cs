@@ -116,8 +116,8 @@ public class Interactive : MonoBehaviour
                 {
                     isHolding = true;
                     pickedUpSpear = true;
-                    //grabcheck.collider.gameObject.GetComponent<Spear>().TurnOff();
-                   // grabcheck.collider.gameObject.GetComponent<Spear>().enabled = false;
+                    grabcheck.collider.gameObject.GetComponent<Spear>().TurnOff();
+                   grabcheck.collider.gameObject.GetComponent<Spear>().enabled = false;
                 }
                 //PowerThrowForce
                 else if (grabcheck.collider.tag == "Mug")
@@ -129,7 +129,7 @@ public class Interactive : MonoBehaviour
             {
                 //update this for the other throwables  
                 RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
-                if ((grabRay.collider != null && grabRay.collider.tag == "Box" || grabRay.collider != null && grabRay.collider.tag == "Player") || grabRay.collider != null && grabRay.collider.tag == "Axe")
+                if ((grabRay.collider != null && grabRay.collider.tag == "Box" || grabRay.collider != null && grabRay.collider.tag == "Player") || grabRay.collider != null && grabRay.collider.gameObject.layer == 15)
                 {
                     RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
                     if(placeCheck.collider == null)

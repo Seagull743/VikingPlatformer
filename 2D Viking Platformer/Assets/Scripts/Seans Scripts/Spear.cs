@@ -23,19 +23,32 @@ public class Spear : MonoBehaviour
                 thrown = false;
                 collision.gameObject.GetComponent<MeleeDude>().EnemyDieing();
                 rb.velocity = Vector3.zero;
-                rb.transform.position = collision.gameObject.transform.position;
+                rb.freezeRotation = true;
+                rb.isKinematic = true;
+                Invoke("KinematicToggle", 0.3f);
+                //rb.transform.position = collision.gameObject.transform.position;
             }
             else if (collision.gameObject.GetComponent<Archer>() != null)
             {
                 collision.gameObject.GetComponent<Archer>().EnemyDieing();
                 rb.velocity = Vector3.zero;
-                rb.transform.position = collision.gameObject.transform.position;
+                rb.freezeRotation = true;
+                rb.isKinematic = true;
+                Invoke("KinematicToggle", 0.5f);
+                //rb.transform.position = collision.gameObject.transform.position;
             }
         }
         else if (collision.gameObject.tag != "Enemy" && thrown)
         {
             Invoke("ThrownToggle", 1.5f);
         }
+    }
+
+    public void KinematicToggle()
+    {
+        rb.drag = 0;
+        rb.isKinematic = false;
+        rb.freezeRotation = false;
     }
 
     public void TurnOff()

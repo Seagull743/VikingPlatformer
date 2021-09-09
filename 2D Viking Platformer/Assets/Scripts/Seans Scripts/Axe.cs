@@ -24,19 +24,29 @@ public class Axe : MonoBehaviour
                 thrown = false;
                 collision.gameObject.GetComponent<MeleeDude>().EnemyDieing();
                 rb.velocity = Vector3.zero;
-                rb.transform.position = collision.gameObject.transform.position;
+                rb.freezeRotation = true;
+                rb.isKinematic = true;
+                Invoke("KinematicToggle", 0.3f);
             }
             else if(collision.gameObject.GetComponent<Archer>() != null)
             {
                 collision.gameObject.GetComponent<Archer>().EnemyDieing();
-                rb.velocity = Vector3.zero;              
-                rb.transform.position = collision.gameObject.transform.position;
+                rb.velocity = Vector3.zero;
+                rb.freezeRotation = true;
+                rb.isKinematic = true;
+                Invoke("KinematicToggle", 0.3f);
             }
         }
         else if (collision.gameObject.tag != "Enemy" && thrown)
         {
             Invoke("ThrownToggle", 1.5f);
         }
+    }
+    public void KinematicToggle()
+    {
+        rb.drag = 0;
+        rb.isKinematic = false;
+        rb.freezeRotation = false;
     }
 
     public void TurnOff()
