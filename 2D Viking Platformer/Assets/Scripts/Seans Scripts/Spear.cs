@@ -34,7 +34,7 @@ public class Spear : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 rb.freezeRotation = true;
                 rb.isKinematic = true;
-                Invoke("KinematicToggle", 0.5f);
+                Invoke("KinematicToggle", 0.3f);
                 //rb.transform.position = collision.gameObject.transform.position;
             }
         }
