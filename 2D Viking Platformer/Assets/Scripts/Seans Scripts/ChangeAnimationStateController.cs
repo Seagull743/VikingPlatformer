@@ -42,6 +42,14 @@ public class ChangeAnimationStateController : MonoBehaviour
     private string SpearThrow = "P1 Spear Throw";
     private string SpearThrowAction = "P1 Spear Throw Action";
 
+    //Mead Animations
+    private string MeadIdle = "P1 Mead Idle";
+    private string MeadJump = "P1 Mead Jump";
+    private string MeadRun = "P1 Mead Run";
+    private string MeadThrow = "P1 Mead Throw";
+    private string MeadThrowAction = "P1 Mead Throw Action";
+
+
 
     //isGrounded && canJump
 
@@ -60,7 +68,8 @@ public class ChangeAnimationStateController : MonoBehaviour
     [SerializeField] private bool pickuped;
     [SerializeField] private bool putDown;
     [SerializeField] private bool pickedupAxe;
-    [SerializeField] private bool pickedUpSpear; 
+    [SerializeField] private bool pickedUpSpear;
+    [SerializeField] private bool pickedUpMead;
 
     private void Awake()
     {
@@ -88,6 +97,11 @@ public class ChangeAnimationStateController : MonoBehaviour
                 SpearRun = "P1 Spear Run";
                 SpearThrow = "P1 Spear Throw";
                 SpearThrowAction = "P1 Spear Throw Action";
+                MeadIdle = "P1 Mead Idle";
+                MeadJump = "P1 Mead Jump";
+                MeadRun = "P1 Mead Run";
+                MeadThrow = "P1 Mead Throw";
+                MeadThrowAction = "P1 Mead Throw Action";
                 break;
             case Players.P2:
                 PlayerIdle = "Player 2 Idle";
@@ -111,6 +125,11 @@ public class ChangeAnimationStateController : MonoBehaviour
                 SpearRun = "P2 Spear Run";
                 SpearThrow = "P2 Spear Throw";
                 SpearThrowAction = "P2 Spear Throw Action";
+                MeadIdle = "P2 Mead Idle";
+                MeadJump = "P2 Mead Jump";
+                MeadRun = "P2 Mead Run";
+                MeadThrow = "P2 Mead Throw";
+                MeadThrowAction = "P2 Mead Throw Action";
                 break;
         }
     }
@@ -140,6 +159,7 @@ public class ChangeAnimationStateController : MonoBehaviour
 
         pickedupAxe = Interact.pickedUpAxe;
         pickedUpSpear = Interact.pickedUpSpear;
+        pickedUpMead = Interact.pickedUpMead;
 
         //Running Animations
         if (!isholding)
@@ -220,6 +240,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(SpearJump);
         }
+        else if (pickedUpMead)
+        {
+            ChangeAnimationState(MeadJump);
+        }
         else
         {
             ChangeAnimationState(PlayerJump);
@@ -240,6 +264,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         else if (pickedUpSpear)
         {
             ChangeAnimationState(SpearIdle);
+        }
+        else if (pickedUpMead)
+        {
+            ChangeAnimationState(MeadIdle);
         }
         else
         {
@@ -263,6 +291,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(SpearRun);
         }
+        else if (pickedUpMead)
+        {
+            ChangeAnimationState(MeadRun);
+        }
         else
         {
             ChangeAnimationState(PlayerHoldingRun);
@@ -277,6 +309,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         else if (pickedUpSpear)
         {
             ChangeAnimationState(SpearThrow);
+        }
+        else if (pickedUpMead)
+        {
+            ChangeAnimationState(MeadThrow);
         }
         else
         {
@@ -294,6 +330,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         else if (pickedUpSpear)
         {
             ChangeAnimationState(SpearThrowAction);
+        }
+        else if (pickedUpMead)
+        {
+            ChangeAnimationState(MeadThrowAction);
         }
         else
         {

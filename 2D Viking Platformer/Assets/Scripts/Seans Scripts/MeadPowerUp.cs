@@ -19,23 +19,28 @@ public class MeadPowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (thrown)
-        {
-            transform.Rotate(0, 0, -2);
-        }
-        else if (!thrown)
-        {
-            transform.Rotate(0, 0, 0);
-        }
+      
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject && Interactive.thrownMug)
         {
-            thrown = false;
+            thrown = true;
             Instantiate(Mist, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);       
         }
+    }
+
+
+    public void TurnOff()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void TurnOn()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 }
