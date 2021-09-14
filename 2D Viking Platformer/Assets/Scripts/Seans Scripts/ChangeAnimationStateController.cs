@@ -342,7 +342,6 @@ public class ChangeAnimationStateController : MonoBehaviour
         //if I'm holding a bxo play that throw anim etc
     }
     
-
   //public void PlayerHelpPose()
   //{
   //    ChangeAnimationState(HOld)

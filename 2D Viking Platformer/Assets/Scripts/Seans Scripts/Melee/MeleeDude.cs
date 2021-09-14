@@ -17,13 +17,13 @@ public class MeleeDude : MonoBehaviour
     private Transform waypoint2;
   
      public Transform target;
-     public bool inRange;
+    public bool inRange;
     
     public GameObject hotZone;
     public  GameObject triggerArea;
 
     private float distance;
-    private bool attackMode;
+    public bool attackMode;
     
     private bool cooling;
     private float intTimer;
@@ -40,12 +40,9 @@ public class MeleeDude : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
-    private BoxCollider2D enemyBody;
-
+    private BoxCollider2D enemyBody;  
+    public AxeHitBox AxeBox;
     private GameObject player;
-    
-    //public GameObject AxeBox;
-
     private bool hit;
 
     private void Awake()
@@ -58,7 +55,10 @@ public class MeleeDude : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
         float WaypointDistance = Vector2.Distance(waypoint1.position, waypoint2.position);
+        hit = AxeBox.hit;
+        player = AxeBox.player;
 
         if (!isGrounded)
         {
@@ -71,7 +71,7 @@ public class MeleeDude : MonoBehaviour
         }
        
         //need to put !inside anim current anim state etc
-        if(!InsideWayPoints() && !inRange && isGrounded && !this.anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5"))
+        if(!InsideWayPoints() && !inRange && isGrounded && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5"))
         {
             SelectTarget();
         }
@@ -104,7 +104,7 @@ public class MeleeDude : MonoBehaviour
 
     private void Move()
     {
-        if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5"))
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5"))
         {
             Vector2 targetPostition = new Vector2(target.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetPostition, moveSpeed * Time.deltaTime);
@@ -174,14 +174,6 @@ public class MeleeDude : MonoBehaviour
         transform.eulerAngles = rotation;
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            hit = true;
-            player = other.gameObject; 
-        }
-    }
 
     private void DamagePlayer()
     {
@@ -192,14 +184,6 @@ public class MeleeDude : MonoBehaviour
         }
     }
 
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            hit = false;
-        }
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -216,18 +200,19 @@ public class MeleeDude : MonoBehaviour
         cooling = true;
     }
     
-
     public void EnemyDieing()
     {
         moveSpeed = 0;
         anim.SetBool("Death", true);
         enemyBody.enabled = false;
+        Invoke("KillEnemy", 2f);
     }
 
     public void KillEnemy()
     {
         moveSpeed = 0;
         enemyBody.enabled = false;
+        Destroy(gameObject);
     }
 
 }

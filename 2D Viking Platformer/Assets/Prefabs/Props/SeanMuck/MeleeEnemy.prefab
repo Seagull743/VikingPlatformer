@@ -57,6 +57,78 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3544731, y: 1.1234096}
   m_EdgeRadius: 0
+--- !u!1 &1219942581218363851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6597463438930061925}
+  - component: {fileID: 2495809199097642478}
+  - component: {fileID: 429117177401229258}
+  m_Layer: 13
+  m_Name: AxeTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6597463438930061925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219942581218363851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.347, y: -0.168, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2675058753114360454}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2495809199097642478
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219942581218363851}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.008388996, y: -0.016777873}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.30091953, y: 0.20584464}
+  m_EdgeRadius: 0
+--- !u!114 &429117177401229258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219942581218363851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b044f55b9faf5974d97f4279ed5c79ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 0
+  player: {fileID: 0}
 --- !u!1 &2675058751911603312
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +312,6 @@ GameObject:
   - component: {fileID: 2675058753114360456}
   - component: {fileID: 2675058753114360459}
   - component: {fileID: 2675058753114360455}
-  - component: {fileID: 932635925490814737}
   m_Layer: 13
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -263,6 +334,7 @@ Transform:
   - {fileID: 2675058752792212726}
   - {fileID: 2675058751911603313}
   - {fileID: 431675659}
+  - {fileID: 6597463438930061925}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -359,6 +431,7 @@ MonoBehaviour:
   inRange: 0
   hotZone: {fileID: 2675058752792212731}
   triggerArea: {fileID: 2675058752850461838}
+  attackMode: 0
   groundCheckRadius: 0.2
   ground: {fileID: 2675058751911603313}
   groundLayer:
@@ -366,6 +439,7 @@ MonoBehaviour:
     m_Bits: 256
   anim: {fileID: 2675058753114360455}
   enemyBody: {fileID: 431675660}
+  AxeBox: {fileID: 429117177401229258}
 --- !u!95 &2675058753114360455
 Animator:
   serializedVersion: 3
@@ -385,29 +459,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &932635925490814737
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2675058753114360458}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.3470961, y: -0.18991995}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.025, y: 1.275}
-    newSize: {x: 6, y: 2.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.33080792, y: 0.2402606}
-  m_EdgeRadius: 0

@@ -37,11 +37,17 @@ public class Spear : MonoBehaviour
                 Invoke("KinematicToggle", 0.3f);
                 //rb.transform.position = collision.gameObject.transform.position;
             }
+            else if (collision.gameObject.layer == 17)
+            {
+                rb.isKinematic = true;
+                rb.freezeRotation = true;
+            }
         }
         else if (collision.gameObject.tag != "Enemy" && thrown)
         {
             Invoke("ThrownToggle", 1.5f);
         }
+       
     }
 
     public void KinematicToggle()
