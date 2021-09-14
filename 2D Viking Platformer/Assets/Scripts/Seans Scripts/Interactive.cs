@@ -64,8 +64,6 @@ public class Interactive : MonoBehaviour
     [HideInInspector]
     public bool pickedUpMead = false;
 
-
-
     void Start()
     {
         PowerCanvas.gameObject.SetActive(false);
@@ -110,8 +108,8 @@ public class Interactive : MonoBehaviour
                 //Axe
                 else if (grabcheck.collider.tag == "Axe")
                 {
-                    isHolding = true;
                     pickedUpAxe = true;
+                    isHolding = true;
                     grabcheck.collider.gameObject.GetComponent<Axe>().TurnOff();
                     grabcheck.collider.gameObject.GetComponent<Axe>().enabled = false;
 
@@ -119,19 +117,19 @@ public class Interactive : MonoBehaviour
                 //Spear
                 else if(grabcheck.collider.tag == "Spear")
                 {
-                    isHolding = true;
                     pickedUpSpear = true;
+                    isHolding = true;
                     grabcheck.collider.gameObject.GetComponent<Spear>().TurnOff();
                     grabcheck.collider.gameObject.GetComponent<Spear>().enabled = false;
                 }
                 //PowerThrowForce
                 else if (grabcheck.collider.tag == "Mug")
                 {
-                        isHolding = true;
-                        pickedUpMead = true;
-                        grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().TurnOff();
-                        grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().enabled = false;
-                    }
+                    pickedUpMead = true;
+                    isHolding = true;
+                    grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().TurnOff();
+                    grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().enabled = false;
+                }
             }
             else if (isHolding)
             {
@@ -161,7 +159,6 @@ public class Interactive : MonoBehaviour
             PowerCanvas.value = throwforce / maxThrowForce;
             fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
         }
-
         if (Input.GetKeyUp(throwing) && throwforce <= 2.6f && isthrowing)
         {
             throwforce = 2.7f;

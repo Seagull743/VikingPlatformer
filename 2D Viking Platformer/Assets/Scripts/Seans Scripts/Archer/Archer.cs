@@ -63,6 +63,11 @@ public class Archer : MonoBehaviour
         anim.SetBool("Death", true);
         SkeleCollider.enabled = false;
         fired = true;
+        Invoke("KillEnemy", 2.5f);
     }
         
+    private void KillEnemy()
+    {
+        Destroy(gameObject);
+    }
 }
