@@ -203,22 +203,26 @@ public class Interactive : MonoBehaviour
          }
         if (pickedUpAxe)
         {
-            interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, -66)));
-            pickedUpAxe = false;
-            //might need to be changed 
+            if(gameObject.transform.localScale.x < 0) 
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 66)));
+            else if(gameObject.transform.localScale.x > 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -66)));
+            //pickedUpAxe = false;
+            Invoke("DropItems", 0.2f);
             interactive.GetComponent<Axe>().enabled = false;
             interactive.GetComponent<Axe>().TurnOn();
         }
         else if (pickedUpSpear)
         {
-            pickedUpSpear = false;
-            //might need to be changed
+            //pickedUpSpear = false;
+            Invoke("DropItems", 0.2f);
             interactive.GetComponent<Spear>().enabled = false;
             interactive.GetComponent<Spear>().TurnOn();
         }
         else if (pickedUpMead)
         {
-            pickedUpMead = false;
+            //pickedUpMead = false;
+            Invoke("DropItems", 0.2f);
             interactive.GetComponent<MeadPowerUp>().enabled = false;
             interactive.GetComponent<MeadPowerUp>().TurnOn();
         }
@@ -293,7 +297,6 @@ public class Interactive : MonoBehaviour
                 grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().TurnOn();
                 grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().thrown = true;
                 pickedUpMead = false;
-
             }
             else if(grabcheck.collider.gameObject.GetComponent<Spear>() != null)
             {
@@ -355,5 +358,11 @@ public class Interactive : MonoBehaviour
         maxThrowForce = 11f;
     }
 
+    private void DropItems()
+    {
+        pickedUpAxe = false;
+        pickedUpMead = false;
+        pickedUpSpear = false;
+    }
 
 }
