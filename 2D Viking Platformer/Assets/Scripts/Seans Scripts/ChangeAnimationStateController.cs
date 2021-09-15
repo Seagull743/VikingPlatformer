@@ -20,9 +20,15 @@ public class ChangeAnimationStateController : MonoBehaviour
     private string PlayerTakeOff = "Player 1 Take off";
     private string PlayerJump = "Player 1 Jump";
     private string PlayerLanding = "Player1Landing";
+    
+    
+    //Animation PickUps&Downs
     private string PlayerOneHandPickUp = "P1 One Hand Pickup";
     private string PlayerOneHandPutDown = "P1 One Hand Putdown";
-
+    private string PlayerSpearPickup = "P1 Spear Pickup";
+    private string PlayerSpearPutDown = "P1 Spear Putdown";
+    private string PlayerMeadPickup = "P1 Mead Pickup";
+    private string PlayerMeadPutDown = "P1 Mead Putdown";
     //Interactive animations
     private string PlayerPickup = "Player1 Box Pickup";
     private string PlayerHoldingIdle = "Player1 holdingIdle";
@@ -107,6 +113,10 @@ public class ChangeAnimationStateController : MonoBehaviour
                 MeadThrowAction = "P1 Mead Throw Action";
                 PlayerOneHandPickUp = "P1 One Hand Pickup";
                 PlayerOneHandPutDown = "P1 One Hand Putdown";
+                PlayerSpearPickup = "P1 Spear Pickup";
+                PlayerSpearPutDown = "P1 Spear Putdown";
+                PlayerMeadPickup = "P1 Mead Pickup";
+                PlayerMeadPutDown = "P1 Mead Putdown";
                 break;
             case Players.P2:
                 PlayerIdle = "Player 2 Idle";
@@ -137,6 +147,10 @@ public class ChangeAnimationStateController : MonoBehaviour
                 MeadThrowAction = "P2 Mead Throw Action";
                 PlayerOneHandPickUp = "P2 One Hand Pickup";
                 PlayerOneHandPutDown = "P2 One Hand Putdown";
+                PlayerSpearPickup = "P2 Spear Pickup";
+                PlayerSpearPutDown = "P2 Spear Putdown";
+                PlayerMeadPickup = "P2 Mead Pickup";
+                PlayerMeadPutDown = "P2 Mead Putdown";
                 break;
         }
     }
@@ -353,6 +367,14 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(PlayerOneHandPickUp);
         }
+        else if (pickedUpSpear)
+        {
+            ChangeAnimationState(PlayerSpearPickup);
+        }
+        else if (pickedUpMead)
+        {
+            ChangeAnimationState(PlayerMeadPickup);
+        }
         else
         {
             ChangeAnimationState(PlayerPickup);
@@ -364,6 +386,14 @@ public class ChangeAnimationStateController : MonoBehaviour
         if (pickedupAxe)
         {
             ChangeAnimationState(PlayerOneHandPutDown);
+        }
+        else if (pickedUpSpear)
+        {
+            ChangeAnimationState(PlayerSpearPutDown);
+        }
+        else if (pickedUpMead)
+        {
+            ChangeAnimationState(PlayerMeadPutDown);
         }
         else
         {

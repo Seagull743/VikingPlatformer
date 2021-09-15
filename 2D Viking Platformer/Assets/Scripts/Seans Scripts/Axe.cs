@@ -8,11 +8,29 @@ public class Axe : MonoBehaviour
     public bool thrown = false;
 
     private Rigidbody2D rb;
+
+    [HideInInspector]
+    public bool rotatingL = false;
  
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+
+
+    }
+
+    private void Update()
+    {
+        if (rotatingL)
+        {
+            gameObject.transform.Rotate(0, 0, 0);
+        }
+        else if (!rotatingL)
+        {
+            gameObject.transform.Rotate(0, 0, 0);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
