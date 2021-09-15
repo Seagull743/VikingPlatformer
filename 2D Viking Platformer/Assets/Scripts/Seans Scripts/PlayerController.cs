@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
-            if (rb.velocity.x > 0.01f || rb.velocity.x < -0.1f)
+            if (rb.velocity.x > 0.1f || rb.velocity.x < -0.1f)
             {
                 // anim.SetBool("Run", true);
                 isRunning = true;
