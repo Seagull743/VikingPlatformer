@@ -20,6 +20,9 @@ public class ChangeAnimationStateController : MonoBehaviour
     private string PlayerTakeOff = "Player 1 Take off";
     private string PlayerJump = "Player 1 Jump";
     private string PlayerLanding = "Player1Landing";
+    private string PlayerOneHandPickUp = "P1 One Hand Pickup";
+    private string PlayerOneHandPutDown = "P1 One Hand Putdown";
+
     //Interactive animations
     private string PlayerPickup = "Player1 Box Pickup";
     private string PlayerHoldingIdle = "Player1 holdingIdle";
@@ -102,6 +105,8 @@ public class ChangeAnimationStateController : MonoBehaviour
                 MeadRun = "P1 Mead Run";
                 MeadThrow = "P1 Mead Throw";
                 MeadThrowAction = "P1 Mead Throw Action";
+                PlayerOneHandPickUp = "P1 One Hand Pickup";
+                PlayerOneHandPutDown = "P1 One Hand Putdown";
                 break;
             case Players.P2:
                 PlayerIdle = "Player 2 Idle";
@@ -130,6 +135,8 @@ public class ChangeAnimationStateController : MonoBehaviour
                 MeadRun = "P2 Mead Run";
                 MeadThrow = "P2 Mead Throw";
                 MeadThrowAction = "P2 Mead Throw Action";
+                PlayerOneHandPickUp = "P2 One Hand Pickup";
+                PlayerOneHandPutDown = "P2 One Hand Putdown";
                 break;
         }
     }
@@ -161,7 +168,6 @@ public class ChangeAnimationStateController : MonoBehaviour
         pickedUpSpear = Interact.pickedUpSpear;
         pickedUpMead = Interact.pickedUpMead;
 
-        //Running Animations
         if (!isholding)
         {
             if (!putDown)
@@ -339,30 +345,30 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(PlayerThrowActionBoxPlayer);
         }   
-        //if I'm holding a bxo play that throw anim etc
     }
     
-  //public void PlayerHelpPose()
-  //{
-  //    ChangeAnimationState(HOld)
-  //}
-
     public void Pickup()
     {
-        //if(held == Holdables.Axe)
-        //{
-        //}
-
-        ChangeAnimationState(PlayerPickup);
-        // If I'm holding a box play box pickup animation
-        // If holding an axe play axe pickup animation
+        if(pickedupAxe)
+        {
+            ChangeAnimationState(PlayerOneHandPickUp);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerPickup);
+        }
     }
 
     public void PutDown()
     {
-        ChangeAnimationState(PlayerPutDown);
-        // If I'm holding a box play box putdown animation
-        // If holding an axe play axe putdown animation
+        if (pickedupAxe)
+        {
+            ChangeAnimationState(PlayerOneHandPutDown);
+        }
+        else
+        {
+            ChangeAnimationState(PlayerPutDown);
+        }
     }
 
     public void FinshedPickUp()
