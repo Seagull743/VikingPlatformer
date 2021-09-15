@@ -83,10 +83,11 @@ public class Interactive : MonoBehaviour
                 
                 if(grabcheck.collider != null)
 
+                    StartCoroutine(InteractStop());
                 if (grabcheck.collider.tag == "Box")
                 {
                     {
-                        StartCoroutine(InteractStop());
+                        //StartCoroutine(InteractStop());
                         isHolding = true;
                         this.gameObject.GetComponent<PlayerController>().canJump = false;
                     }
@@ -107,7 +108,7 @@ public class Interactive : MonoBehaviour
                 }
                 //Axe
                 else if (grabcheck.collider.tag == "Axe")
-                {
+                {     
                     pickedUpAxe = true;
                     isHolding = true;
                     grabcheck.collider.gameObject.GetComponent<Axe>().TurnOff();
@@ -214,6 +215,10 @@ public class Interactive : MonoBehaviour
         }
         else if (pickedUpSpear)
         {
+            if (gameObject.transform.localScale.x < 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            else if (gameObject.transform.localScale.x > 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
             //pickedUpSpear = false;
             Invoke("DropItems", 0.2f);
             interactive.GetComponent<Spear>().enabled = false;
@@ -221,6 +226,10 @@ public class Interactive : MonoBehaviour
         }
         else if (pickedUpMead)
         {
+            if (gameObject.transform.localScale.x < 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            else if (gameObject.transform.localScale.x > 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
             //pickedUpMead = false;
             Invoke("DropItems", 0.2f);
             interactive.GetComponent<MeadPowerUp>().enabled = false;
@@ -251,6 +260,15 @@ public class Interactive : MonoBehaviour
             Rb.velocity = Vector3.zero;
             Rb.isKinematic = true;
         }
+     // else if(interactive.gameObject.layer == 15)
+     // {
+     //     interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+     //     Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
+     //     interactive.transform.parent = holdLocation;
+     //     interactive.transform.position = holdLocation.position;
+     //     interactive.GetComponent<Rigidbody2D>().isKinematic = true;
+     // }
+
         else
         {
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
@@ -264,6 +282,7 @@ public class Interactive : MonoBehaviour
         isHolding = false;
         isthrowing = false;
         Thrown = false;
+        StartCoroutine(PlayerThrowStop());
         Invoke("ResetThrow", 0.2f);
 
         if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
@@ -275,14 +294,20 @@ public class Interactive : MonoBehaviour
         }
         if (grabcheck.collider.gameObject.layer == 15)
         {
-            StartCoroutine(PlayerThrowStop());
             this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.1f) * throwforce;
-            grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 
+               if (pickedUpAxe)
+                {   
+                if (gameObject.transform.localScale.x < 0)
+                    grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 40)));
+                else if (gameObject.transform.localScale.x > 0)
+                    grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -40)));
+                }
+                
             if (grabcheck.collider.gameObject.GetComponent<Axe>() != null)
             {
                 grabcheck.collider.gameObject.GetComponent<Axe>().enabled = true;
