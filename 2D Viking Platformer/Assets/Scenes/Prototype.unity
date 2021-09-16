@@ -705,7 +705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986867038749136821, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
@@ -879,7 +879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4886345846019378298, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
@@ -1561,6 +1561,10 @@ PrefabInstance:
     - target: {fileID: 3067476804735472861, guid: 9c6acae022efaec4088247bebcf2fcc7, type: 3}
       propertyPath: m_Name
       value: 'YouLoseCanvas '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067476804735472861, guid: 9c6acae022efaec4088247bebcf2fcc7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c6acae022efaec4088247bebcf2fcc7, type: 3}
