@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour
 {
+    public GameObject YouLoseCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        YouLoseCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,5 +21,12 @@ public class GM : MonoBehaviour
         {
             SceneManager.LoadScene("Prototype");
         }
+    }
+
+
+
+    public void PlayerdeathCanvas()
+    {
+        YouLoseCanvas.SetActive(true);
     }
 }

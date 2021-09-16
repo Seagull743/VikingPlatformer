@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("DanScene");
+        SceneManager.LoadScene("Level1");
     }
 
     public void BacktoMenu()
@@ -26,5 +26,10 @@ public class SceneLoader : MonoBehaviour
     {   
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+    }
+
+    public void LevelSelectScene()
+    {
+        SceneManager.LoadScene("LevelSelect");
     }
 }

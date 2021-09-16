@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     private bool playerAlive = true;
+    public GM gm;
 
 
-
+   
     public void PlayerDamaged()
     {
         playerAlive = false;
@@ -16,13 +17,13 @@ public class PlayerHealth : MonoBehaviour
         this.gameObject.GetComponent<Interactive>().enabled = false;
         this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         this.gameObject.GetComponent<PlayerController>().enabled = false;
-        Invoke("ResetGame", 2);
+        Invoke("ResetGame", 2f);
     }
 
 
     private void ResetGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        gm.PlayerdeathCanvas();
     }
 
  //private void OnCollisionEnter2D(Collision2D collision)
