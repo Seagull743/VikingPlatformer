@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     private KeyCode jump;
 
     [SerializeField]
-    private Transform groundChecker;
+    private Transform groundCheckerLeft;
+    [SerializeField]
+    private Transform groundCheckerRight;
     [SerializeField]
     private LayerMask ground;
     [SerializeField]
@@ -28,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
 
     [HideInInspector] public bool isGrounded;
+    [HideInInspector] public bool LeftGrounded;
+    [HideInInspector] public bool RightGrounded;
     [HideInInspector] public bool canJump;
     [HideInInspector] public bool isRunning;
     [HideInInspector] public bool isJumping;
@@ -70,16 +74,25 @@ public class PlayerController : MonoBehaviour
            
         if (!isGrounded)
         {
-            //anim.SetBool("isjumping", true);
             isJumping = true;
         }
         else if (isGrounded)
         {
-            //anim.SetBool("isjumping", false);
             isJumping = false;
         }
         
-        isGrounded = Physics2D.OverlapCircle(groundChecker.position, groundCheckRadius, ground);
+        LeftGrounded = Physics2D.OverlapCircle(groundCheckerLeft.position, groundCheckRadius, ground);
+        RightGrounded = Physics2D.OverlapCircle(groundCheckerRight.position, groundCheckRadius, ground);
+
+        if(LeftGrounded || RightGrounded)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
         animateChar();
 
         if (isGrounded)
