@@ -146,10 +146,6 @@ public class Interactive : MonoBehaviour
                         StartCoroutine(InteractStop());
                     }             
                 }
-                //else
-                //
-                   // isHolding = false;
-                //}
             }
         }
         if (Input.GetKey(throwing) && isHolding)
@@ -255,23 +251,18 @@ public class Interactive : MonoBehaviour
             interactive.GetComponent<Interactive>().enabled = false;
             //Needs to be changed back to 0, 0, 0
             interactive.transform.SetPositionAndRotation(playerHold.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-
             interactive.transform.parent = playerHold;
             interactive.transform.position = playerHold.position;
             Rigidbody2D Rb = interactive.GetComponent<Rigidbody2D>();
             Rb.velocity = Vector3.zero;
             Rb.isKinematic = true;
-        }
-     // else if(interactive.gameObject.layer == 15)
-     // {
-     //     interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-     //     Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
-     //     interactive.transform.parent = holdLocation;
-     //     interactive.transform.position = holdLocation.position;
-     //     interactive.GetComponent<Rigidbody2D>().isKinematic = true;
-     // }
-
-        else
+        }  
+          //interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+          //Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
+          //interactive.transform.parent = holdLocation;
+          //interactive.transform.position = holdLocation.position;
+          //interactive.GetComponent<Rigidbody2D>().isKinematic = true;
+        else 
         {
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
             interactive.transform.parent = holdLocation;
