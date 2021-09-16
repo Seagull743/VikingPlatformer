@@ -214,5 +214,4 @@ public class MeleeDude : MonoBehaviour
         enemyBody.enabled = false;
         Destroy(gameObject);
     }
-
 }
