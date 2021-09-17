@@ -22,6 +22,11 @@ public class SceneLoader : MonoBehaviour
         Application.Quit();
     }
     
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void RestartGame()
     {   
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
