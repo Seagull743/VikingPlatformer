@@ -120,7 +120,10 @@ MonoBehaviour:
   arrow: {fileID: 211910375998571107, guid: 889bb3b3bb52e454ab70f3431d967047, type: 3}
   arrowInstantiate: {fileID: 1592576061757114062}
   fired: 0
-  SkeletonRange: 3.5
+  SkeletonRange: 7
+  Camera:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!61 &1592576061692366468
 BoxCollider2D:
   m_ObjectHideFlags: 0
