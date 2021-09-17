@@ -5,7 +5,8 @@ using UnityEngine;
 public class Spear : MonoBehaviour
 {
     public bool thrown = false;
-
+    [SerializeField]
+    private GameObject SpearTriggerCollider;
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class Spear : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.freezeRotation = true;
             gameObject.layer = 8;
+            SpearTriggerCollider.SetActive(false);
         }
         else if (collision.gameObject.tag != "Enemy" && thrown)
         {
