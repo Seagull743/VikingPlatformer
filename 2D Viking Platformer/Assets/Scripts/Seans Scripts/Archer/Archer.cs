@@ -11,7 +11,8 @@ public class Archer : MonoBehaviour
     private BoxCollider2D SkeleCollider;
     [SerializeField]
     private float SkeletonRange = 3.5f;
-
+    [SerializeField]
+    private LayerMask Camera;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -21,7 +22,7 @@ public class Archer : MonoBehaviour
     
     void Update()
     {
-        RaycastHit2D Vision = Physics2D.Raycast(arrowInstantiate.position, Vector2.right * transform.localScale, SkeletonRange);
+        RaycastHit2D Vision = Physics2D.Raycast(arrowInstantiate.position, Vector2.right * transform.localScale, SkeletonRange, ~Camera);
         if (Vision.collider != null && Vision.collider.tag == "Player")
         {
             if (!fired)
