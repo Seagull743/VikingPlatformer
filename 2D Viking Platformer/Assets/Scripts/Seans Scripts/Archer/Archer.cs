@@ -23,6 +23,7 @@ public class Archer : MonoBehaviour
     void Update()
     {
         RaycastHit2D Vision = Physics2D.Raycast(arrowInstantiate.position, Vector2.right * transform.localScale, SkeletonRange, ~Camera);
+        Debug.DrawRay(arrowInstantiate.position, Vector2.right * transform.localScale, Color.green, SkeletonRange);
         if (Vision.collider != null && Vision.collider.tag == "Player")
         {
             if (!fired)
