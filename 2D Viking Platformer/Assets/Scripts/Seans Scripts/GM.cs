@@ -20,7 +20,7 @@ public class GM : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene("Prototype");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

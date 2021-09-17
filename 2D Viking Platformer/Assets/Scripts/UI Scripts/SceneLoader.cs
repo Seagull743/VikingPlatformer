@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("DanScene");
     }
 
     public void BacktoMenu()
@@ -25,6 +25,7 @@ public class SceneLoader : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1f;
     }
 
     public void RestartGame()
@@ -36,5 +37,11 @@ public class SceneLoader : MonoBehaviour
     public void LevelSelectScene()
     {
         SceneManager.LoadScene("LevelSelect");
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("Level 1");
+        Time.timeScale = 1f;
     }
 }
