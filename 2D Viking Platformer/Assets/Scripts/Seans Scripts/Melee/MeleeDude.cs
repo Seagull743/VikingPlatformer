@@ -34,7 +34,7 @@ public class MeleeDude : MonoBehaviour
     private Transform ground;
     [SerializeField]
     private LayerMask groundLayer;
-    //private bool isGrounded;
+    private bool isGrounded;
 
     [SerializeField]
     private Animator anim;
@@ -49,7 +49,7 @@ public class MeleeDude : MonoBehaviour
     {
         SelectTarget();
         intTimer = attackTimer;
-        //isGrounded = Physics2D.OverlapCircle(ground.position, groundCheckRadius, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(ground.position, groundCheckRadius, groundLayer);
     }
 
     // Update is called once per frame
@@ -60,23 +60,23 @@ public class MeleeDude : MonoBehaviour
         hit = AxeBox.hit;
         player = AxeBox.player;
 
-       // if (!isGrounded)
-       // {
-       //     SelectTarget();
-       // }
+        if (!isGrounded)
+        {
+            SelectTarget();
+        }
 
-        if (!attackMode) //isGrounded
+        if (!attackMode && isGrounded)
         {
             Move();
         }
        
         //need to put !inside anim current anim state etc
-        if(!InsideWayPoints() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5")) //&& isGrounded
+        if(!InsideWayPoints() && !inRange && isGrounded && !anim.GetCurrentAnimatorStateInfo(0).IsName("Melee attack v5"))
         {
             SelectTarget();
         }
 
-        if(inRange)  //&& isGrounded
+        if(inRange && isGrounded)
         {
             EnemyLogic();
         }
