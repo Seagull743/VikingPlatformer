@@ -50,7 +50,8 @@ public class NextLevel : MonoBehaviour
     void LoadScene()
     {
         loadscene = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //SceneManager.LoadScene("MainMenu");
     }
     IEnumerator Sceneloader()
@@ -58,5 +59,6 @@ public class NextLevel : MonoBehaviour
         yield return new WaitForSeconds(2);
         youWonCanvas.SetActive(true);
         Invoke("LoadScene", 2f);
+        Time.timeScale = 0f;
     }
 }

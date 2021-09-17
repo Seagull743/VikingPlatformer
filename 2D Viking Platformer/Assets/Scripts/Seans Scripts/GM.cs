@@ -28,5 +28,6 @@ public class GM : MonoBehaviour
     public void PlayerdeathCanvas()
     {
         YouLoseCanvas.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
