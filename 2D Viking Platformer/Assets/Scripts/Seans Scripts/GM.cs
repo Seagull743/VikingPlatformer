@@ -11,6 +11,7 @@ public class GM : MonoBehaviour
     void Start()
     {
         YouLoseCanvas.SetActive(false);
+ 
     }
 
     // Update is called once per frame
