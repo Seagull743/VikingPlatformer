@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2521173767240226997}
   - component: {fileID: 2127352347083426716}
   - component: {fileID: 2904143748232056853}
-  - component: {fileID: 1046524749909024914}
+  - component: {fileID: 4799046724257109357}
   m_Layer: 15
   m_Name: Spear
   m_TagString: Spear
@@ -173,8 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrown: 0
-  SpearTriggerCollider: {fileID: 0}
---- !u!61 &1046524749909024914
+--- !u!61 &4799046724257109357
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +186,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0020627975}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -198,5 +197,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.975, y: 0.125}
+  m_Size: {x: 0.975, y: 0.13325119}
   m_EdgeRadius: 0

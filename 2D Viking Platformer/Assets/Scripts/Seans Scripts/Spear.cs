@@ -5,13 +5,13 @@ using UnityEngine;
 public class Spear : MonoBehaviour
 {
     public bool thrown = false;
-    [SerializeField]
     private Rigidbody2D rb;
-
+    private BoxCollider2D[] bc;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        bc = GetComponents<BoxCollider2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,6 +44,10 @@ public class Spear : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.freezeRotation = true;
             gameObject.layer = 8;
+            foreach(BoxCollider2D bc in bc)
+            {
+                bc.isTrigger = false;
+            }
         }
         else if (collision.gameObject.tag != "Enemy" && thrown)
         {
