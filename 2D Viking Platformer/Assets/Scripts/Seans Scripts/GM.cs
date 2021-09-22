@@ -18,7 +18,7 @@ public class GM : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
