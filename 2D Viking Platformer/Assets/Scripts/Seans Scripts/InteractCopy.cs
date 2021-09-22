@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InteractCopy : MonoBehaviour
+public class InteracCopy : MonoBehaviour
 {
     [SerializeField]
     private Transform holdCheck;
@@ -64,8 +64,6 @@ public class InteractCopy : MonoBehaviour
     [HideInInspector]
     public bool pickedUpMead = false;
 
-
-
     void Start()
     {
         PowerCanvas.gameObject.SetActive(false);
@@ -84,11 +82,12 @@ public class InteractCopy : MonoBehaviour
                 //box
 
                 if (grabcheck.collider != null)
-
+                {
+                    StartCoroutine(InteractStop());
                     if (grabcheck.collider.tag == "Box")
                     {
                         {
-                            StartCoroutine(InteractStop());
+                            //StartCoroutine(InteractStop());
                             isHolding = true;
                             this.gameObject.GetComponent<PlayerController>().canJump = false;
                         }
@@ -110,8 +109,8 @@ public class InteractCopy : MonoBehaviour
                     //Axe
                     else if (grabcheck.collider.tag == "Axe")
                     {
-                        isHolding = true;
                         pickedUpAxe = true;
+                        isHolding = true;
                         grabcheck.collider.gameObject.GetComponent<Axe>().TurnOff();
                         grabcheck.collider.gameObject.GetComponent<Axe>().enabled = false;
 
@@ -119,19 +118,20 @@ public class InteractCopy : MonoBehaviour
                     //Spear
                     else if (grabcheck.collider.tag == "Spear")
                     {
-                        isHolding = true;
                         pickedUpSpear = true;
+                        isHolding = true;
                         grabcheck.collider.gameObject.GetComponent<Spear>().TurnOff();
                         grabcheck.collider.gameObject.GetComponent<Spear>().enabled = false;
                     }
                     //PowerThrowForce
                     else if (grabcheck.collider.tag == "Mug")
                     {
-                        isHolding = true;
                         pickedUpMead = true;
+                        isHolding = true;
                         grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().TurnOff();
                         grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().enabled = false;
                     }
+                }
             }
             else if (isHolding)
             {
@@ -143,12 +143,9 @@ public class InteractCopy : MonoBehaviour
                     if (placeCheck.collider == null)
                     {
                         isHolding = false;
+                        StartCoroutine(InteractStop());
                     }
                 }
-                //else
-                //
-                // isHolding = false;
-                //}
             }
         }
         if (Input.GetKey(throwing) && isHolding)
@@ -161,7 +158,6 @@ public class InteractCopy : MonoBehaviour
             PowerCanvas.value = throwforce / maxThrowForce;
             fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
         }
-
         if (Input.GetKeyUp(throwing) && throwforce <= 2.6f && isthrowing)
         {
             throwforce = 2.7f;
@@ -206,22 +202,34 @@ public class InteractCopy : MonoBehaviour
         }
         if (pickedUpAxe)
         {
-            interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, -66)));
-            pickedUpAxe = false;
-            //might need to be changed 
+            if (gameObject.transform.localScale.x < 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 66)));
+            else if (gameObject.transform.localScale.x > 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -66)));
+            //pickedUpAxe = false;
+            Invoke("DropItems", 0.2f);
             interactive.GetComponent<Axe>().enabled = false;
             interactive.GetComponent<Axe>().TurnOn();
         }
         else if (pickedUpSpear)
         {
-            pickedUpSpear = false;
-            //might need to be changed
+            if (gameObject.transform.localScale.x < 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            else if (gameObject.transform.localScale.x > 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
+            //pickedUpSpear = false;
+            Invoke("DropItems", 0.2f);
             interactive.GetComponent<Spear>().enabled = false;
             interactive.GetComponent<Spear>().TurnOn();
         }
         else if (pickedUpMead)
         {
-            pickedUpMead = false;
+            if (gameObject.transform.localScale.x < 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            else if (gameObject.transform.localScale.x > 0)
+                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
+            //pickedUpMead = false;
+            Invoke("DropItems", 0.2f);
             interactive.GetComponent<MeadPowerUp>().enabled = false;
             interactive.GetComponent<MeadPowerUp>().TurnOn();
         }
@@ -243,13 +251,17 @@ public class InteractCopy : MonoBehaviour
             interactive.GetComponent<Interactive>().enabled = false;
             //Needs to be changed back to 0, 0, 0
             interactive.transform.SetPositionAndRotation(playerHold.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-
             interactive.transform.parent = playerHold;
             interactive.transform.position = playerHold.position;
             Rigidbody2D Rb = interactive.GetComponent<Rigidbody2D>();
             Rb.velocity = Vector3.zero;
             Rb.isKinematic = true;
         }
+        //interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        //Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
+        //interactive.transform.parent = holdLocation;
+        //interactive.transform.position = holdLocation.position;
+        //interactive.GetComponent<Rigidbody2D>().isKinematic = true;
         else
         {
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
@@ -264,9 +276,9 @@ public class InteractCopy : MonoBehaviour
         isthrowing = false;
         Thrown = false;
         Invoke("ResetThrow", 0.2f);
-
         if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
         {
+            // StartCoroutine(PlayerThrowStop());
             grabcheck.collider.gameObject.GetComponent<ChangeAnimationStateController>().enabled = true;
             grabcheck.collider.gameObject.GetComponent<PlayerController>().controller();
             grabcheck.collider.gameObject.GetComponent<Animator>().enabled = true;
@@ -274,14 +286,45 @@ public class InteractCopy : MonoBehaviour
         }
         if (grabcheck.collider.gameObject.layer == 15)
         {
-            StartCoroutine(PlayerThrowStop());
             this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
             grabcheck.collider.gameObject.transform.parent = null;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.1f) * throwforce;
-            grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 
+            if (pickedUpAxe)
+            {
+                if (gameObject.transform.localScale.x < 0)
+                {
+                    grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 40)));
+                }
+                else if (gameObject.transform.localScale.x > 0)
+                    grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -40)));
+            }
+
+            if (pickedUpSpear)
+            {
+                if (gameObject.transform.localScale.x < 0)
+                {
+                    grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                }
+                else if (gameObject.transform.localScale.x > 0)
+                {
+                    grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
+                }
+
+                if (pickedUpMead)
+                {
+                    if (gameObject.transform.localScale.x < 0)
+                    {
+                        grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                    }
+                    else if (gameObject.transform.localScale.x > 0)
+                    {
+                        grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
+                    }
+                }
+            }
             if (grabcheck.collider.gameObject.GetComponent<Axe>() != null)
             {
                 grabcheck.collider.gameObject.GetComponent<Axe>().enabled = true;
@@ -296,7 +339,6 @@ public class InteractCopy : MonoBehaviour
                 grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().TurnOn();
                 grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().thrown = true;
                 pickedUpMead = false;
-
             }
             else if (grabcheck.collider.gameObject.GetComponent<Spear>() != null)
             {
@@ -308,7 +350,7 @@ public class InteractCopy : MonoBehaviour
         }
         else
         {
-            StartCoroutine(PlayerThrowStop());
+            //StartCoroutine(PlayerThrowStop());
             this.gameObject.GetComponent<PlayerController>().canJump = true;
             grabcheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = true;
             grabcheck.collider.gameObject.transform.parent = null;
@@ -329,7 +371,7 @@ public class InteractCopy : MonoBehaviour
     {
         //gameObject.GetComponent<PlayerController>().enabled = false;
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
         //gameObject.GetComponent<PlayerController>().enabled = true;
     }
@@ -358,5 +400,11 @@ public class InteractCopy : MonoBehaviour
         maxThrowForce = 11f;
     }
 
+    private void DropItems()
+    {
+        pickedUpAxe = false;
+        pickedUpMead = false;
+        pickedUpSpear = false;
+    }
 
 }
