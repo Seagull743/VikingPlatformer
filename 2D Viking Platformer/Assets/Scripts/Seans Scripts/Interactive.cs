@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
 public class Interactive : MonoBehaviour
 {
     [SerializeField]
@@ -33,7 +34,6 @@ public class Interactive : MonoBehaviour
 
     public float timerThrow;
 
-
     [SerializeField]
     private float throwforce;
     public float maxThrowForce;
@@ -56,7 +56,6 @@ public class Interactive : MonoBehaviour
     private LayerMask CamLayer;
 
     private ChangeAnimationStateController stateC;
-
 
     [HideInInspector]
     public bool pickedUpAxe = false;
@@ -346,5 +345,7 @@ public class Interactive : MonoBehaviour
         pickedUpMead = false;
         pickedUpSpear = false;
     }
-
+ 
 }
+
+*/

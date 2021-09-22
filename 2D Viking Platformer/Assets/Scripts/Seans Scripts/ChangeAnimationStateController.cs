@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public enum Players
 {
    P1, P2
@@ -63,7 +65,7 @@ public class ChangeAnimationStateController : MonoBehaviour
     //isGrounded && canJump
 
     private PlayerController PC;
-    private Interactive Interact;
+    private Interact Interact;
 
     //Bools PlayerController
     [SerializeField] private bool isrunning;
@@ -159,7 +161,7 @@ public class ChangeAnimationStateController : MonoBehaviour
     void Start()
     {
         PC = GetComponent<PlayerController>();
-        Interact = GetComponent<Interactive>();
+        Interact = GetComponent<Interact>();
         putDown = true;
 
     }
@@ -426,3 +428,4 @@ public class ChangeAnimationStateController : MonoBehaviour
     }
 
 }
+

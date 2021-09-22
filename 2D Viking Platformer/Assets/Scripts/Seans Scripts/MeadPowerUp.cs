@@ -24,7 +24,7 @@ public class MeadPowerUp : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject && Interactive.thrownMug)
+        if (collision.gameObject && Interact.thrownMug)
         {
             thrown = true;
             Instantiate(Mist, gameObject.transform.position, gameObject.transform.rotation);

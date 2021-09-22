@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerAlive = false;
         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0,10,0);
-        this.gameObject.GetComponent<Interactive>().enabled = false;
+        this.gameObject.GetComponent<Interact>().enabled = false;
         this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         this.gameObject.GetComponent<PlayerController>().enabled = false;
         Invoke("ResetGame", 2f);
