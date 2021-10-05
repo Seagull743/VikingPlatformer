@@ -16,7 +16,7 @@ public class MeleeDude : MonoBehaviour
     [SerializeField]
     private Transform waypoint2;
   
-     public Transform target;
+    public Transform target;
     public bool inRange;
     
     public GameObject hotZone;
@@ -174,7 +174,6 @@ public class MeleeDude : MonoBehaviour
         transform.eulerAngles = rotation;
     }
 
-
     private void DamagePlayer()
     {
         if (hit)
@@ -183,7 +182,6 @@ public class MeleeDude : MonoBehaviour
             player.GetComponent<PlayerHealth>().PlayerDamaged();
         }
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
