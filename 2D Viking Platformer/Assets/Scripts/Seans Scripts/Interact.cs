@@ -68,6 +68,10 @@ public class Interact : MonoBehaviour
     [HideInInspector]
     public bool pickedUpMead = false;
 
+
+    public bool thrownLeft = false;
+    public bool thrownRight = false;
+
     void Start()
     {
         PowerCanvas.gameObject.SetActive(false);
@@ -320,10 +324,12 @@ public class Interact : MonoBehaviour
             {
                 if (gameObject.transform.localScale.x < 0)
                 {
+                    //thrown right
                     grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 }
                 else if (gameObject.transform.localScale.x > 0)
                 {
+                    //thrown left 
                     grabcheck.collider.gameObject.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
                 }
 

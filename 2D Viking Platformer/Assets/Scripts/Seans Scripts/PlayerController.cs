@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool isRunning;
     [HideInInspector] public bool isJumping;
 
+
     [SerializeField]
     private GameObject PowerMeter;
 
@@ -45,11 +46,15 @@ public class PlayerController : MonoBehaviour
     private Transform collisionDection;
 
     private BoxCollider2D coll;
-    public  bool collidlingLeft = false;
+    public bool collidlingLeft = false;
     public bool collidingRight = false;
     public bool collidingUp = false;
     public LayerMask lm;
 
+    private bool touchingIce = false;
+    private float iceSpeed = 0.001f;
+
+    public bool facingLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -123,11 +128,41 @@ public class PlayerController : MonoBehaviour
         if(rb.velocity.x < 0 && transform.localScale.x >= 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+            facingLeft = true;
         }
         else if(rb.velocity.x > 0 && transform.localScale.x <= 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+            facingLeft = false;
         }
+
+
+        //Ice
+
+        if (touchingIce)
+        {
+            moveSpeed = 0;
+            jumpForce = 10;
+
+            if (!facingLeft)
+            {
+                rb.AddForce(new Vector2(iceSpeed, 0));
+                isRunning = false;
+            }
+            else if (facingLeft)
+            {
+                rb.AddForce(new Vector2(-iceSpeed, 0));
+                isRunning = false;
+            }
+        }
+        else if (!touchingIce)
+        {
+            touchingIce = false;
+            //rb.AddForce(new Vector2(0, 0));
+            moveSpeed = 5;
+            jumpForce = 13;
+        }
+
     }
     public void controller()
     {
@@ -146,13 +181,29 @@ public class PlayerController : MonoBehaviour
         isRunning = false;
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ice")
+        {
+            touchingIce = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ice")
+        {
+            touchingIce = false;
+        }
+    }
+
     void animateChar()
     {
         if (isGrounded)
         {
             if (rb.velocity.x > 0.1f || rb.velocity.x < -0.1f)
             {
-                // anim.SetBool("Run", true);
                 isRunning = true;
             }
             else
@@ -161,7 +212,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     private bool CollisionTop()
     {
         if (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.up, 0.10f, lm))
