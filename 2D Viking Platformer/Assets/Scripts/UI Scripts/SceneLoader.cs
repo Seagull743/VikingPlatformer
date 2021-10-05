@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
+    public string levelToLoad = "Level 1";
+
+    public SceneFader sceneFader;
     public void PlayGame()
     {
-        SceneManager.LoadScene("DanScene");
+        sceneFader.FadeTo(levelToLoad);
+
     }
 
     public void BacktoMenu()
