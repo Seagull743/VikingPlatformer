@@ -106,7 +106,7 @@ public class Interact : MonoBehaviour
                
                 //first frame of pressing
             }
-            else if(helddown > 65 && isHolding)
+            else if(helddown > 68 && isHolding)
             {
                 ChargingThrow();
             }
@@ -118,7 +118,7 @@ public class Interact : MonoBehaviour
                 PickingUpItem();
             }
             //release behavior
-            if(helddown < 65)
+            if(helddown < 68)
             {
                 if (isHolding && !isthrowing)
                 {
@@ -148,26 +148,6 @@ public class Interact : MonoBehaviour
             helddown = 0;
         }
 
-      //  if (Input.GetKey(interact) && isHolding) //canThrow
-      //  {
-            //timerThrow += 0.1f;
-            //if(timerThrow >= 3f)
-       //     {
-              //  StartCoroutine(PlayerThrowStop());
-              //  isthrowing = true;
-              //  throwforce += 0.2f;
-             //   PowerCanvas.gameObject.SetActive(true);
-            //    fill.color = gradient.Evaluate(1f);
-            //    PowerCanvas.value = throwforce / maxThrowForce;
-            //    fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
-           // }
-       // }
-
-
-        //other Getkeyup throwing force
-
-       // if(throwforce > 1)
-      //  {
             if (Input.GetKeyUp(interact) && throwforce <= 2.6f && isthrowing)
             {
                 throwforce = 2.7f;
