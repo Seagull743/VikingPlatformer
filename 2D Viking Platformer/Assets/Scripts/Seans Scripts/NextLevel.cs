@@ -10,6 +10,7 @@ public class NextLevel : MonoBehaviour
     [SerializeField]
     private GameObject youWonCanvas;
     private bool loadscene;
+    public GM gameManager;
     void Start()
     {
         loadscene = false;
@@ -58,6 +59,7 @@ public class NextLevel : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         youWonCanvas.SetActive(true);
+        gameManager.Level01();
         Invoke("LoadScene", 2f);
         Time.timeScale = 0f;
     }
