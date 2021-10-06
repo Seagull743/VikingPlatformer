@@ -7,6 +7,7 @@ public class Spear : MonoBehaviour
     public bool thrown = false;
     private Rigidbody2D rb;
     private BoxCollider2D[] bc;
+
     // Start is called before the first frame update
     void Start()
     {
