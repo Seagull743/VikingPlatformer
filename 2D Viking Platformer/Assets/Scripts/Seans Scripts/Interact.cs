@@ -40,7 +40,8 @@ public class Interact : MonoBehaviour
     private float throwforce;
     public float maxThrowForce;
 
-    private int helddown = 0;
+    
+    public int helddown = 0;
 
 
     private RaycastHit2D grabcheck;
@@ -102,7 +103,24 @@ public class Interact : MonoBehaviour
                         PickingUpItem();
                     }
                 }
-                else if (isHolding && !isthrowing)
+               
+                //first frame of pressing
+            }
+            else if(helddown > 65 && isHolding)
+            {
+                ChargingThrow();
+            }
+        }
+        else if(!Input.GetKey(interact) && helddown > 0)
+        {
+            if(helddown == 1)
+            {
+                PickingUpItem();
+            }
+            //release behavior
+            if(helddown < 65)
+            {
+                if (isHolding && !isthrowing)
                 {
                     //update this for the other throwables  
                     RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
@@ -115,31 +133,16 @@ public class Interact : MonoBehaviour
                         }
                     }
                 }
-                //first frame of pressing
             }
-            else if(helddown > 1)
+            else
             {
-                StartCoroutine(PlayerThrowStop());
-                isthrowing = true;
-                throwforce += 0.2f;
-                PowerCanvas.gameObject.SetActive(true);
-                fill.color = gradient.Evaluate(1f);
-                PowerCanvas.value = throwforce / maxThrowForce;
-                fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
-                //holding key down
+                if (isHolding)
+                {
+                    isthrowing = true;
+                }         
             }
-        }
-        else if(!Input.GetKey(interact) && helddown > 0)
-        {
-            if(helddown == 1)
-            {
-                PickingUpItem();
-            }
-            //release behavior
             helddown = 0;
         }
-
-
         else
         {
             helddown = 0;
@@ -161,32 +164,49 @@ public class Interact : MonoBehaviour
        // }
 
 
-        if (Input.GetKeyUp(interact) && throwforce <= 2.6f && isthrowing)
-        {
-            throwforce = 2.7f;
-            Thrown = true;
-        }
-        if (throwforce >= maxThrowForce && isHolding && isthrowing)
-        {
-            Thrown = true;
-            throwforce = maxThrowForce;
-        }
-        if (Input.GetKeyUp(interact) && isHolding && isthrowing)
-        {
-            throwforce += 0;
-            StartCoroutine(PlayerThrowStop());
-            Thrown = true;
-        }
-        if (!isHolding)
-        {
-            throwforce = 0;
-            PowerCanvas.gameObject.SetActive(false);
-        }
+        //other Getkeyup throwing force
+
+       // if(throwforce > 1)
+      //  {
+            if (Input.GetKeyUp(interact) && throwforce <= 2.6f && isthrowing)
+            {
+                throwforce = 2.7f;
+                Thrown = true;
+            }
+            if (throwforce >= maxThrowForce && isHolding && isthrowing)
+            {
+                Thrown = true;
+                throwforce = maxThrowForce;
+            }
+            if (Input.GetKeyUp(interact) && isHolding && isthrowing)
+            {
+                throwforce += 0;
+                StartCoroutine(PlayerThrowStop());
+                Thrown = true;
+            }
+            if (!isHolding)
+            {
+                throwforce = 0;
+                PowerCanvas.gameObject.SetActive(false);
+            }
+        //}  
     }
+
+    private void ChargingThrow()
+    {
+        StartCoroutine(PlayerThrowStop());
+        isthrowing = true;
+        throwforce += 0.2f;
+        PowerCanvas.gameObject.SetActive(true);
+        fill.color = gradient.Evaluate(1f);
+        PowerCanvas.value = throwforce / maxThrowForce;
+        fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
+        //holding key down
+    }
+
+
     private void Drop()
     {
-        //timerThrow = 0;
-        //canThrow = false;
         GameObject interactive = grabcheck.collider.gameObject;
         Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
         StartCoroutine(InteractStop());
@@ -242,7 +262,6 @@ public class Interact : MonoBehaviour
     private void PickUp()
     {
         GameObject interactive = grabcheck.collider.gameObject;
-        //timerThrow = 0;
         isHolding = true;
         if (interactive.GetComponent<PlayerController>() != null)
         {
@@ -276,7 +295,6 @@ public class Interact : MonoBehaviour
     }
     private void Throw()
     {
-        //timerThrow = 0;
         isHolding = false;
         isthrowing = false;
         Thrown = false;
@@ -378,7 +396,7 @@ public class Interact : MonoBehaviour
     {
         //gameObject.GetComponent<PlayerController>().enabled = false;
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
         //gameObject.GetComponent<PlayerController>().enabled = true;
     }
