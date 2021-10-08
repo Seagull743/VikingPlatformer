@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6240659048081036779}
   - component: {fileID: 937134407767626537}
   - component: {fileID: 5237018488299480346}
-  - component: {fileID: 8002647211398235926}
   m_Layer: 8
   m_Name: pressure plate_0
   m_TagString: Untagged
@@ -104,34 +103,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8002647211398235926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242874780921046809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.28756928, y: -0.0500679, z: 0}
-  - {x: 0.2873336, y: -0.049495697, z: 0}
-  - {x: 0.31205106, y: -0.024559021, z: 0}
-  - {x: 0.3123653, y: 0.05000305, z: 0}
-  - {x: -0.31201798, y: 0.049160004, z: 0}
-  - {x: -0.3118654, y: -0.023719788, z: 0}
-  m_ShapePathHash: 2037686217
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -1508
 --- !u!1 &1361464548977265024
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +300,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7138749038262473069}
-  - component: {fileID: 5643104548327269429}
   m_Layer: 8
   m_Name: Pressure plate
   m_TagString: Untagged
@@ -353,16 +323,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5643104548327269429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8118488913882869887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f48a8d66b2adc46887f23a3a88ac01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
