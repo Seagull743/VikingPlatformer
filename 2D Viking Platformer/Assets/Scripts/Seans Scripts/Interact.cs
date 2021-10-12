@@ -76,10 +76,14 @@ public class Interact : MonoBehaviour
     public bool thrownLeft = false;
     public bool thrownRight = false;
 
+    private PlayerController pc;
+
+
     void Start()
     {
         PowerCanvas.gameObject.SetActive(false);
-        stateC = GetComponent<ChangeAnimationStateController>(); 
+        stateC = GetComponent<ChangeAnimationStateController>();
+        pc = GetComponent<PlayerController>();
     }
     
     // Update is called once per frame
@@ -106,7 +110,7 @@ public class Interact : MonoBehaviour
                
                 //first frame of pressing
             }
-            else if(helddown > 12 && isHolding)  //was 68
+            else if(helddown > 68 && isHolding)  //was 68 //build needs to be 12
             {
                 ChargingThrow();
             }
@@ -118,7 +122,7 @@ public class Interact : MonoBehaviour
                 PickingUpItem();
             }
             //release behavior
-            if(helddown < 12)
+            if(helddown < 68)  //12 for build
             {
                 if (isHolding && !isthrowing)
                 {
@@ -188,12 +192,9 @@ public class Interact : MonoBehaviour
     private void Drop()
     {
         GameObject interactive = grabcheck.collider.gameObject;
-        Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
         StartCoroutine(InteractStop());
-        this.gameObject.GetComponent<PlayerController>().canJump = true;
-        interactive.transform.parent = null;
         interactive.GetComponent<Rigidbody2D>().isKinematic = false;
-        interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        this.gameObject.GetComponent<PlayerController>().canJump = true;
         if (interactive.gameObject.GetComponent<PlayerController>() != null)
         {
             interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, 0)));
@@ -203,23 +204,39 @@ public class Interact : MonoBehaviour
             interactive.GetComponent<Animator>().enabled = true;
             interactive.GetComponent<Interact>().enabled = true;
         }
-        if (pickedUpAxe)
+        else if (pickedUpAxe)
         {
-            if (gameObject.transform.localScale.x < 0)
-                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 66)));
-            else if (gameObject.transform.localScale.x > 0)
-                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -66)));
+            if (pc.facingLeft)
+            {
+                interactive.transform.position = dropLocation.position;
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 66)));
+                interactive.transform.localScale = Vector3.one;
+            }
+            else if (!pc.facingLeft)
+            {
+                interactive.transform.position = dropLocation.position;
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -66)));
+                interactive.transform.localScale = Vector3.one;
+            }
             //pickedUpAxe = false;
             Invoke("DropItems", 0.2f);
             interactive.GetComponent<Axe>().enabled = false;
             interactive.GetComponent<Axe>().TurnOn();
         }
         else if (pickedUpSpear)
-        {
-            if (gameObject.transform.localScale.x < 0)
-                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            else if (gameObject.transform.localScale.x > 0)
-                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
+        { 
+            if (pc.facingLeft) //gameObject.transform.localScale.x < 0
+            {
+                interactive.transform.position = dropLocation.position;
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 180)));
+                interactive.transform.localScale = Vector3.one;
+            }            
+            else if (!pc.facingLeft)
+            {
+                interactive.transform.position = dropLocation.position;
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -180)));
+                interactive.transform.localScale = Vector3.one;
+            }         
             //pickedUpSpear = false;
             Invoke("DropItems", 0.2f);
             interactive.GetComponent<Spear>().enabled = false;
@@ -227,15 +244,30 @@ public class Interact : MonoBehaviour
         }
         else if (pickedUpMead)
         {
-            if (gameObject.transform.localScale.x < 0)
-                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            else if (gameObject.transform.localScale.x > 0)
-                interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, -0)));
+            if (pc.facingLeft)
+            {
+                interactive.transform.position = dropLocation.position;
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 66)));
+                interactive.transform.localScale = Vector3.one;
+            }
+            else if (!pc.facingLeft)
+            {
+                interactive.transform.position = dropLocation.position;
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -66)));
+                interactive.transform.localScale = Vector3.one;
+            }
             //pickedUpMead = false;
             Invoke("DropItems", 0.2f);
             interactive.GetComponent<MeadPowerUp>().enabled = false;
             interactive.GetComponent<MeadPowerUp>().TurnOn();
         }
+        else if(interactive.tag == "Box")
+        {
+            interactive.transform.position = dropLocation.position;
+            interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
+        }
+        interactive.transform.parent = null;
         isHolding = false;
     }
 
@@ -260,11 +292,16 @@ public class Interact : MonoBehaviour
             Rb.velocity = Vector3.zero;
             Rb.isKinematic = true;
         }
-        //interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-        //Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
-        //interactive.transform.parent = holdLocation;
-        //interactive.transform.position = holdLocation.position;
-        //interactive.GetComponent<Rigidbody2D>().isKinematic = true;
+        //else if(interactive.layer == 15)
+       //{
+        //    interactive.transform.parent = holdLocation;
+         //   interactive.transform.position = holdLocation.position;
+          //  interactive.GetComponent<Rigidbody2D>().isKinematic = true;
+          //  if(interactive.transform.localScale.z < 0)
+          //  {
+           //     interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+           // }
+       // }
         else
         {
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
