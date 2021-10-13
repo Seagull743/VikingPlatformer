@@ -20,21 +20,6 @@ public class Axe : MonoBehaviour
         blade = GetComponentInChildren<Blade>();
     }
 
-
-    private void Update()
-    {
-        if (rotatingL)
-        {
-            gameObject.transform.Rotate(0, 0, 0);
-        }
-        else if (!rotatingL)
-        {
-            gameObject.transform.Rotate(0, 0, 0);
-        }
-    }
-
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && thrown)
