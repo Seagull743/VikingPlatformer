@@ -26,6 +26,7 @@ public class GM : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         }
     }
 

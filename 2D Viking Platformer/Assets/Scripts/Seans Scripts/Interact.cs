@@ -67,7 +67,7 @@ public class Interact : MonoBehaviour
 
     [HideInInspector]
     public bool pickedUpAxe = false;
-    [HideInInspector]
+   // [HideInInspector]
     public bool pickedUpSpear = false;
     [HideInInspector]
     public bool pickedUpMead = false;
@@ -173,7 +173,6 @@ public class Interact : MonoBehaviour
                 throwforce = 0;
                 PowerCanvas.gameObject.SetActive(false);
             }
-        //}  
     }
 
     private void ChargingThrow()
@@ -185,10 +184,8 @@ public class Interact : MonoBehaviour
         fill.color = gradient.Evaluate(1f);
         PowerCanvas.value = throwforce / maxThrowForce;
         fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
-        //holding key down
     }
-
-
+    
     private void Drop()
     {
         GameObject interactive = grabcheck.collider.gameObject;
@@ -209,13 +206,13 @@ public class Interact : MonoBehaviour
             if (pc.facingLeft)
             { 
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 0))); //66
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 180))); //66
                 interactive.transform.localScale = Vector3.one;
             }
             else if (!pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -0))); //-66
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -180))); //-66
                 interactive.transform.localScale = Vector3.one;
             }
             //pickedUpAxe = false;
@@ -292,16 +289,6 @@ public class Interact : MonoBehaviour
             Rb.velocity = Vector3.zero;
             Rb.isKinematic = true;
         }
-        //else if(interactive.layer == 15)
-       //{
-        //    interactive.transform.parent = holdLocation;
-         //   interactive.transform.position = holdLocation.position;
-          //  interactive.GetComponent<Rigidbody2D>().isKinematic = true;
-          //  if(interactive.transform.localScale.z < 0)
-          //  {
-           //     interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-           // }
-       // }
         else
         {
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
@@ -315,12 +302,10 @@ public class Interact : MonoBehaviour
         
         GameObject interactive = grabcheck.collider.gameObject;
         interactive.GetComponent<Rigidbody2D>().isKinematic = false;
-        //canThrow = false;
         StartCoroutine(PlayerThrowStop());
         Invoke("ResetThrow", 0.2f);
         if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
         {
-            // StartCoroutine(PlayerThrowStop());
             interactive.GetComponent<ChangeAnimationStateController>().enabled = true;
             interactive.GetComponent<PlayerController>().controller();
             interactive.GetComponent<Animator>().enabled = true;
@@ -328,12 +313,8 @@ public class Interact : MonoBehaviour
         }
         else if (interactive.layer == 15)
         {
-            this.gameObject.GetComponent<PlayerController>().canJump = true;
-            interactive.GetComponent<Rigidbody2D>().simulated = true;
-            interactive.transform.parent = null;
             interactive.GetComponent<Rigidbody2D>().isKinematic = false;
             interactive.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.1f) * throwforce;
-
             if (pickedUpAxe)
             {
                 if (pc.facingLeft)
@@ -353,17 +334,16 @@ public class Interact : MonoBehaviour
             }
             else if (pickedUpSpear)
             {
-                if (pc.facingLeft) //gameObject.transform.localScale.x < 0
+                if (pc.facingLeft)
                 {
-                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 44)));
+                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 90)));
                     interactive.transform.localScale = Vector3.one;
                 }
                 else if (!pc.facingLeft)
                 {
-                   interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -44)));
+                   interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -90)));
                    interactive.transform.localScale = Vector3.one;
-                }
-               
+                }       
             }
             else if (pickedUpMead)
             {
@@ -412,7 +392,6 @@ public class Interact : MonoBehaviour
         isHolding = false;
         isthrowing = false;
         Thrown = false;
-
     }
     IEnumerator InteractStop()
     {
