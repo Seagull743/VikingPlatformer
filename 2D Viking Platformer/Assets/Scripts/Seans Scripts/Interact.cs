@@ -305,6 +305,7 @@ public class Interact : MonoBehaviour
         Invoke("ResetThrow", 0.2f);
         if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
         {
+            this.gameObject.GetComponent<PlayerController>().canJump = true;
             interactive.GetComponent<ChangeAnimationStateController>().enabled = true;
             interactive.GetComponent<PlayerController>().controller();
             interactive.GetComponent<Animator>().enabled = true;
