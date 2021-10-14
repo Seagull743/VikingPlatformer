@@ -206,13 +206,13 @@ public class Interact : MonoBehaviour
             if (pc.facingLeft)
             { 
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 180))); //66
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 66))); //66
                 interactive.transform.localScale = Vector3.one;
             }
             else if (!pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -180))); //-66
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -66))); //-66
                 interactive.transform.localScale = Vector3.one;
             }
             //pickedUpAxe = false;
@@ -299,7 +299,6 @@ public class Interact : MonoBehaviour
     }
     private void Throw()
     {
-        
         GameObject interactive = grabcheck.collider.gameObject;
         interactive.GetComponent<Rigidbody2D>().isKinematic = false;
         StartCoroutine(PlayerThrowStop());
@@ -310,6 +309,8 @@ public class Interact : MonoBehaviour
             interactive.GetComponent<PlayerController>().controller();
             interactive.GetComponent<Animator>().enabled = true;
             interactive.GetComponent<Interact>().enabled = true;
+            interactive.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
+            interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
         else if (interactive.layer == 15)
         {
@@ -319,12 +320,12 @@ public class Interact : MonoBehaviour
             {
                 if (pc.facingLeft)
                 {
-                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 0))); //66
+                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 66))); //66
                     interactive.transform.localScale = Vector3.one;
                 }
                 else if (!pc.facingLeft)
                 {
-                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -0))); //-66
+                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -66))); //-66
                     interactive.transform.localScale = Vector3.one;
                 }
                 //pickedUpAxe = false;
