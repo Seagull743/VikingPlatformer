@@ -65,9 +65,9 @@ public class Interact : MonoBehaviour
     private ChangeAnimationStateController stateC;
 
 
-    [HideInInspector]
+   //[HideInInspector]
     public bool pickedUpAxe = false;
-   // [HideInInspector]
+    [HideInInspector]
     public bool pickedUpSpear = false;
     [HideInInspector]
     public bool pickedUpMead = false;
@@ -206,13 +206,13 @@ public class Interact : MonoBehaviour
             if (pc.facingLeft)
             { 
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 66))); //66
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 90))); //66
                 interactive.transform.localScale = Vector3.one;
             }
             else if (!pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -66))); //-66
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -90))); //-66
                 interactive.transform.localScale = Vector3.one;
             }
             //pickedUpAxe = false;
@@ -244,13 +244,13 @@ public class Interact : MonoBehaviour
             if (pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 66)));
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 180)));
                 interactive.transform.localScale = Vector3.one;
             }
             else if (!pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -66)));
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -180)));
                 interactive.transform.localScale = Vector3.one;
             }
             //pickedUpMead = false;
