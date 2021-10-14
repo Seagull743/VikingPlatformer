@@ -45,7 +45,7 @@ public class Axe : MonoBehaviour
         }
         else if (collision.gameObject.tag != "Enemy" && thrown)
         {
-            Invoke("ThrownToggle", 1.5f);
+            Invoke("ThrownToggle", 0.5f);
         }
     }
 

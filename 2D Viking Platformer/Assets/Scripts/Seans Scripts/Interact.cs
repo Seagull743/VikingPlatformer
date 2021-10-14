@@ -206,13 +206,13 @@ public class Interact : MonoBehaviour
             if (pc.facingLeft)
             { 
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 90))); //66
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 0))); //66
                 interactive.transform.localScale = Vector3.one;
             }
             else if (!pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -90))); //-66
+                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -0))); //-66
                 interactive.transform.localScale = Vector3.one;
             }
             //pickedUpAxe = false;
