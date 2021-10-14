@@ -44,6 +44,48 @@ TextureImporter:
   - first:
       213: -4956597565245982405
     second: Test_13
+  - first:
+      213: -8974781421794797727
+    second: Stone Slabs_0
+  - first:
+      213: -6340851234947878021
+    second: Stone Slabs_1
+  - first:
+      213: -2559258261639704133
+    second: Stone Slabs_2
+  - first:
+      213: 8496404853233612265
+    second: Stone Slabs_3
+  - first:
+      213: 4981472465239512315
+    second: Stone Slabs_4
+  - first:
+      213: 3293371533944228540
+    second: Stone Slabs_5
+  - first:
+      213: 8948785174439969117
+    second: Stone Slabs_6
+  - first:
+      213: 8606503318694456595
+    second: Stone Slabs_7
+  - first:
+      213: 1548410332338547033
+    second: Stone Slabs_8
+  - first:
+      213: -699746962505838684
+    second: Stone Slabs_9
+  - first:
+      213: -509709759700661339
+    second: Stone Slabs_10
+  - first:
+      213: 1152608382084158961
+    second: Stone Slabs_11
+  - first:
+      213: 543902856853882170
+    second: Stone Slabs_12
+  - first:
+      213: -9038117864011510618
+    second: Stone Slabs_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -203,7 +245,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Test_0
+      name: Stone Slabs_0
       rect:
         serializedVersion: 2
         x: 0
@@ -211,20 +253,28 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 24}
+      outline:
+      - - {x: -20, y: -2}
+        - {x: -20, y: -20}
+        - {x: 20, y: -20}
+        - {x: 20, y: -2}
+      physicsShape:
+      - - {x: -20, y: -4}
+        - {x: -20, y: -20}
+        - {x: 20, y: -20}
+        - {x: 20, y: -4}
       tessellationDetail: 0
       bones: []
-      spriteID: f09f8b2969b9bd0c0800000000000000
-      internalID: -4549871927518758641
+      spriteID: 1675529e8db237380800000000000000
+      internalID: -8974781421794797727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_1
+      name: Stone Slabs_1
       rect:
         serializedVersion: 2
         x: 160
@@ -232,20 +282,25 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 24}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: -4}
+        - {x: -20, y: -19}
+        - {x: -19, y: -20}
+        - {x: 20, y: -20}
+        - {x: 20, y: -4}
       tessellationDetail: 0
       bones: []
-      spriteID: 4ef7c9f50da0f5a80800000000000000
-      internalID: -8476044083614416924
+      spriteID: b73b557a565c008a0800000000000000
+      internalID: -6340851234947878021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_2
+      name: Stone Slabs_2
       rect:
         serializedVersion: 2
         x: 40
@@ -253,20 +308,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: 20}
+        - {x: -20, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: 20}
       tessellationDetail: 0
       bones: []
-      spriteID: 50eaf9baca8a89dd0800000000000000
-      internalID: -2479046135300248059
+      spriteID: bb15b7aab20bb7cd0800000000000000
+      internalID: -2559258261639704133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_3
+      name: Stone Slabs_3
       rect:
         serializedVersion: 2
         x: 120
@@ -274,20 +333,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 24, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: 20}
+        - {x: -20, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: 20}
       tessellationDetail: 0
       bones: []
-      spriteID: bf7e587ee33fa23b0800000000000000
-      internalID: -5536345340400769029
+      spriteID: 9e5f4e8b23b49e570800000000000000
+      internalID: 8496404853233612265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_4
+      name: Stone Slabs_4
       rect:
         serializedVersion: 2
         x: 0
@@ -295,20 +358,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 25, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: 20}
+        - {x: -20, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: 20}
       tessellationDetail: 0
       bones: []
-      spriteID: fe210235c589f6020800000000000000
-      internalID: 2337254253927600879
+      spriteID: bf49dfc60deb12540800000000000000
+      internalID: 4981472465239512315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_5
+      name: Stone Slabs_5
       rect:
         serializedVersion: 2
         x: 40
@@ -316,20 +383,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 25, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: 20}
+        - {x: -20, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: 20}
       tessellationDetail: 0
       bones: []
-      spriteID: d06805bd5ee32e120800000000000000
-      internalID: 2441583104936150541
+      spriteID: cba012a06f764bd20800000000000000
+      internalID: 3293371533944228540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_6
+      name: Stone Slabs_6
       rect:
         serializedVersion: 2
         x: 80
@@ -337,20 +408,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 25, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: 20}
+        - {x: -20, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: 20}
       tessellationDetail: 0
       bones: []
-      spriteID: f2a07a8b8f3f4bca0800000000000000
-      internalID: -6001904153802634705
+      spriteID: d51c6c514b8703c70800000000000000
+      internalID: 8948785174439969117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_7
+      name: Stone Slabs_7
       rect:
         serializedVersion: 2
         x: 120
@@ -358,20 +433,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 25, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: 20}
+        - {x: -20, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: 20}
       tessellationDetail: 0
       bones: []
-      spriteID: 4a68accf8a021ceb0800000000000000
-      internalID: -4701440625830361436
+      spriteID: 31de00d4b21707770800000000000000
+      internalID: 8606503318694456595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_8
+      name: Stone Slabs_8
       rect:
         serializedVersion: 2
         x: 160
@@ -379,20 +458,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 25, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: 20}
+        - {x: -20, y: 4}
+        - {x: 20, y: 4}
+        - {x: 20, y: 20}
       tessellationDetail: 0
       bones: []
-      spriteID: 989d2fd9c8cfa2cb0800000000000000
-      internalID: -4887816764681692791
+      spriteID: 95965915efe0d7510800000000000000
+      internalID: 1548410332338547033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_9
+      name: Stone Slabs_9
       rect:
         serializedVersion: 2
         x: 0
@@ -400,20 +483,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 25}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: -4}
+        - {x: -20, y: -20}
+        - {x: 20, y: -20}
+        - {x: 20, y: -4}
       tessellationDetail: 0
       bones: []
-      spriteID: 9d84e17b81ddd4680800000000000000
-      internalID: -8769109801199318823
+      spriteID: 4af4e2358dff946f0800000000000000
+      internalID: -699746962505838684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_10
+      name: Stone Slabs_10
       rect:
         serializedVersion: 2
         x: 40
@@ -421,20 +508,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 25}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: -4}
+        - {x: -20, y: -20}
+        - {x: 20, y: -20}
+        - {x: 20, y: -4}
       tessellationDetail: 0
       bones: []
-      spriteID: bb5534878b4966540800000000000000
-      internalID: 5000847956254086587
+      spriteID: 5ab0e729ca52de8f0800000000000000
+      internalID: -509709759700661339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_11
+      name: Stone Slabs_11
       rect:
         serializedVersion: 2
         x: 80
@@ -442,20 +533,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 25}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: -4}
+        - {x: -20, y: -20}
+        - {x: 20, y: -20}
+        - {x: 20, y: -4}
       tessellationDetail: 0
       bones: []
-      spriteID: 2099a42ba4d905030800000000000000
-      internalID: 3481455456101767426
+      spriteID: 1f5934b7733eeff00800000000000000
+      internalID: 1152608382084158961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_12
+      name: Stone Slabs_12
       rect:
         serializedVersion: 2
         x: 120
@@ -463,20 +558,24 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 25}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: -4}
+        - {x: -20, y: -20}
+        - {x: 20, y: -20}
+        - {x: 20, y: -4}
       tessellationDetail: 0
       bones: []
-      spriteID: bc6e67602d6b5ae70800000000000000
-      internalID: 9125901233104021195
+      spriteID: a35881f34c45c8700800000000000000
+      internalID: 543902856853882170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Test_13
+      name: Stone Slabs_13
       rect:
         serializedVersion: 2
         x: 160
@@ -484,14 +583,18 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 25}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -20, y: -4}
+        - {x: -20, y: -20}
+        - {x: 20, y: -20}
+        - {x: 20, y: -4}
       tessellationDetail: 0
       bones: []
-      spriteID: b3972fc86c0a63bb0800000000000000
-      internalID: -4956597565245982405
+      spriteID: 6ac4b7d40b7229280800000000000000
+      internalID: -9038117864011510618
       vertices: []
       indices: 
       edges: []
