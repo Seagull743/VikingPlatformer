@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725712372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.231, y: -0.512, z: 0}
+  m_LocalPosition: {x: 0.161, y: -0.512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7035153014594533194}
@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035153014244298421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.209, y: -0.512, z: 0}
+  m_LocalPosition: {x: -0.149, y: -0.512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7035153014594533194}
@@ -267,7 +267,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: d95a2ec5082b7d34f92dc18244332c17, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7035153014594533197
 BoxCollider2D:
@@ -317,7 +317,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 256
-  groundCheckRadius: 0.2
+  groundCheckRadius: 0.1
   isGrounded: 0
   LeftGrounded: 0
   RightGrounded: 0
@@ -332,6 +332,7 @@ MonoBehaviour:
   lm:
     serializedVersion: 2
     m_Bits: 256
+  facingLeft: 0
 --- !u!114 &7671770985688816956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +410,7 @@ MonoBehaviour:
   playerHold: {fileID: 7035153015934262952}
   dropLocation: {fileID: 7035153016192137233}
   dropPlayer: {fileID: 714116865}
-  raydist: 1.5
+  raydist: 0.3
   interact: 305
   throwing: 0
   isHolding: 0
@@ -417,8 +418,7 @@ MonoBehaviour:
   Thrown: 0
   throwforce: 0
   maxThrowForce: 11
-  timerThrow: 0
-  canThrow: 0
+  helddown: 0
   PowerCanvas: {fileID: 0}
   gradient:
     serializedVersion: 2
@@ -457,6 +457,8 @@ MonoBehaviour:
   pickedUpAxe: 0
   pickedUpSpear: 0
   pickedUpMead: 0
+  thrownLeft: 0
+  thrownRight: 0
 --- !u!1 &7035153014786120998
 GameObject:
   m_ObjectHideFlags: 0
