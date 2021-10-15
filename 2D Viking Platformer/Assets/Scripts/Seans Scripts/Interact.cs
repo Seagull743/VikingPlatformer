@@ -67,9 +67,9 @@ public class Interact : MonoBehaviour
 
    //[HideInInspector]
     public bool pickedUpAxe = false;
-    [HideInInspector]
+    //[HideInInspector]
     public bool pickedUpSpear = false;
-    [HideInInspector]
+    //[HideInInspector]
     public bool pickedUpMead = false;
 
 
@@ -126,14 +126,16 @@ public class Interact : MonoBehaviour
             {
                 if (isHolding && !isthrowing)
                 {
-                    //update this for the other throwables  
                     RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
-                    if ((grabRay.collider != null && grabRay.collider.tag == "Box" || grabRay.collider != null && grabRay.collider.tag == "Player") || grabRay.collider != null && grabRay.collider.gameObject.layer == 15)
+                    if(grabRay.collider != null)
                     {
-                        RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
-                        if (placeCheck.collider == null)
+                        if (grabRay.collider.tag == "Box" || grabRay.collider.tag == "Player" || grabRay.collider.gameObject.layer == 15) // layer 15 throwable
                         {
-                            PuttingDownItem();
+                            RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
+                            if (placeCheck.collider == null)
+                            {
+                                PuttingDownItem();
+                            }
                         }
                     }
                 }
@@ -190,11 +192,12 @@ public class Interact : MonoBehaviour
     {
         GameObject interactive = grabcheck.collider.gameObject;
         StartCoroutine(InteractStop());
-        interactive.GetComponent<Rigidbody2D>().isKinematic = false;
+        Rigidbody2D irb = interactive.GetComponent<Rigidbody2D>();
+        irb.isKinematic = false;
         this.gameObject.GetComponent<PlayerController>().canJump = true;
         if (interactive.gameObject.GetComponent<PlayerController>() != null)
         {
-            interactive.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            irb.transform.SetPositionAndRotation(dropPlayer.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             //grabcheck.collider.gameObject.GetComponent<Animator>().SetBool("playerholding", false);
             interactive.GetComponent<ChangeAnimationStateController>().enabled = true;
             interactive.GetComponent<PlayerController>().enabled = true;
@@ -203,38 +206,38 @@ public class Interact : MonoBehaviour
         }
         else if (pickedUpAxe)
         {
+            Axe axe = interactive.GetComponent<Axe>();
+
             if (pc.facingLeft)
             { 
-                interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 0))); //66
-                interactive.transform.localScale = Vector3.one;
+                axe.transform.position = dropLocation.position;
+                irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 90)));
+                axe.transform.localScale = Vector3.one;
             }
             else if (!pc.facingLeft)
             {
-                interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -0))); //-66
-                interactive.transform.localScale = Vector3.one;
+                axe.transform.position = dropLocation.position;
+                irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, -90)));
+                axe.transform.localScale = Vector3.one;
             }
-            //pickedUpAxe = false;
             Invoke("DropItems", 0.2f);
-            interactive.GetComponent<Axe>().enabled = false;
-            interactive.GetComponent<Axe>().TurnOn();
+            axe.enabled = false;
+            axe.TurnOn();
         }
         else if (pickedUpSpear)
         { 
-            if (pc.facingLeft) //gameObject.transform.localScale.x < 0
+            if (pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 180)));
+                irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 180)));
                 interactive.transform.localScale = Vector3.one;
             }            
             else if (!pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -180)));
+                irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, -180)));
                 interactive.transform.localScale = Vector3.one;
-            }         
-            //pickedUpSpear = false;
+            }        
             Invoke("DropItems", 0.2f);
             interactive.GetComponent<Spear>().enabled = false;
             interactive.GetComponent<Spear>().TurnOn();
@@ -244,16 +247,15 @@ public class Interact : MonoBehaviour
             if (pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 180)));
+                irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 180)));
                 interactive.transform.localScale = Vector3.one;
             }
             else if (!pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
-                interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -180)));
+                irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, -180)));
                 interactive.transform.localScale = Vector3.one;
             }
-            //pickedUpMead = false;
             Invoke("DropItems", 0.2f);
             interactive.GetComponent<MeadPowerUp>().enabled = false;
             interactive.GetComponent<MeadPowerUp>().TurnOn();
@@ -271,157 +273,155 @@ public class Interact : MonoBehaviour
     private void PickUp()
     {
         GameObject interactive = grabcheck.collider.gameObject;
+        Rigidbody2D irb = interactive.GetComponent<Rigidbody2D>();
         isHolding = true;
         if (interactive.GetComponent<PlayerController>() != null)
         {
             interactive.GetComponent<PlayerController>().enabled = false;
-            //Should take this out later
             interactive.GetComponent<ChangeAnimationStateController>().enabled = false;
             interactive.GetComponent<Animator>().enabled = false;
             this.gameObject.GetComponent<PlayerController>().canJump = false;
-            //interactive.GetComponent<Animator>().SetBool("playerholding", true);
             interactive.GetComponent<Interact>().enabled = false;
-            //Needs to be changed back to 0, 0, 0
             interactive.transform.SetPositionAndRotation(playerHold.position, Quaternion.Euler(new Vector3(0, 0, 90)));
             interactive.transform.parent = playerHold;
             interactive.transform.position = playerHold.position;
-            Rigidbody2D Rb = interactive.GetComponent<Rigidbody2D>();
-            Rb.velocity = Vector3.zero;
-            Rb.isKinematic = true;
+            irb.velocity = Vector3.zero;
+            irb.isKinematic = true;
         }
         else
         {
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
             interactive.transform.parent = holdLocation;
             interactive.transform.position = holdLocation.position;
-            interactive.GetComponent<Rigidbody2D>().isKinematic = true;
+            irb.isKinematic = true;
         }
     }
     private void Throw()
     {
         GameObject interactive = grabcheck.collider.gameObject;
-        interactive.GetComponent<Rigidbody2D>().isKinematic = false;
+        Rigidbody2D irb = interactive.GetComponent<Rigidbody2D>();
+        irb.simulated = false;
+        irb.isKinematic = false;
         StartCoroutine(PlayerThrowStop());
-        Invoke("ResetThrow", 0.2f);
-        if (grabcheck.collider.gameObject.GetComponent<PlayerController>() != null)
+        if (interactive.GetComponent<PlayerController>() != null)
         {
+            irb.transform.SetParent(null);
             this.gameObject.GetComponent<PlayerController>().canJump = true;
             interactive.GetComponent<ChangeAnimationStateController>().enabled = true;
             interactive.GetComponent<PlayerController>().controller();
             interactive.GetComponent<Animator>().enabled = true;
             interactive.GetComponent<Interact>().enabled = true;
-            interactive.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
+            irb.velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
             interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
         else if (interactive.layer == 15)
         {
-            interactive.GetComponent<Rigidbody2D>().isKinematic = false;
-            interactive.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.1f) * throwforce;
+            irb.transform.SetParent(null);
+            
             if (pickedUpAxe)
             {
+
                 if (pc.facingLeft)
                 {
-                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 66))); //66
-                    interactive.transform.localScale = Vector3.one;
+                    irb.transform.localScale = new Vector3(-1, 1, 1);
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 60));
+                    Debug.LogError("throwing axe left");
                 }
                 else if (!pc.facingLeft)
                 {
-                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -66))); //-66
                     interactive.transform.localScale = Vector3.one;
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -60));
+                    Debug.LogError("throwing axe right");
                 }
-                //pickedUpAxe = false;
-                Invoke("DropItems", 0.2f);
-                interactive.GetComponent<Axe>().enabled = false;
+
+                interactive.GetComponent<Axe>().enabled = true;
                 interactive.GetComponent<Axe>().TurnOn();
+                interactive.GetComponent<Axe>().thrown = true;
+                pickedUpAxe = false;
+                irb.simulated = true;
+                irb.isKinematic = false;
             }
             else if (pickedUpSpear)
             {
                 if (pc.facingLeft)
                 {
-                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 90)));
-                    interactive.transform.localScale = Vector3.one;
+                    
+                    //irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 90)));
+                    //interactive.transform.localScale = Vector3.one;
                 }
                 else if (!pc.facingLeft)
                 {
-                   interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -90)));
-                   interactive.transform.localScale = Vector3.one;
-                }       
+                    interactive.transform.localScale = Vector3.one;
+                    irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, -90)));
+                   
+                }
+
+                interactive.GetComponent<Spear>().enabled = true;
+                interactive.GetComponent<Spear>().TurnOn();
+                interactive.GetComponent<Spear>().thrown = true;
+                pickedUpSpear = false;
+                irb.simulated = true;
+                irb.isKinematic = false;
+
             }
             else if (pickedUpMead)
             {
                 if (pc.facingLeft)
                 {
-                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, 66)));
+                    irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 66)));
                     interactive.transform.localScale = Vector3.one;
                 }
                 else if (!pc.facingLeft)
                 {
-                    interactive.GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(new Vector3(0, 0, -66)));
+                    irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, -66)));
                     interactive.transform.localScale = Vector3.one;
                 }
-            }
-            if (grabcheck.collider.gameObject.GetComponent<Axe>() != null)
-            {
-                interactive.GetComponent<Axe>().enabled = true;
-                interactive.GetComponent<Axe>().TurnOn();
-                interactive.GetComponent<Axe>().thrown = true;
-                pickedUpAxe = false;
-            }
-            else if (grabcheck.collider.gameObject.GetComponent<MeadPowerUp>() != null)
-            {
+
                 thrownMug = true;
                 interactive.GetComponent<MeadPowerUp>().enabled = true;
                 interactive.GetComponent<MeadPowerUp>().TurnOn();
                 interactive.GetComponent<MeadPowerUp>().thrown = true;
                 pickedUpMead = false;
+
             }
-            else if (grabcheck.collider.gameObject.GetComponent<Spear>() != null)
-            {
-                interactive.GetComponent<Spear>().enabled = true;
-                interactive.GetComponent<Spear>().TurnOn();
-                interactive.GetComponent<Spear>().thrown = true;
-                pickedUpSpear = false;
-            }
+
+            irb.simulated = true;
+            irb.isKinematic = false;
+            irb.velocity = new Vector2(transform.localScale.x, 0.1f) * throwforce;
+
         }
         else
         {
+            irb.transform.SetParent(null);
             this.gameObject.GetComponent<PlayerController>().canJump = true;
-            interactive.GetComponent<Rigidbody2D>().simulated = true;
-            interactive.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
+            irb.isKinematic = false;
+            irb.simulated = true;
+            irb.velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
             interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            Invoke("ResetThrow", 0.2f);
         }
-        interactive.transform.parent = null;
+        //interactive.transform.parent = null;
+
         isHolding = false;
         isthrowing = false;
         Thrown = false;
     }
     IEnumerator InteractStop()
     {
-        //gameObject.GetComponent<PlayerController>().enabled = false;
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
         yield return new WaitForSeconds(0.3f);
-        //gameObject.GetComponent<PlayerController>().enabled = true;
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
     }
     IEnumerator PlayerThrowStop()
     {
-        //gameObject.GetComponent<PlayerController>().enabled = false;
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 0;
         yield return new WaitForSeconds(0.7f);
         this.gameObject.GetComponent<PlayerController>().moveSpeed = 5;
-        //gameObject.GetComponent<PlayerController>().enabled = true;
     }
 
     private void ResetThrow()
     {
-        //if (thrownMug)
-        // {
-        //    throwforce = 0;
-        // }
-        //else
-        // {
         Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
-        // }
     }
 
     public void PickingUpItem()
@@ -431,7 +431,6 @@ public class Interact : MonoBehaviour
         if (tag == "Box")
         {
             {
-                //StartCoroutine(InteractStop());
                 isHolding = true;
                 this.gameObject.GetComponent<PlayerController>().canJump = false;
             }
@@ -463,18 +462,20 @@ public class Interact : MonoBehaviour
         //Spear
         else if (tag == "Spear")
         {
+            Spear spear = grabcheck.collider.gameObject.GetComponent<Spear>();
             pickedUpSpear = true;
             isHolding = true;
-            grabcheck.collider.gameObject.GetComponent<Spear>().TurnOff();
-            grabcheck.collider.gameObject.GetComponent<Spear>().enabled = false;
+            spear.GetComponent<Spear>().TurnOff();
+            spear.GetComponent<Spear>().enabled = false;
         }
         //PowerThrowForce
         else if (tag == "Mug")
         {
+            MeadPowerUp mug = grabcheck.collider.gameObject.GetComponent<MeadPowerUp>();
             pickedUpMead = true;
             isHolding = true;
-            grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().TurnOff();
-            grabcheck.collider.gameObject.GetComponent<MeadPowerUp>().enabled = false;
+            mug.TurnOff();
+            mug.enabled = false;
         }
     }
 
@@ -483,7 +484,6 @@ public class Interact : MonoBehaviour
         isHolding = false;
         StartCoroutine(InteractStop());
     }
-
 
     public void StartThrowForce()
     {

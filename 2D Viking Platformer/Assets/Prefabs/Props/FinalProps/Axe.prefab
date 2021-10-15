@@ -103,10 +103,10 @@ GameObject:
   - component: {fileID: 6112767098921682588}
   - component: {fileID: 7458256552266935463}
   - component: {fileID: 7904214433905093871}
-  - component: {fileID: 406850986}
   - component: {fileID: 5348586265240387580}
   - component: {fileID: 8167182537185825768}
   - component: {fileID: 7596060072034759013}
+  - component: {fileID: 406850986}
   m_Layer: 15
   m_Name: Axe
   m_TagString: Axe
@@ -201,20 +201,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &406850986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7774665763347249756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24cffc716b70ded428a4edf2de82e081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrown: 0
-  rotatingL: 0
 --- !u!61 &5348586265240387580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -293,3 +279,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.117655516, y: 0.1994977}
   m_EdgeRadius: 0
+--- !u!114 &406850986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774665763347249756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cffc716b70ded428a4edf2de82e081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrown: 0
+  rotatingL: 0

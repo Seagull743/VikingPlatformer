@@ -41,7 +41,7 @@ public class Archer : MonoBehaviour
     private void ArrowFire()
     {
             fired = true;
-            Invoke("ArrowCooldown", 1);
+            Invoke("ArrowCooldown", 1.3f);
             Rigidbody2D ArrowInstance;
             ArrowInstance = Instantiate(arrow, arrowInstantiate.position, arrowInstantiate.rotation) as Rigidbody2D;
             ArrowInstance.AddForce(arrowInstantiate.right * 350f);      

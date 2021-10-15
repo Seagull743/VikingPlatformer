@@ -12,7 +12,7 @@ public class FallSpikes : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            spikes.GetComponent<Rigidbody2D>().isKinematic = false;
+            spikes.GetComponent<Rigidbody2D>().isKinematic = false; 
             gameObject.GetComponent<FallSpikes>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
