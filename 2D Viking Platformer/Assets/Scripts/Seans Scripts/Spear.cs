@@ -7,13 +7,29 @@ public class Spear : MonoBehaviour
     public bool thrown = false;
     private Rigidbody2D rb;
     private BoxCollider2D[] bc;
-
+    private float turnspeed = 2f;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponents<BoxCollider2D>();
     }
+
+
+    private void Update()
+    {
+        if (rb.velocity.x < 0 && thrown) // facingleft
+        {
+            transform.Rotate(new Vector3(0f, 0f, 27f * Time.deltaTime));
+            Debug.Log("thrownleft");
+        }
+        else if (rb.velocity.x > 0 && thrown) //facingRight
+        {
+            transform.Rotate(new Vector3(0f, 0f, -27f * Time.deltaTime));
+            Debug.Log("thrownRight");
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -52,7 +68,8 @@ public class Spear : MonoBehaviour
         }
         else if (collision.gameObject.tag != "Enemy" && thrown)
         {
-            Invoke("ThrownToggle", 1.5f);
+            thrown = false;
+            //Invoke("ThrownToggle", 1.5f);
         }
        
     }

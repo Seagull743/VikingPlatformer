@@ -60,8 +60,6 @@ public class ChangeAnimationStateController : MonoBehaviour
     private string MeadThrow = "P1 Mead Throw";
     private string MeadThrowAction = "P1 Mead Throw Action";
 
-
-
     //isGrounded && canJump
 
     private PlayerController PC;
