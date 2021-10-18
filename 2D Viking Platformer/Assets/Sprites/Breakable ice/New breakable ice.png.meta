@@ -1,43 +1,28 @@
 fileFormatVersion: 2
-guid: 920a60d36c584f74b9b8a2dfd1a2575a
+guid: 2ad7c6a5f7bf6864db0bebf43570f828
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -534679919290776979
-    second: Brick tilemap_0
+      213: 5594350767202486937
+    second: New breakable ice_0
   - first:
-      213: -1371930114006061003
-    second: Brick tilemap_1
+      213: -5832706624487528516
+    second: New breakable ice_1
   - first:
-      213: 8685969037041356578
-    second: Brick tilemap_2
+      213: -4173307713605475476
+    second: New breakable ice_2
   - first:
-      213: -96506783387429371
-    second: Brick tilemap_3
+      213: 1297690181588393334
+    second: New breakable ice_3
   - first:
-      213: 1332102919568936640
-    second: Brick tilemap_4
+      213: 3039423351047170427
+    second: New breakable ice_4
   - first:
-      213: 5165272026219289883
-    second: Brick tilemap_5
+      213: -4659993911754174516
+    second: New breakable ice_5
   - first:
-      213: -5953491145501208498
-    second: Brick tilemap_6
-  - first:
-      213: -3646242779048057188
-    second: Brick tilemap_7
-  - first:
-      213: -2750687006159010805
-    second: Brick tilemap_8
-  - first:
-      213: 3670305873832843827
-    second: Brick tilemap_9
-  - first:
-      213: 9080941573955110634
-    second: Brick tilemap_10
-  - first:
-      213: -4054650317755833984
-    second: Brick tilemap_11
+      213: 29443928230266557
+    second: New breakable ice_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -197,11 +182,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Brick tilemap_0
+      name: New breakable ice_0
       rect:
         serializedVersion: 2
-        x: 148
-        y: 148
+        x: 0
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -211,18 +196,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d62832e327f6498f0800000000000000
-      internalID: -534679919290776979
+      spriteID: 99ac904f16023ad40800000000000000
+      internalID: 5594350767202486937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brick tilemap_1
+      name: New breakable ice_1
       rect:
         serializedVersion: 2
-        x: 108
-        y: 188
+        x: 40
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -232,18 +217,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 530f10284dce5fce0800000000000000
-      internalID: -1371930114006061003
+      spriteID: cb76a506a301e0fa0800000000000000
+      internalID: -5832706624487528516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brick tilemap_2
+      name: New breakable ice_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 148
+        x: 80
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -253,18 +238,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22f44e6a1d2ca8870800000000000000
-      internalID: 8685969037041356578
+      spriteID: c63e520eebe6516c0800000000000000
+      internalID: -4173307713605475476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brick tilemap_3
+      name: New breakable ice_3
       rect:
         serializedVersion: 2
-        x: 108
-        y: 148
+        x: 120
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -274,18 +259,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 506d6c1879329aef0800000000000000
-      internalID: -96506783387429371
+      spriteID: 67d961e3852520210800000000000000
+      internalID: 1297690181588393334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brick tilemap_4
+      name: New breakable ice_4
       rect:
         serializedVersion: 2
-        x: 68
-        y: 108
+        x: 160
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -295,18 +280,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ceca2d2c849c7210800000000000000
-      internalID: 1332102919568936640
+      spriteID: b79a1392f633e2a20800000000000000
+      internalID: 3039423351047170427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Brick tilemap_5
+      name: New breakable ice_5
       rect:
         serializedVersion: 2
-        x: 108
-        y: 108
+        x: 0
+        y: 120
         width: 40
         height: 40
       alignment: 0
@@ -316,92 +301,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1d10138a8bbea740800000000000000
-      internalID: 5165272026219289883
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Brick tilemap_6
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 68
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4097fa9853f06da0800000000000000
-      internalID: -5953491145501208498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Brick tilemap_7
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 68
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c96e106d281f56dc0800000000000000
-      internalID: -3646242779048057188
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Brick tilemap_8
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 68
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b040c9dddb893d9d0800000000000000
-      internalID: -2750687006159010805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Brick tilemap_9
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 108
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 33a16d20fbb8fe230800000000000000
-      internalID: 3670305873832843827
+      spriteID: ccfc86a1a30645fb0800000000000000
+      internalID: -4659993911754174516
       vertices: []
       indices: 
       edges: []
