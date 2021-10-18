@@ -1,34 +1,22 @@
 fileFormatVersion: 2
-guid: 92fa87a6675073e4b838c5b41b10a04b
+guid: 2f60b317722df6649ae1214e31a2cb6d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5863707659576737883
-    second: path tilemap_0
+      213: 233422344694392727
+    second: Banner v1_0
   - first:
-      213: 7740043792551796291
-    second: path tilemap_1
+      213: -1367451649931512673
+    second: Banner v1_1
   - first:
-      213: 3319302202582286257
-    second: path tilemap_2
+      213: 1412726854598464720
+    second: Banner v1_2
   - first:
-      213: -4091050038493067608
-    second: path tilemap_3
+      213: -851724836655736985
+    second: Banner v1_3
   - first:
-      213: -6527864797329963302
-    second: path tilemap_4
-  - first:
-      213: 9011843811592463422
-    second: path tilemap_5
-  - first:
-      213: 1179065318706119018
-    second: path tilemap_6
-  - first:
-      213: -3184329279958152743
-    second: path tilemap_7
-  - first:
-      213: 1968399126376480914
-    second: path tilemap_8
+      213: 6618361195117675700
+    second: Banner v1_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -188,13 +176,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: path tilemap_0
+      name: Banner v1_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 108
-        width: 40
-        height: 40
+        x: 53
+        y: 20
+        width: 23
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5aff03c63fcef9ea0800000000000000
-      internalID: -5863707659576737883
+      spriteID: 797e522c2684d3300800000000000000
+      internalID: 233422344694392727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path tilemap_1
+      name: Banner v1_1
       rect:
         serializedVersion: 2
-        x: 148
-        y: 108
-        width: 40
-        height: 40
+        x: 80
+        y: 20
+        width: 23
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,155 +211,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34e540122d82a6b60800000000000000
-      internalID: 7740043792551796291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path tilemap_2
-      rect:
-        serializedVersion: 2
-        x: 188
-        y: 68
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1bfb61f44c7801e20800000000000000
-      internalID: 3319302202582286257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path tilemap_3
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 68
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a6c5415aaba937c0800000000000000
-      internalID: -4091050038493067608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path tilemap_4
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 68
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad6ce5d8d8d5865a0800000000000000
-      internalID: -6527864797329963302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path tilemap_5
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 28
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e3465492330801d70800000000000000
-      internalID: 9011843811592463422
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path tilemap_6
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 28
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a61067019a1ec5010800000000000000
-      internalID: 1179065318706119018
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path tilemap_7
-      rect:
-        serializedVersion: 2
-        x: 188
-        y: 28
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d90834246dfec3d0800000000000000
-      internalID: -3184329279958152743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path tilemap_8
-      rect:
-        serializedVersion: 2
-        x: 188
-        y: 108
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2900cdf8398215b10800000000000000
-      internalID: 1968399126376480914
+      spriteID: f947f4e28f5d50de0800000000000000
+      internalID: -1367451649931512673
       vertices: []
       indices: 
       edges: []
