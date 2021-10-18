@@ -135,10 +135,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
             facingLeft = false;
         }
-
-
         //Ice
-
         if (touchingIce)
         {
             moveSpeed = 0;

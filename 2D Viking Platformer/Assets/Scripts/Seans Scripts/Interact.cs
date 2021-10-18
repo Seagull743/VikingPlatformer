@@ -313,6 +313,8 @@ public class Interact : MonoBehaviour
             interactive.GetComponent<Interact>().enabled = true;
             irb.velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
             interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            Debug.Log("throwing player");
+            irb.simulated = true;
         }
         else if (interactive.layer == 15)
         {
@@ -320,20 +322,16 @@ public class Interact : MonoBehaviour
             
             if (pickedUpAxe)
             {
-
                 if (pc.facingLeft)
                 {
                     irb.transform.localScale = new Vector3(-1, 1, 1);
                     irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 60));
-                    Debug.LogError("throwing axe left");
                 }
                 else if (!pc.facingLeft)
                 {
                     interactive.transform.localScale = Vector3.one;
                     irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -60));
-                    Debug.LogError("throwing axe right");
                 }
-
                 interactive.GetComponent<Axe>().enabled = true;
                 interactive.GetComponent<Axe>().TurnOn();
                 interactive.GetComponent<Axe>().thrown = true;
@@ -345,15 +343,14 @@ public class Interact : MonoBehaviour
             {
                 if (pc.facingLeft)
                 {
-                    
-                    //irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 90)));
-                    //interactive.transform.localScale = Vector3.one;
+                    irb.transform.localScale = new Vector3(-1, 1, 1);
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));                
                 }
                 else if (!pc.facingLeft)
                 {
                     interactive.transform.localScale = Vector3.one;
-                    irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, -90)));
-                   
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                    interactive.transform.localScale = Vector3.one;
                 }
 
                 interactive.GetComponent<Spear>().enabled = true;
@@ -362,33 +359,28 @@ public class Interact : MonoBehaviour
                 pickedUpSpear = false;
                 irb.simulated = true;
                 irb.isKinematic = false;
-
             }
             else if (pickedUpMead)
             {
                 if (pc.facingLeft)
                 {
-                    irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 66)));
-                    interactive.transform.localScale = Vector3.one;
+                    irb.transform.localScale = new Vector3(-1, 1, 1);
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 20));
                 }
                 else if (!pc.facingLeft)
                 {
-                    irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, -66)));
                     interactive.transform.localScale = Vector3.one;
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -20));
                 }
-
                 thrownMug = true;
                 interactive.GetComponent<MeadPowerUp>().enabled = true;
                 interactive.GetComponent<MeadPowerUp>().TurnOn();
                 interactive.GetComponent<MeadPowerUp>().thrown = true;
                 pickedUpMead = false;
-
             }
-
             irb.simulated = true;
             irb.isKinematic = false;
             irb.velocity = new Vector2(transform.localScale.x, 0.1f) * throwforce;
-
         }
         else
         {
