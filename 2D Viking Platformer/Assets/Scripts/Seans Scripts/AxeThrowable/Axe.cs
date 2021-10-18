@@ -12,6 +12,8 @@ public class Axe : MonoBehaviour
     public bool rotatingL = false;
 
     private Blade blade;
+    [SerializeField]
+    private Animator anim;
  
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,19 @@ public class Axe : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         blade = GetComponentInChildren<Blade>();
     }
+
+    private void Update()
+    {
+        if (thrown)
+        {
+            anim.SetBool("thrown", true);
+        }
+        else
+        {
+            anim.SetBool("thrown", false);
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

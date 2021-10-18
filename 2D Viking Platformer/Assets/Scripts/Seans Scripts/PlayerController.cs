@@ -52,7 +52,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask lm;
 
     private bool touchingIce = false;
-    private float iceSpeed = 0.001f;
+    [SerializeField]
+    private float iceSpeed = 0.0015f;
 
     public bool facingLeft;
 
