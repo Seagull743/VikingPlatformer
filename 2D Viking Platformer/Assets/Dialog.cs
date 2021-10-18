@@ -7,8 +7,15 @@ public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
+    [SerializeField]
+    private GameObject speechbubble1;
     private int index;
 
+
+    private void Start()
+    {
+        speechbubble1.SetActive(false);
+    }
 
     public void TypeStarter()
     {
@@ -18,8 +25,8 @@ public class Dialog : MonoBehaviour
 
     IEnumerator Type()
     {
-
-        foreach(char letter in sentences[index].ToCharArray())
+        speechbubble1.SetActive(true);
+        foreach (char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(0.1f);
@@ -29,6 +36,7 @@ public class Dialog : MonoBehaviour
     private void DeleteText()
     {
         textDisplay.text = null;
+        speechbubble1.SetActive(false);
     }
 
 }
