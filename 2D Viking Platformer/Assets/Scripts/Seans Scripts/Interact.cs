@@ -129,7 +129,7 @@ public class Interact : MonoBehaviour
                     RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
                     if(grabRay.collider != null)
                     {
-                        if (grabRay.collider.tag == "Box" || grabRay.collider.tag == "Player" || grabRay.collider.gameObject.layer == 15) // layer 15 throwable
+                        if (grabRay.collider.tag == "Box" || grabRay.collider.tag == "Player" || grabRay.collider.gameObject.layer == 15 || grabRay.collider.gameObject.layer == 21) // layer 15 throwable
                         {
                             RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
                             if (placeCheck.collider == null)
@@ -316,7 +316,7 @@ public class Interact : MonoBehaviour
             Debug.Log("throwing player");
             irb.simulated = true;
         }
-        else if (interactive.layer == 15)
+        else if (interactive.layer == 15 || interactive.layer == 21)
         {
             irb.transform.SetParent(null);
             
@@ -452,7 +452,7 @@ public class Interact : MonoBehaviour
 
         }
         //Spear
-        else if (tag == "Spear")
+        else if (tag == "Spear" && grabcheck.collider.gameObject.GetComponent<Spear>() != null)
         {
             Spear spear = grabcheck.collider.gameObject.GetComponent<Spear>();
             pickedUpSpear = true;

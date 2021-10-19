@@ -25,10 +25,12 @@ public class Axe : MonoBehaviour
     {
         if (thrown)
         {
+            gameObject.layer = 15;
             anim.SetBool("thrown", true);
         }
         else
         {
+            gameObject.layer = 21;
             anim.SetBool("thrown", false);
         }
     }
@@ -74,7 +76,7 @@ public class Axe : MonoBehaviour
     
     public void TurnOff()
     {
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     
@@ -94,7 +96,7 @@ public class Axe : MonoBehaviour
 
     public void TurnOn()
     {
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 }
