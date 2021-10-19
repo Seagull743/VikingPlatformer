@@ -7,8 +7,6 @@ public class PlayerHealth : MonoBehaviour
 {
     private bool playerAlive = true;
     public GM gm;
-
-
    
     public void PlayerDamaged()
     {
@@ -23,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void ResetGame()
     {
-        gm.PlayerdeathCanvas();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
  //private void OnCollisionEnter2D(Collision2D collision)

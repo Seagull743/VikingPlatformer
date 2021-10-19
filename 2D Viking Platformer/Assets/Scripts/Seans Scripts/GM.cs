@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour
 {
-    public GameObject YouLoseCanvas;
 
     public string nextLevel = "Level 2";
     public int levelToUnlock = 2;
@@ -15,7 +14,7 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        YouLoseCanvas.SetActive(false);
+   
  
     }
 
@@ -27,14 +26,6 @@ public class GM : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-    }
-
-
-
-    public void PlayerdeathCanvas()
-    {
-        YouLoseCanvas.SetActive(true);
-        Time.timeScale = 0f;
     }
 
     public void Level01()
