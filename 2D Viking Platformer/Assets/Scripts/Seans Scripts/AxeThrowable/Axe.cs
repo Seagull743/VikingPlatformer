@@ -19,7 +19,6 @@ public class Axe : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        blade = GetComponentInChildren<Blade>();
     }
 
     private void Update()
@@ -60,7 +59,8 @@ public class Axe : MonoBehaviour
         }
         else if (collision.gameObject.tag != "Enemy" && thrown)
         {
-            Invoke("ThrownToggle", 0.5f);
+            thrown = false;
+            //Invoke("ThrownToggle", 0.5f);
         }
     }
 
