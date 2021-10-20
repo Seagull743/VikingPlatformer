@@ -19,19 +19,21 @@ public class Blade : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<MeleeDude>() != null)
             {
+                axe.HitEnemy();
                 collision.gameObject.GetComponent<MeleeDude>().EnemyDieing();
-                axe.AxeStop();
             }
             else if (collision.gameObject.GetComponent<Archer>() != null)
             {
+                axe.HitEnemy();
                 collision.gameObject.GetComponent<Archer>().EnemyDieing();
-                axe.AxeStop();
             }
         }
-        else if (collision.gameObject.tag != "Enemy" && axe.thrown)
+        else if (collision.gameObject.tag != "Enemy" && axe.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box")
         {
+            axe.stopAnimation();
             axe.ThrownToggle();
         }
+
     }
 
 }

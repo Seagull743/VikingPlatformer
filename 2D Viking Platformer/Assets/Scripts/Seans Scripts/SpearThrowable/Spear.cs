@@ -9,6 +9,7 @@ public class Spear : MonoBehaviour
     private BoxCollider2D[] bc;
     private float turnspeed = 2f;
     private SpearEnd spearhead;
+    private bool spearfrozen = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,32 +18,32 @@ public class Spear : MonoBehaviour
         bc = GetComponents<BoxCollider2D>();
     }
 
-
-
     private void Update()
     {
-       // if (thrown)
-       // {
-       //     rb.isKinematic = false;
-        //    gameObject.layer = 15;
-       //     spearhead.gameObject.layer = 15;
-       // }
-       // else
-       // {
-       //     gameObject.layer = 21;
-       //     spearhead.gameObject.layer = 21;
-       // }
+       if (thrown && !spearfrozen)
+       {
+           rb.isKinematic = false;
+           gameObject.layer = 15;
+           spearhead.gameObject.layer = 15;
+       }
+       else 
+       {
+            if (!spearfrozen)
+            {
+                gameObject.layer = 21;
+                spearhead.gameObject.layer = 21;
+            }
+       }
             
         if (rb.velocity.x < 0 && thrown) // facingleft
         {
-            transform.Rotate(new Vector3(0f, 0f, 28f * Time.deltaTime));
+            transform.Rotate(new Vector3(0f, 0f, 22f * Time.deltaTime));
         }
         else if (rb.velocity.x > 0 && thrown) //facingRight
         {
-            transform.Rotate(new Vector3(0f, 0f, -28f * Time.deltaTime));      
+            transform.Rotate(new Vector3(0f, 0f, -22f * Time.deltaTime));      
         }
     }
-
 
  //private void OnCollisionEnter2D(Collision2D collision)
  //{
@@ -86,10 +87,9 @@ public class Spear : MonoBehaviour
         //}
    // }
 
-
     public void IceWallCollision()
     {
-        Debug.Log("Ice wall");
+        spearfrozen = true;
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;
         rb.freezeRotation = true;
@@ -108,7 +108,6 @@ public class Spear : MonoBehaviour
         rb.isKinematic = true;
         Invoke("KinematicToggle", 0.3f);
     }
-
 
     public void KinematicToggle()
     {

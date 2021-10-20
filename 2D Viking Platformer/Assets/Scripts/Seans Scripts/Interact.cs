@@ -207,11 +207,12 @@ public class Interact : MonoBehaviour
         else if (pickedUpAxe)
         {
             Axe axe = interactive.GetComponent<Axe>();
-
+            irb.freezeRotation = false;
             if (pc.facingLeft)
             { 
                 axe.transform.position = dropLocation.position;
                 irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 90)));
+                //irb.transform.localScale = new Vector3(1, 1, 1); // 1, -1, 1
                 axe.transform.localScale = Vector3.one;
             }
             else if (!pc.facingLeft)
@@ -225,7 +226,8 @@ public class Interact : MonoBehaviour
             axe.TurnOn();
         }
         else if (pickedUpSpear)
-        { 
+        {
+            irb.freezeRotation = false;
             if (pc.facingLeft)
             {
                 interactive.transform.position = dropLocation.position;
@@ -393,7 +395,6 @@ public class Interact : MonoBehaviour
             Invoke("ResetThrow", 0.2f);
         }
         //interactive.transform.parent = null;
-
         isHolding = false;
         isthrowing = false;
         Thrown = false;
@@ -442,7 +443,7 @@ public class Interact : MonoBehaviour
             grabcheck.collider.gameObject.GetComponent<Lever>().LeverOn();
         }
         //Axe
-        else if (tag == "Axe")
+        else if (tag == "Axe" && grabcheck.collider.gameObject.GetComponent<Axe>() != null)
         {
             Axe axe = grabcheck.collider.gameObject.GetComponent<Axe>();
             pickedUpAxe = true;
