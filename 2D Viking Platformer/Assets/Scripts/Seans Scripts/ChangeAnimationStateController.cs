@@ -31,6 +31,8 @@ public class ChangeAnimationStateController : MonoBehaviour
     private string PlayerSpearPutDown = "P1 Spear Putdown";
     private string PlayerMeadPickup = "P1 Mead Pickup";
     private string PlayerMeadPutDown = "P1 Mead Putdown";
+    private string PlayerHammerPutDown = "P1 Hammer Putdown";
+    private string PlayerHammerPickUp = "P1 Hammer Pickup";
     //Interactive animations
     private string PlayerPickup = "Player1 Box Pickup";
     private string PlayerHoldingIdle = "Player1 holdingIdle";
@@ -60,6 +62,13 @@ public class ChangeAnimationStateController : MonoBehaviour
     private string MeadThrow = "P1 Mead Throw";
     private string MeadThrowAction = "P1 Mead Throw Action";
 
+    //Hammer Animations
+    private string HammerIdle = "P1 Hammer Idle";
+    private string HammerJump = "P1 Hammer Jump";
+    private string HammerRun = "P1 Hammer Run";
+    private string HammerThrow = "P1 Hammer Throw";
+    private string HammerThrowAction = "P1 Hammer Throw Action";
+
     //isGrounded && canJump
 
     private PlayerController PC;
@@ -79,6 +88,7 @@ public class ChangeAnimationStateController : MonoBehaviour
     [SerializeField] private bool pickedupAxe;
     [SerializeField] private bool pickedUpSpear;
     [SerializeField] private bool pickedUpMead;
+    [SerializeField] private bool pickedUpHammer;
 
     private void Awake()
     {
@@ -117,6 +127,13 @@ public class ChangeAnimationStateController : MonoBehaviour
                 PlayerSpearPutDown = "P1 Spear Putdown";
                 PlayerMeadPickup = "P1 Mead Pickup";
                 PlayerMeadPutDown = "P1 Mead Putdown";
+                HammerIdle = "P1 Hammer Idle";
+                HammerJump = "P1 Hammer Jump";
+                HammerRun = "P1 Hammer Run";
+                HammerThrow = "P1 Hammer Throw";
+                HammerThrowAction = "P1 Hammer Throw Action";
+                PlayerHammerPutDown = "P1 Hammer Putdown";
+                PlayerHammerPickUp = "P1 Hammer Pickup";
                 break;
             case Players.P2:
                 PlayerIdle = "Player 2 Idle";
@@ -151,6 +168,13 @@ public class ChangeAnimationStateController : MonoBehaviour
                 PlayerSpearPutDown = "P2 Spear Putdown";
                 PlayerMeadPickup = "P2 Mead Pickup";
                 PlayerMeadPutDown = "P2 Mead Putdown";
+                HammerIdle = "P2 Hammer Idle";
+                HammerJump = "P2 Hammer Jump";
+                HammerRun = "P2 Hammer Run";
+                HammerThrow = "P2 Hammer Throw";
+                HammerThrowAction = "P2 Hammer Throw Action";
+                PlayerHammerPutDown = "P2 Hammer Putdown";
+                PlayerHammerPickUp = "P2 Hammer Pickup";
                 break;
         }
     }
@@ -181,6 +205,7 @@ public class ChangeAnimationStateController : MonoBehaviour
         pickedupAxe = Interact.pickedUpAxe;
         pickedUpSpear = Interact.pickedUpSpear;
         pickedUpMead = Interact.pickedUpMead;
+        pickedUpHammer = Interact.pickedUpHammer;
 
         if (!isholding)
         {
@@ -264,6 +289,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(MeadJump);
         }
+        else if (pickedUpHammer)
+        {
+            ChangeAnimationState(HammerJump);
+        }
         else
         {
             ChangeAnimationState(PlayerJump);
@@ -288,6 +317,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         else if (pickedUpMead)
         {
             ChangeAnimationState(MeadIdle);
+        }
+        else if (pickedUpHammer)
+        {
+            ChangeAnimationState(HammerIdle);
         }
         else
         {
@@ -315,6 +348,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(MeadRun);
         }
+        else if (pickedUpHammer)
+        {
+            ChangeAnimationState(HammerRun);
+        }
         else
         {
             ChangeAnimationState(PlayerHoldingRun);
@@ -333,6 +370,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         else if (pickedUpMead)
         {
             ChangeAnimationState(MeadThrow);
+        }
+        else if (pickedUpHammer)
+        {
+            ChangeAnimationState(HammerThrow);
         }
         else
         {
@@ -355,6 +396,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(MeadThrowAction);
         }
+        else if (pickedUpHammer)
+        {
+            ChangeAnimationState(HammerThrowAction);
+        }
         else
         {
             ChangeAnimationState(PlayerThrowActionBoxPlayer);
@@ -375,6 +420,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         {
             ChangeAnimationState(PlayerMeadPickup);
         }
+        else if (pickedUpHammer)
+        {
+            ChangeAnimationState(PlayerHammerPickUp);
+        }
         else
         {
             ChangeAnimationState(PlayerPickup);
@@ -394,6 +443,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         else if (pickedUpMead)
         {
             ChangeAnimationState(PlayerMeadPutDown);
+        }
+        else if (pickedUpHammer)
+        {
+            ChangeAnimationState(PlayerHammerPutDown);
         }
         else
         {

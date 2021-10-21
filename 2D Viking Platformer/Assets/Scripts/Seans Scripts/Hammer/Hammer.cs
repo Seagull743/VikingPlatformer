@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Axe : MonoBehaviour
+public class Hammer : MonoBehaviour
 {
     public bool thrown = false;
     private Rigidbody2D rb;
     [SerializeField]
     private Animator anim;
- 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,9 +48,6 @@ public class Axe : MonoBehaviour
     public void ThrownToggle()
     {
         thrown = false;
-        rb.isKinematic = true;
-        rb.freezeRotation = true;
-        rb.velocity = Vector3.zero;
     }
 
 
@@ -64,26 +61,9 @@ public class Axe : MonoBehaviour
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
-
-    public void FreezeRotation()
-    {
-        rb.freezeRotation = true;
-    }
-
-    public void AxeStop()
-    {
-        thrown = false;
-        rb.velocity = Vector3.zero;
-        rb.freezeRotation = true;
-        rb.isKinematic = true;
-        Invoke("KinematicToggle", 0.3f);
-    }
-
     public void TurnOn()
     {
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 }
-
-

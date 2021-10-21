@@ -71,6 +71,8 @@ public class Interact : MonoBehaviour
     public bool pickedUpSpear = false;
     //[HideInInspector]
     public bool pickedUpMead = false;
+    //[HideInspector]
+    public bool pickedUpHammer = false;
 
 
     public bool thrownLeft = false;
@@ -262,6 +264,24 @@ public class Interact : MonoBehaviour
             interactive.GetComponent<MeadPowerUp>().enabled = false;
             interactive.GetComponent<MeadPowerUp>().TurnOn();
         }
+        else if(interactive.tag == "Hammer")
+        {
+            if (pc.facingLeft)
+            {
+                interactive.transform.position = dropLocation.position;
+                irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, 180)));
+                interactive.transform.localScale = Vector3.one;
+            }
+            else if (!pc.facingLeft)
+            {
+                interactive.transform.position = dropLocation.position;
+                irb.SetRotation(Quaternion.Euler(new Vector3(0, 0, -180)));
+                interactive.transform.localScale = Vector3.one;
+            }
+            Invoke("DropItems", 0.2f);
+            interactive.GetComponent<Hammer>().enabled = false;
+            interactive.GetComponent<Hammer>().TurnOn();
+        }
         else if(interactive.tag == "Box")
         {
             interactive.transform.position = dropLocation.position;
@@ -380,6 +400,25 @@ public class Interact : MonoBehaviour
                 interactive.GetComponent<MeadPowerUp>().thrown = true;
                 pickedUpMead = false;
             }
+            else if (pickedUpHammer)
+            {
+                if (pc.facingLeft)
+                {
+                    irb.transform.localScale = new Vector3(-1, 1, 1);
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 60));
+                }
+                else if (!pc.facingLeft)
+                {
+                    interactive.transform.localScale = Vector3.one;
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -60));
+                }
+                interactive.GetComponent<Hammer>().enabled = true;
+                interactive.GetComponent<Hammer>().TurnOn();
+                interactive.GetComponent<Hammer>().thrown = true;
+                pickedUpHammer = false;
+                irb.simulated = true;
+                irb.isKinematic = false;
+            }
             irb.simulated = true;
             irb.isKinematic = false;
             irb.velocity = new Vector2(transform.localScale.x, 0.1f) * throwforce;
@@ -469,6 +508,14 @@ public class Interact : MonoBehaviour
             isHolding = true;
             mug.TurnOff();
             mug.enabled = false;
+        }
+        else if(tag == "Hammer" && grabcheck.collider.gameObject.GetComponent<Hammer>() != null)
+        {
+            Hammer hammer = grabcheck.collider.gameObject.GetComponent<Hammer>();
+            pickedUpHammer = true;
+            isHolding = true;
+            hammer.TurnOff();
+            hammer.enabled = false;
         }
     }
 
