@@ -29,6 +29,7 @@ public class HammerEnd : MonoBehaviour
         else if(collision.gameObject.tag == "IceWallHammer" && hammer.thrown)
         {
             collision.gameObject.GetComponent<BreakIceWallHammer>().IceBreak();
+            hammer.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             hammer.stopAnimation();
             hammer.ThrownToggle();
         }

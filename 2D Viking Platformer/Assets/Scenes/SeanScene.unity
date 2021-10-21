@@ -1468,67 +1468,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 88.403}
---- !u!1001 &1077520792
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175840, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175845, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_Name
-      value: Ice wall Hammer
-      objectReference: {fileID: 0}
-    - target: {fileID: 5515446393419175845, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
 --- !u!1001 &1134490674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2267,29 +2206,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0121347, y: 0.19811146}
   m_EdgeRadius: 0
---- !u!1 &1533331118 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5515446393419175845, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-  m_PrefabInstance: {fileID: 1077520792}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1533331120 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5515446393419175842, guid: 4a645ae17632a5e48bce3548e10b462a, type: 3}
-  m_PrefabInstance: {fileID: 1077520792}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1533331123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533331118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd2853fc91a8524a89f5145f68fa8fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1533331120}
 --- !u!1 &1563742413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,63 +2689,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!1001 &2096176218
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 213070516513719837, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_Name
-      value: Ice wall spear
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.9206454
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 936089594678416227, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5e3ad31802596794396cac73334b86bf, type: 3}
 --- !u!1 &2125205564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3346,6 +3205,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2062497924458415264
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9206454
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180750598855527321, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2192000050761752295, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
+      propertyPath: m_Name
+      value: Ice wall spear
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 817eccc59680f4246978f8bd3b8c23ae, type: 3}
 --- !u!1001 &2349015014461398365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3700,6 +3616,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ad8d807feeb5d408ae6713dbe46fff, type: 3}
+--- !u!1001 &3407852802080570984
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932240, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188287429379932245, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
+      propertyPath: m_Name
+      value: Ice wall Hammer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9d1b09809720dd4a804d6625611dd1d, type: 3}
 --- !u!1001 &3430710722668734072
 PrefabInstance:
   m_ObjectHideFlags: 0
