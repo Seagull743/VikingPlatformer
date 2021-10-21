@@ -29,27 +29,18 @@ public class Hammer : MonoBehaviour
         }
     }
 
-    public void KinematicToggle()
-    {
-        rb.drag = 0;
-        rb.isKinematic = false;
-        rb.freezeRotation = false;
-    }
 
     public void HitEnemy()
     {
         thrown = false;
         rb.velocity = Vector3.zero;
         rb.freezeRotation = true;
-        rb.isKinematic = true;
-        Invoke("KinematicToggle", 0.3f);
     }
 
     public void ThrownToggle()
     {
         thrown = false;
     }
-
 
     public void stopAnimation()
     {

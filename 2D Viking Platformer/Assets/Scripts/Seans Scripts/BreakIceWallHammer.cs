@@ -12,4 +12,15 @@ public class BreakIceWallHammer : MonoBehaviour
     {
         anim.SetTrigger("broken");
     }
+
+    public void DestroyCollider()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
+
 }
