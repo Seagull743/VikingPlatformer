@@ -7,11 +7,6 @@ public class Axe : MonoBehaviour
     
     public bool thrown = false;
     private Rigidbody2D rb;
-
-    [HideInInspector]
-    public bool rotatingL = false;
-
-    private Blade blade;
     [SerializeField]
     private Animator anim;
  
@@ -36,35 +31,35 @@ public class Axe : MonoBehaviour
     }
 
 
-  //private void OnCollisionEnter2D(Collision2D collision)
-  //{
-  //    if (collision.gameObject.tag == "Enemy" && thrown)
-  //    {
-  //        if (collision.gameObject.GetComponent<MeleeDude>() != null)
-  //        {
-  //            collision.gameObject.GetComponent<MeleeDude>().EnemyDieing();
-  //            thrown = false;
-  //            rb.velocity = Vector3.zero;
-  //            rb.freezeRotation = true;
-  //            rb.isKinematic = true;
-  //            Invoke("KinematicToggle", 0.3f);
-  //        }
-  //        else if (collision.gameObject.GetComponent<Archer>() != null)
-  //        {
-  //            collision.gameObject.GetComponent<Archer>().EnemyDieing();
-  //            thrown = false;
-  //            rb.velocity = Vector3.zero;
-  //            rb.freezeRotation = true;
-  //            rb.isKinematic = true;
-  //            Invoke("KinematicToggle", 0.3f);
-  //        }
-  //    }
-  //    else if (collision.gameObject.tag != "Enemy" && thrown)
-  //    {
-  //        thrown = false;
-  //        //Invoke("ThrownToggle", 0.5f);
-  //    }
-  //}
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Enemy" && thrown)
+    //    {
+    //        if (collision.gameObject.GetComponent<MeleeDude>() != null)
+    //        {
+    //            collision.gameObject.GetComponent<MeleeDude>().EnemyDieing();
+    //            thrown = false;
+    //            rb.velocity = Vector3.zero;
+    //            rb.freezeRotation = true;
+    //            rb.isKinematic = true;
+    //            Invoke("KinematicToggle", 0.3f);
+    //        }
+    //        else if (collision.gameObject.GetComponent<Archer>() != null)
+    //        {
+    //            collision.gameObject.GetComponent<Archer>().EnemyDieing();
+    //            thrown = false;
+    //            rb.velocity = Vector3.zero;
+    //            rb.freezeRotation = true;
+    //            rb.isKinematic = true;
+    //            Invoke("KinematicToggle", 0.3f);
+    //        }
+    //    }
+    //    else if (collision.gameObject.tag != "Enemy" && thrown)
+    //    {
+    //        thrown = false;
+    //        //Invoke("ThrownToggle", 0.5f);
+    //    }
+    //}
 
     public void KinematicToggle()
     {
