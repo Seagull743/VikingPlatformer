@@ -23,6 +23,7 @@ public class HammerEnd : MonoBehaviour
             }
             else if (collision.gameObject.GetComponent<Archer>() != null)
             {
+                //Debug.Log()
                 collision.gameObject.GetComponent<Archer>().EnemyDieing();
             }
         }
