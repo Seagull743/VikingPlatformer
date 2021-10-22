@@ -264,7 +264,7 @@ public class Interact : MonoBehaviour
             interactive.GetComponent<MeadPowerUp>().enabled = false;
             interactive.GetComponent<MeadPowerUp>().TurnOn();
         }
-        else if(interactive.tag == "Hammer")
+        else if(pickedUpHammer)
         {
             if (pc.facingLeft)
             {
@@ -548,6 +548,7 @@ public class Interact : MonoBehaviour
         pickedUpAxe = false;
         pickedUpMead = false;
         pickedUpSpear = false;
+        pickedUpHammer = false;
     }
 
 }

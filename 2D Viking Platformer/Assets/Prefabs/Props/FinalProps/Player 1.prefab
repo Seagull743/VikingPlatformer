@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8202259647125923553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.362, y: -0.43, z: 0}
+  m_LocalPosition: {x: 0.35, y: -0.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8202259648194624552}
@@ -174,7 +174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8202259647686751088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.579, y: -0.413, z: 0}
+  m_LocalPosition: {x: 0.564, y: -0.413, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8202259648194624552}
@@ -452,6 +452,7 @@ MonoBehaviour:
   pickedupAxe: 0
   pickedUpSpear: 0
   pickedUpMead: 0
+  pickedUpHammer: 0
 --- !u!114 &1902763935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +519,7 @@ MonoBehaviour:
   pickedUpAxe: 0
   pickedUpSpear: 0
   pickedUpMead: 0
+  pickedUpHammer: 0
   thrownLeft: 0
   thrownRight: 0
 --- !u!1 &8202259648423200215

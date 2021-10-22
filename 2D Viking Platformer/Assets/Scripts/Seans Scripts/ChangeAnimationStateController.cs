@@ -273,8 +273,6 @@ public class ChangeAnimationStateController : MonoBehaviour
         }
     }
 
-
-
     public void Jump()
     {
         if (pickedupAxe)
