@@ -78,6 +78,7 @@ public class Archer : MonoBehaviour
     public void Stunned()
     {
         SkeletonRange = 0;
+        fired = true;
         anim.enabled = false;
         Invoke("UnStun", 8f);
     }
