@@ -11,10 +11,12 @@ public class Archer : MonoBehaviour
     private BoxCollider2D SkeleCollider;
     [SerializeField]
     private float SkeletonRange = 3.5f;
+    private float NormalRange;
     [SerializeField]
     private LayerMask Camera;
     void Start()
     {
+        NormalRange = SkeletonRange;
         anim = GetComponent<Animator>();
         SkeleCollider = GetComponent<BoxCollider2D>();
     }
@@ -71,5 +73,19 @@ public class Archer : MonoBehaviour
     private void KillEnemy()
     {
         Destroy(gameObject);
+    }
+
+    public void Stunned()
+    {
+        SkeletonRange = 0;
+        fired = true;
+        anim.enabled = false;
+        Invoke("UnStun", 8f);
+    }
+
+    public void UnStun()
+    {
+        SkeletonRange = NormalRange;
+        anim.enabled = true;
     }
 }
