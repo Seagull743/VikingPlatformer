@@ -1699,6 +1699,10 @@ PrefabInstance:
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 80183
       objectReference: {fileID: 0}
+    - target: {fileID: 1356103563934264779, guid: ce32246ca76dbaf4cb04c6a9b7f5c0d2, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce32246ca76dbaf4cb04c6a9b7f5c0d2, type: 3}
 --- !u!114 &997442614 stripped
@@ -5262,6 +5266,10 @@ PrefabInstance:
     - target: {fileID: 1356103563934264779, guid: ce32246ca76dbaf4cb04c6a9b7f5c0d2, type: 3}
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 80183
+      objectReference: {fileID: 0}
+    - target: {fileID: 1356103563934264779, guid: ce32246ca76dbaf4cb04c6a9b7f5c0d2, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce32246ca76dbaf4cb04c6a9b7f5c0d2, type: 3}
