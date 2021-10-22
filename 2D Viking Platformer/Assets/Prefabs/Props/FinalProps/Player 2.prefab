@@ -216,7 +216,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1b20f93b21c584949b340c0a3ec61750, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -332,7 +332,7 @@ MonoBehaviour:
   lm:
     serializedVersion: 2
     m_Bits: 256
-  iceSpeed: 0.1
+  iceSpeed: 0.005
   facingLeft: 0
 --- !u!114 &7671770985688816956
 MonoBehaviour:
