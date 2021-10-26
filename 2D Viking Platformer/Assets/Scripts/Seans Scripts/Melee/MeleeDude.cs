@@ -9,6 +9,7 @@ public class MeleeDude : MonoBehaviour
     private float attackDistance;
     [SerializeField]
     private float moveSpeed;
+    private float SetMoveSpeed;
     [SerializeField]
     private float attackTimer;
     [SerializeField]
@@ -44,13 +45,23 @@ public class MeleeDude : MonoBehaviour
     public AxeHitBox AxeBox;
     private GameObject player;
     private bool hit;
-
+    [SerializeField]
+    private GameObject stunEffect;
+    
+    
     private void Awake()
     {
         SelectTarget();
         intTimer = attackTimer;
         isGrounded = Physics2D.OverlapCircle(ground.position, groundCheckRadius, groundLayer);
     }
+
+    private void Start()
+    {
+        SetMoveSpeed = moveSpeed;
+        stunEffect.SetActive(false);
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -192,6 +203,24 @@ public class MeleeDude : MonoBehaviour
             enemyBody.enabled = false;
         }
     }
+
+    public void EnemyStun()
+    {
+        stunEffect.SetActive(true);
+        cooling = true;
+        anim.enabled = false;
+        moveSpeed = 0;
+        Invoke("EnemyUnStun", 6f);
+    }
+
+
+    private void EnemyUnStun()
+    {
+        stunEffect.SetActive(false);
+        anim.enabled = true;
+        moveSpeed = SetMoveSpeed;
+    }
+
 
     private void TriggerCooling()
     {

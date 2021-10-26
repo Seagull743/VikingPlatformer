@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 5057696875838966794}
   - component: {fileID: 5540892616243529818}
   - component: {fileID: 1874924450565592539}
+  - component: {fileID: 1857806500257248231}
   m_Layer: 15
   m_Name: Blade
   m_TagString: Axe
@@ -147,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005807519, y: -0.026421547}
+  m_Offset: {x: -0.03051661, y: -0.026298925}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -158,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.121123075, y: 0.19840813}
+  m_Size: {x: 0.17054123, y: 0.1981628}
   m_EdgeRadius: 0
 --- !u!114 &1874924450565592539
 MonoBehaviour:
@@ -172,6 +173,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bab31a3ab00c14f875309e58d18985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1857806500257248231
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6103320837002586728}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.09954926, y: -0.26291966}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.03876687, y: 0.28700733}
+  m_EdgeRadius: 0
 --- !u!1 &7774665763347249756
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrown: 0
-  rotatingL: 0
   anim: {fileID: 1783072146265580265}
 --- !u!61 &2307670203618098575
 BoxCollider2D:

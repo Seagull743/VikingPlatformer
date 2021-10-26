@@ -14,14 +14,16 @@ public class Archer : MonoBehaviour
     private float NormalRange;
     [SerializeField]
     private LayerMask Camera;
+    [SerializeField]
+    private GameObject StunPartical;
     void Start()
     {
+        StunPartical.SetActive(false);
         NormalRange = SkeletonRange;
         anim = GetComponent<Animator>();
         SkeleCollider = GetComponent<BoxCollider2D>();
     }
 
-    
     void Update()
     {
         RaycastHit2D Vision = Physics2D.Raycast(arrowInstantiate.position, Vector2.right * transform.localScale, SkeletonRange, ~Camera);
@@ -78,13 +80,16 @@ public class Archer : MonoBehaviour
     public void Stunned()
     {
         SkeletonRange = 0;
-        fired = true;
+        StunPartical.SetActive(true);
+        //fired = false;
+        anim.SetBool("seen", false);
         anim.enabled = false;
         Invoke("UnStun", 8f);
     }
 
     public void UnStun()
     {
+        StunPartical.SetActive(false);
         SkeletonRange = NormalRange;
         anim.enabled = true;
     }

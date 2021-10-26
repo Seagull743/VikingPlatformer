@@ -1693,11 +1693,6 @@ PrefabInstance:
       objectReference: {fileID: 1593855288}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 999f7440db8b1af40afeb1e56af452a1, type: 3}
---- !u!95 &1214373778 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3991276729777753443, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
-  m_PrefabInstance: {fileID: 3551697536415211364}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1238621744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1705,34 +1700,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2675058751911603313, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.568
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675058751911603313, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.117
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675058752792212729, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.13495958
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675058752792212729, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
-      propertyPath: m_Size.y
-      value: 1.3366616
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675058752850461836, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.11306381
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675058752850461836, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.18519866
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675058752850461836, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
-      propertyPath: m_Size.y
-      value: 0.6296027
-      objectReference: {fileID: 0}
     - target: {fileID: 2675058753114360454, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.16
@@ -1789,10 +1756,6 @@ PrefabInstance:
       propertyPath: waypoint2
       value: 
       objectReference: {fileID: 495171720}
-    - target: {fileID: 2675058753114360459, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
-      propertyPath: attackTimer
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14d128af8728435409a9ee4b3dc2ae8e, type: 3}
 --- !u!1 &1251903809
@@ -2126,10 +2089,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1783072146265580265, guid: 8a4fc66daff9be0449fac528b8329a18, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6112767098921682588, guid: 8a4fc66daff9be0449fac528b8329a18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.813
@@ -2619,17 +2578,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1592576061692366472, guid: 3b1e680409a25e34ea8d706a513549fe, type: 3}
-      propertyPath: SkeletonRange
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1592576061692366475, guid: 3b1e680409a25e34ea8d706a513549fe, type: 3}
       propertyPath: m_Name
       value: Skeleton
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592576061692366475, guid: 3b1e680409a25e34ea8d706a513549fe, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1e680409a25e34ea8d706a513549fe, type: 3}
@@ -3850,34 +3801,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795612860821072595, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.00045764446
+    - target: {fileID: 2889496040958453176, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795612860821072595, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
-      propertyPath: m_Size.x
-      value: 0.20450902
+    - target: {fileID: 2889496040958453176, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795612860821072595, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.0039343834
+    - target: {fileID: 2889496040958453176, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795612860821072595, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
-      propertyPath: m_Size.y
-      value: 0.15473342
-      objectReference: {fileID: 0}
-    - target: {fileID: 3991276729777753443, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 2889496040958453176, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
+      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3991276729777753443, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9ffbb12ae585ddf4885dc668c3b7f338, type: 2}
-    - target: {fileID: 5592189584377916922, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1214373778}
+    - target: {fileID: 2889496040958453176, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6137715946171963737, guid: ade86047f9daa3946b71e7d601b5c7d3, type: 3}
       propertyPath: m_Name
       value: Hammer

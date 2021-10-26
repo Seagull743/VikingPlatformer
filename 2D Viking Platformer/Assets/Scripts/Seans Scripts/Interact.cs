@@ -90,7 +90,16 @@ public class Interact : MonoBehaviour
     
     // Update is called once per frame
     void Update()
-    {     
+    {
+        //CoolDown Interact
+
+        if (Input.GetKeyDown(interact))
+        {
+           // if()
+        }
+        
+        
+        
         PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
         if (Input.GetKey(interact))
         {
@@ -405,12 +414,12 @@ public class Interact : MonoBehaviour
                 if (pc.facingLeft)
                 {
                     irb.transform.localScale = new Vector3(-1, 1, 1);
-                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 60));
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 159));
                 }
                 else if (!pc.facingLeft)
                 {
                     interactive.transform.localScale = Vector3.one;
-                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -60));
+                    irb.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 159));
                 }
                 interactive.GetComponent<Hammer>().enabled = true;
                 interactive.GetComponent<Hammer>().TurnOn();
