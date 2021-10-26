@@ -9,6 +9,7 @@ public class GM : MonoBehaviour
     public string nextLevel = "Level 2";
     public int levelToUnlock = 2;
 
+    public PlayerController[] players;
     public SceneFader sceneFader;
 
     // Start is called before the first frame update
@@ -36,5 +37,19 @@ public class GM : MonoBehaviour
         sceneFader.FadeTo(nextLevel);
     }
 
+    public void PlayerMovementOff()
+    {
+        foreach(PlayerController pc in players)
+        {
+            pc.GetComponent<PlayerController>().enabled = false;
+        }
+    }
 
+    public void PlayerMovementOn()
+    {
+        foreach (PlayerController pc in players)
+        {
+            pc.GetComponent<PlayerController>().enabled = true;
+        }
+    }
 }

@@ -8,6 +8,8 @@ public class SceneLoader : MonoBehaviour
 {
     public string levelToLoad = "Level 1";
 
+    public GM gameManager;
+    
     public SceneFader sceneFader;
     public void PlayGame()
     {
@@ -31,6 +33,7 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;
+        gameManager.PlayerMovementOn();
     }
 
     public void RestartGame()

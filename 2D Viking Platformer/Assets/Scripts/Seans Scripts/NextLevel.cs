@@ -59,6 +59,7 @@ public class NextLevel : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         youWonCanvas.SetActive(true);
+        gameManager.PlayerMovementOff();
         gameManager.Level01();
         Invoke("LoadScene", 2f);
         Time.timeScale = 0f;
