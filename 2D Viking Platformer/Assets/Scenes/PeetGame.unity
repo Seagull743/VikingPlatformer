@@ -646,34 +646,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 986867038283254522, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 986867038283254522, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 986867038283254522, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 986867038283254522, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 967105271}
-    - target: {fileID: 986867038283254522, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneLoader, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 986867038283254522, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 986867038283254522, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 986867038749136817, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -762,24 +734,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: YouWinCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 986867038749136821, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 986867038749136823, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 986867038749136823, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 986867038749136823, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
+    - target: {fileID: 2724640522800881918, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 315508207}
+    - target: {fileID: 2724640522800881918, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 877649840}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
+--- !u!114 &197316558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7035153014594533192, guid: 59a49dd6b18d2d84683c5069afdecc37, type: 3}
+  m_PrefabInstance: {fileID: 366685406}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c560783e8f389a4a8a6d157722ede07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &273440198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8202259648194624552, guid: 999f7440db8b1af40afeb1e56af452a1, type: 3}
@@ -1888,17 +1863,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6894281642205524859, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
-      propertyPath: YouLoseCanvas
+      propertyPath: players.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1923735503}
+    - target: {fileID: 6894281642205524859, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
+      propertyPath: players.Array.data[1]
+      value: 
+      objectReference: {fileID: 197316558}
     - target: {fileID: 6894281642205524859, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: sceneFader
       value: 
       objectReference: {fileID: 877649840}
-    - target: {fileID: 6894281642205524859, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
-      propertyPath: nextLevel
-      value: Level 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
 --- !u!1 &862657949
@@ -2328,17 +2303,6 @@ PrefabInstance:
       objectReference: {fileID: 315508207}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 999f7440db8b1af40afeb1e56af452a1, type: 3}
---- !u!114 &967105271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2724640522800881918, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
-  m_PrefabInstance: {fileID: 169724097}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af52d60bb58ed784ba1241b9315a5f31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1036649075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,7 +2791,7 @@ Transform:
   - {fileID: 832771985}
   - {fileID: 1694322136}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386858245
 GameObject:
@@ -3607,10 +3571,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4886345844258822532, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4625402492263699230, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 315508207}
+    - target: {fileID: 4625402492263699230, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 877649840}
+    - target: {fileID: 4886345846019378273, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 315508207}
     - target: {fileID: 4886345846019378278, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3698,14 +3670,6 @@ PrefabInstance:
     - target: {fileID: 4886345846019378298, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
       propertyPath: m_Name
       value: PauseMenuCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4886345846019378298, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6418667579611564402, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20d1030cce99d9c40afbe7d56880e9d5, type: 3}
@@ -4863,6 +4827,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923735503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8202259648194624554, guid: 999f7440db8b1af40afeb1e56af452a1, type: 3}
+  m_PrefabInstance: {fileID: 941718164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c560783e8f389a4a8a6d157722ede07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1988310340
 GameObject:
   m_ObjectHideFlags: 0
