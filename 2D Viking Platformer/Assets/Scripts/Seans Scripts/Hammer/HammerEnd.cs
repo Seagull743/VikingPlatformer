@@ -17,13 +17,16 @@ public class HammerEnd : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && hammer.thrown)
         {
+            Debug.Log("Hit");
+            
             if (collision.gameObject.GetComponent<MeleeDude>() != null)
             {
    
             }
             else if (collision.gameObject.GetComponent<Archer>() != null)
             {
-                //Debug.Log()
+                Debug.Log("I hit Skeleton");
+                hammer.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 collision.gameObject.GetComponent<Archer>().EnemyDieing();
             }
         }
@@ -37,7 +40,7 @@ public class HammerEnd : MonoBehaviour
         else if (collision.gameObject.tag != "Enemy" && hammer.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box")
         {
             hammer.stopAnimation();
-            hammer.ThrownToggle();
+            //hammer.Invoke("ThrownToggle", 2.5f);
         }
 
     }
