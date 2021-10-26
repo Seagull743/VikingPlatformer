@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private bool touchingIce = false;
     [SerializeField]
-    private float iceSpeed = 0.1f; //0.0015 
+    private float iceSpeed = 0.001f; //0.001  //0.1 for build 
 
     public bool facingLeft;
 
