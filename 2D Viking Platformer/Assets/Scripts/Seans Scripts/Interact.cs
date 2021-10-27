@@ -81,8 +81,14 @@ public class Interact : MonoBehaviour
     private PlayerController pc;
 
 
+    [SerializeField]
+    private float interacttimer = 0.25f;
+    private float currenttimer;
+    public bool  Interactpressed = false;
+
     void Start()
     {
+        currenttimer = interacttimer;
         PowerCanvas.gameObject.SetActive(false);
         stateC = GetComponent<ChangeAnimationStateController>();
         pc = GetComponent<PlayerController>();
@@ -91,17 +97,22 @@ public class Interact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //CoolDown Interact
 
-        if (Input.GetKeyDown(interact))
+        if (interacttimer > 0 && Interactpressed)
         {
-           // if()
+            interacttimer -= Time.deltaTime;
         }
-        
-        
-        
+
+        if(interacttimer <= 0 && Interactpressed)
+        {
+           Interactpressed = false;
+           interacttimer = currenttimer;
+         }
+
+
+
         PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
-        if (Input.GetKey(interact))
+        if (Input.GetKey(interact) && !Interactpressed)
         {
             helddown++;  
             //pressing key behavior
@@ -128,6 +139,7 @@ public class Interact : MonoBehaviour
         }
         else if(!Input.GetKey(interact) && helddown > 0)
         {
+            Interactpressed = true;  
             if(helddown == 1)
             {
                 PickingUpItem();

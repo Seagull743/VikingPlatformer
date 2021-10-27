@@ -210,7 +210,7 @@ public class MeleeDude : MonoBehaviour
         cooling = true;
         anim.enabled = false;
         moveSpeed = 0;
-        Invoke("EnemyUnStun", 6f);
+        Invoke("EnemyUnStun", 8f);
     }
 
 
