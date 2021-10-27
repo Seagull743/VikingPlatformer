@@ -8,6 +8,8 @@ public class Hammer : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private GameObject itemHighlight;
 
     // Start is called before the first frame update
     void Start()
@@ -50,11 +52,13 @@ public class Hammer : MonoBehaviour
     public void TurnOff()
     {
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        itemHighlight.SetActive(false);
     }
 
     public void TurnOn()
     {
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        itemHighlight.SetActive(true);
     }
 }

@@ -10,6 +10,8 @@ public class Spear : MonoBehaviour
     private float turnspeed = 2f;
     private SpearEnd spearhead;
     private bool spearfrozen = false;
+    [SerializeField]
+    private GameObject itemhighlight;
     // Start is called before the first frame update
     void Start()
     {
@@ -119,6 +121,7 @@ public class Spear : MonoBehaviour
     public void TurnOff()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        itemhighlight.SetActive(false);
     }
 
     public void ThrownToggle()
@@ -133,5 +136,6 @@ public class Spear : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        itemhighlight.SetActive(true);
     }
 }
