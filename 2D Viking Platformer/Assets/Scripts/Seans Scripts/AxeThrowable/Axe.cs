@@ -8,6 +8,8 @@ public class Axe : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private GameObject itemHighlight;
  
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class Axe : MonoBehaviour
             gameObject.layer = 21;
             anim.SetBool("thrown", false);
         }
+        
     }
 
     public void KinematicToggle()
@@ -53,7 +56,6 @@ public class Axe : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-
     public void stopAnimation()
     {
         anim.SetBool("thrown", false);
@@ -62,6 +64,7 @@ public class Axe : MonoBehaviour
     public void TurnOff()
     {
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        itemHighlight.SetActive(false);
     }
 
 
@@ -83,6 +86,7 @@ public class Axe : MonoBehaviour
     {
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        itemHighlight.SetActive(true);
     }
 }
 
