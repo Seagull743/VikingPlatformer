@@ -17,13 +17,13 @@ public class ChangeAnimationStateController : MonoBehaviour
     private Animator anim;
     private string currentState;
     //Animation states;
-    private string PlayerIdle = "Player 1 Idle";
+    public string PlayerIdle = "Player 1 Idle";
     private string PlayerRun = "Player1 Run";
     private string PlayerTakeOff = "Player 1 Take off";
     private string PlayerJump = "Player 1 Jump";
     private string PlayerLanding = "Player1Landing";
-    
-    
+
+
     //Animation PickUps&Downs
     private string PlayerOneHandPickUp = "P1 One Hand Pickup";
     private string PlayerOneHandPutDown = "P1 One Hand Putdown";
@@ -89,6 +89,8 @@ public class ChangeAnimationStateController : MonoBehaviour
     [SerializeField] private bool pickedUpSpear;
     [SerializeField] private bool pickedUpMead;
     [SerializeField] private bool pickedUpHammer;
+    [SerializeField] private bool pickedUpPlayer;
+    [SerializeField] private bool pickedUpCrate;
 
     private void Awake()
     {
@@ -206,6 +208,9 @@ public class ChangeAnimationStateController : MonoBehaviour
         pickedUpSpear = Interact.pickedUpSpear;
         pickedUpMead = Interact.pickedUpMead;
         pickedUpHammer = Interact.pickedUpHammer;
+        pickedUpCrate = Interact.pickedUpCrate;
+        pickedUpPlayer = Interact.pickedUpPlayer;
+
 
         if (!isholding)
         {
@@ -230,7 +235,7 @@ public class ChangeAnimationStateController : MonoBehaviour
                 {
                     Jump();
                 }
-            }        
+            }
         }
         else if (isholding)
         {
@@ -238,7 +243,7 @@ public class ChangeAnimationStateController : MonoBehaviour
             {
                 Pickup();
             }
-            else if(pickuped)
+            else if (pickuped)
             {
                 if (isGrounded)
                 {
@@ -269,7 +274,7 @@ public class ChangeAnimationStateController : MonoBehaviour
                 {
                     Jump();
                 }
-            }       
+            }
         }
     }
 
@@ -290,6 +295,10 @@ public class ChangeAnimationStateController : MonoBehaviour
         else if (pickedUpHammer)
         {
             ChangeAnimationState(HammerJump);
+        }
+        else if (pickedUpPlayer || pickedUpCrate)
+        {
+            ChangeAnimationState(PlayerHoldingIdle);
         }
         else
         {

@@ -11,7 +11,6 @@ public class SpearEnd : MonoBehaviour
         spear = GetComponentInParent<Spear>();
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
  {
         if (collision.gameObject.tag == "Enemy" && spear.thrown)

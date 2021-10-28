@@ -73,14 +73,12 @@ public class Interact : MonoBehaviour
     public bool pickedUpMead = false;
     //[HideInspector]
     public bool pickedUpHammer = false;
-
-
+    public bool pickedUpCrate = false;
+    public bool pickedUpPlayer = false;
     public bool thrownLeft = false;
     public bool thrownRight = false;
 
     private PlayerController pc;
-
-
     [SerializeField]
     private float interacttimer = 0.25f;
     private float currenttimer;
@@ -98,6 +96,16 @@ public class Interact : MonoBehaviour
     void Update()
     {
 
+        if(isHolding && pickedUpCrate || isHolding && pickedUpPlayer)
+        {
+            pc.moveSpeed = 4;
+        }
+        else
+        {
+            pc.moveSpeed = 5;
+        }
+
+
         if (interacttimer > 0 && Interactpressed)
         {
             interacttimer -= Time.deltaTime;
@@ -108,8 +116,6 @@ public class Interact : MonoBehaviour
            Interactpressed = false;
            interacttimer = currenttimer;
          }
-
-
 
         PowerCanvas.gameObject.transform.position = this.gameObject.transform.position + Vector3.up * Offset;
         if (Input.GetKey(interact) && !Interactpressed)
@@ -226,6 +232,7 @@ public class Interact : MonoBehaviour
             interactive.GetComponent<PlayerController>().enabled = true;
             interactive.GetComponent<Animator>().enabled = true;
             interactive.GetComponent<Interact>().enabled = true;
+            pickedUpPlayer = false;
         }
         else if (pickedUpAxe)
         {
@@ -305,6 +312,7 @@ public class Interact : MonoBehaviour
         }
         else if(interactive.tag == "Box")
         {
+            pickedUpCrate = false;
             interactive.transform.position = dropLocation.position;
             interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
@@ -338,6 +346,7 @@ public class Interact : MonoBehaviour
             interactive.transform.position = holdLocation.position;
             irb.isKinematic = true;
         }
+        Invoke("CheckHolding", 0.2f);
     }
     private void Throw()
     {
@@ -356,7 +365,7 @@ public class Interact : MonoBehaviour
             interactive.GetComponent<Interact>().enabled = true;
             irb.velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
             interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            Debug.Log("throwing player");
+            pickedUpPlayer = false;
             irb.simulated = true;
         }
         else if (interactive.layer == 15 || interactive.layer == 21)
@@ -452,6 +461,7 @@ public class Interact : MonoBehaviour
             irb.simulated = true;
             irb.velocity = new Vector2(transform.localScale.x, 0.5f) * throwforce;
             interactive.transform.SetPositionAndRotation(holdLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            pickedUpCrate = false;
             Invoke("ResetThrow", 0.2f);
         }
         //interactive.transform.parent = null;
@@ -477,6 +487,28 @@ public class Interact : MonoBehaviour
         Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
     }
 
+    private void CheckHolding()
+    {
+        RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
+        if (grabRay.collider == null)
+        {
+            grabcheck = new RaycastHit2D();
+            isHolding = false;
+            pickedUpAxe = false;
+            pickedUpSpear = false;
+            pickedUpMead = false;
+            pickedUpHammer = false;
+            pickedUpCrate = false;
+            pickedUpPlayer = false;
+            pc.canJump = true;
+            Invoke("ResetThrow", 0.2f);
+        }
+        else if (grabRay.collider != null)
+        {
+            isHolding = true;
+        }
+    }
+
     public void PickingUpItem()
     {
         string tag = grabcheck.collider.tag;
@@ -485,15 +517,17 @@ public class Interact : MonoBehaviour
         {
             {
                 isHolding = true;
+                pickedUpCrate = true;
                 this.gameObject.GetComponent<PlayerController>().canJump = false;
             }
         }
         //player
         else if (tag == "Player")
         {
-            if (grabcheck.collider.gameObject.GetComponent<Interact>().isHolding == false)
+            if (grabcheck.collider.gameObject.GetComponent<Interact>().pickedUpCrate == false)
             {
                 isHolding = true;
+                pickedUpPlayer = true;
                 this.gameObject.GetComponent<PlayerController>().canJump = false;
             }
         }
