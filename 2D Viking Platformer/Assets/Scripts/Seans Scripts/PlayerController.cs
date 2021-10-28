@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool isRunning;
     [HideInInspector] public bool isJumping;
 
-
     [SerializeField]
     private GameObject PowerMeter;
 
@@ -70,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        collidlingLeft = CollisionLeft();
+       collidlingLeft = CollisionLeft();
         collidingRight = CollisionRight();
         collidingUp = CollisionTop();
     }

@@ -380,6 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 1
   anim: {fileID: 7035153014594533195}
+  PlayerIdle: Player 1 Idle
   isrunning: 0
   isGrounded: 0
   CanJump: 0
@@ -393,6 +394,8 @@ MonoBehaviour:
   pickedUpSpear: 0
   pickedUpMead: 0
   pickedUpHammer: 0
+  pickedUpPlayer: 0
+  pickedUpCrate: 0
 --- !u!114 &6439636469821028449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +415,7 @@ MonoBehaviour:
   playerHold: {fileID: 7035153015934262952}
   dropLocation: {fileID: 7035153016192137233}
   dropPlayer: {fileID: 714116865}
-  raydist: 0.3
+  raydist: 0.4
   interact: 305
   throwing: 0
   isHolding: 0
@@ -460,8 +463,12 @@ MonoBehaviour:
   pickedUpSpear: 0
   pickedUpMead: 0
   pickedUpHammer: 0
+  pickedUpCrate: 0
+  pickedUpPlayer: 0
   thrownLeft: 0
   thrownRight: 0
+  interacttimer: 0.4
+  Interactpressed: 0
 --- !u!1 &7035153014786120998
 GameObject:
   m_ObjectHideFlags: 0
