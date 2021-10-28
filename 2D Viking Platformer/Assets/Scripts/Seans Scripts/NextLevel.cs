@@ -11,6 +11,7 @@ public class NextLevel : MonoBehaviour
     private GameObject youWonCanvas;
     private bool loadscene;
     public GM gameManager;
+    public SceneLoader sceneLoader;
     void Start()
     {
         loadscene = false;
@@ -47,7 +48,17 @@ public class NextLevel : MonoBehaviour
         Player1 = false;
         Player2 = false;
     }
-
+    public void GameisEnd()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            Debug.Log("YOU WIN GAME");
+        }
+        else
+        {
+            sceneLoader.NextLevel();
+        }
+    }
     void LoadScene()
     {
         loadscene = true;
@@ -62,6 +73,7 @@ public class NextLevel : MonoBehaviour
         gameManager.PlayerMovementOff();
         gameManager.Level01();
         Invoke("LoadScene", 2f);
+        GameisEnd();
         Time.timeScale = 0f;
     }
 }
