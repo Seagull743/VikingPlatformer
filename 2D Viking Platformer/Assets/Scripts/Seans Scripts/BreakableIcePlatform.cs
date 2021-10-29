@@ -7,7 +7,7 @@ public class BreakableIcePlatform : MonoBehaviour
 
     private bool start = false;
     private bool broken = false;
-
+    public bool platformDestroyed;
     private Animator anim;
     [SerializeField]
     private GameObject IceCollider;
@@ -20,7 +20,6 @@ public class BreakableIcePlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if(start)
         {       
             anim.SetTrigger("broken");
