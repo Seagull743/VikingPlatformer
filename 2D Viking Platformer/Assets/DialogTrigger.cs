@@ -11,7 +11,7 @@ public class DialogTrigger : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            DialogCanvas.TypeStarter();
+            DialogCanvas.Interaction();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         } 
     }
