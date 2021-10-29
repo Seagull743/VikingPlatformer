@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    public string levelToLoad = "Level 1";
+    //public string levelToLoad = "Level 1";
 
     public GM gameManager;
     
     public SceneFader sceneFader;
     public void PlayGame()
     {
-        sceneFader.FadeTo(levelToLoad);
+        //sceneFader.FadeTo(levelToLoad);
 
     }
 
@@ -47,9 +47,5 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("LevelSelect");
     }
 
-    public void Level2()
-    {
-        SceneManager.LoadScene("Level 1");
-        Time.timeScale = 1f;
-    }
+
 }

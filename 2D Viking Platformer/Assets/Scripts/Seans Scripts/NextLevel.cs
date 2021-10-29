@@ -7,26 +7,29 @@ public class NextLevel : MonoBehaviour
 {
     private bool Player1 = false;
     private bool Player2 = false;
+    private bool doorReached = false;
+   
+    public int levelToUnlock;
+    [SerializeField] LevelNamesData levelNamesData;
+
+    public SceneFader sceneFader;
+   
     [SerializeField]
     private GameObject youWonCanvas;
-    private bool loadscene;
     public GM gameManager;
-    public SceneLoader sceneLoader;
+
+
     void Start()
     {
-        loadscene = false;
         youWonCanvas.SetActive(false);
     }
 
     private void Update()
     {
-        if (Player1 && Player2)
-        {
-            if (!loadscene)
-            {
-                StartCoroutine(Sceneloader());
-                
-            }
+        if (Player1 && Player2 && !doorReached)
+        {       
+            StartCoroutine(Sceneloader());
+            doorReached = true;
         }
     }
 
@@ -48,32 +51,21 @@ public class NextLevel : MonoBehaviour
         Player1 = false;
         Player2 = false;
     }
-    public void GameisEnd()
+    public void UnlockLevel(int _levelToUnlock)
     {
-        if (SceneManager.GetActiveScene().buildIndex == 4)
-        {
-            Debug.Log("YOU WIN GAME");
-        }
-        else
-        {
-            sceneLoader.NextLevel();
-        }
+        Debug.Log("LevelUnlock = " + _levelToUnlock);
+        PlayerPrefs.SetInt("levelReached", _levelToUnlock);
+        sceneFader.FadeTo(levelNamesData.levelNames[_levelToUnlock - 1]);
     }
-    void LoadScene()
-    {
-        loadscene = true;
-        
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //SceneManager.LoadScene("MainMenu");
-    }
+
+
     IEnumerator Sceneloader()
     {
         yield return new WaitForSeconds(2);
+        UnlockLevel(levelToUnlock);
         youWonCanvas.SetActive(true);
         gameManager.PlayerMovementOff();
-        gameManager.Level01();
-        Invoke("LoadScene", 2f);
-        GameisEnd();
+        Invoke("Level01", 2f);
         Time.timeScale = 0f;
     }
 }
