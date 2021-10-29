@@ -27,9 +27,6 @@ public class Interact : MonoBehaviour
     [SerializeField]
     private KeyCode throwing;
 
-  
-
-
     public bool isHolding = false;
     public bool isthrowing = false;
     public bool Thrown = false;
@@ -40,7 +37,6 @@ public class Interact : MonoBehaviour
     private float throwforce;
     public float maxThrowForce;
 
-    
     public int helddown = 0;
 
 
@@ -217,7 +213,7 @@ public class Interact : MonoBehaviour
         fill.color = gradient.Evaluate(PowerCanvas.normalizedValue);
     }
     
-    private void Drop()
+    public void Drop()
     {
         GameObject interactive = grabcheck.collider.gameObject;
         StartCoroutine(InteractStop());
@@ -341,7 +337,7 @@ public class Interact : MonoBehaviour
         }
         else
         {
-            Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
+            //Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), gameObject.GetComponent<BoxCollider2D>(), true);
             interactive.transform.parent = holdLocation;
             interactive.transform.position = holdLocation.position;
             irb.isKinematic = true;
@@ -484,7 +480,7 @@ public class Interact : MonoBehaviour
 
     private void ResetThrow()
     {
-        Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
+        //Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
     }
 
     private void CheckHolding()
@@ -501,7 +497,8 @@ public class Interact : MonoBehaviour
             pickedUpCrate = false;
             pickedUpPlayer = false;
             pc.canJump = true;
-            Invoke("ResetThrow", 0.2f);
+            //Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
+            ResetThrow();
         }
         else if (grabRay.collider != null)
         {

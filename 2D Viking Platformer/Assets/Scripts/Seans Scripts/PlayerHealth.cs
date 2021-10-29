@@ -5,23 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private bool playerAlive = true;
+    public bool playerAlive = true;
     public GM gm;
    
     public void PlayerDamaged()
     {
+        if (gameObject.GetComponent<Interact>().isHolding)
+        {
+            gameObject.GetComponent<Interact>().Drop();
+        }
         playerAlive = false;
         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0,10,0);
         this.gameObject.GetComponent<Interact>().enabled = false;
         this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         this.gameObject.GetComponent<PlayerController>().enabled = false;
-        Invoke("ResetGame", 2f);
+        Invoke("ResetGame", 2.2f);
     }
 
 
     private void ResetGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gm.SpawnPlayer();
+        this.gameObject.GetComponent<Interact>().enabled = true;
+        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        this.gameObject.GetComponent<PlayerController>().enabled = true;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
  //private void OnCollisionEnter2D(Collision2D collision)
