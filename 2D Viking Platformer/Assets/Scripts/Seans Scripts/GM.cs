@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class GM : MonoBehaviour
 {
 
-    public string nextLevel = "Level 2";
-    public int levelToUnlock = 2;
-
     public PlayerController[] players;
     public SceneFader sceneFader;
 
@@ -26,15 +23,8 @@ public class GM : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+            
         }
-    }
-
-    public void Level01()
-    {
-        Debug.Log("LevelUnlock");
-        PlayerPrefs.SetInt("levelReached", levelToUnlock);
-        sceneFader.FadeTo(nextLevel);
     }
 
     public void PlayerMovementOff()
