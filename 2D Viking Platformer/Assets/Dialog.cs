@@ -10,17 +10,32 @@ public class Dialog : MonoBehaviour
     [SerializeField]
     private GameObject speechbubble1;
     private int index;
+    [SerializeField]
+    private GameObject InteractText;
 
 
     private void Start()
     {
         speechbubble1.SetActive(false);
+        InteractText.SetActive(false);
     }
 
     public void TypeStarter()
     {
         StartCoroutine(Type());
         Invoke("DeleteText", 13);
+    }
+
+    public void Interaction()
+    {
+        StartCoroutine(InteractTextToggle());
+    }
+
+    IEnumerator InteractTextToggle()
+    {
+        InteractText.SetActive(true);
+        yield return new WaitForSeconds(4);
+        InteractText.SetActive(false);
     }
 
     IEnumerator Type()
