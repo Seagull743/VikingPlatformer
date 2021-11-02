@@ -19,13 +19,21 @@ public class PlayerHealth : MonoBehaviour
         this.gameObject.GetComponent<Interact>().enabled = false;
         this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         this.gameObject.GetComponent<PlayerController>().enabled = false;
-        Invoke("ResetGame", 2.2f);
+        Invoke("ResetGame", 2.5f);
     }
 
 
     private void ResetGame()
     {
-        gm.SpawnPlayer();
+        if(gameObject.name == "Player 1")
+        {
+            gm.SpawnPlayer1();
+        }
+
+        if(gameObject.name == "Player 2")
+        {
+            gm.SpawnPlayer2();
+        }
         this.gameObject.GetComponent<Interact>().enabled = true;
         this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         this.gameObject.GetComponent<PlayerController>().enabled = true;

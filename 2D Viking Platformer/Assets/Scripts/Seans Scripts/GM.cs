@@ -9,13 +9,18 @@ public class GM : MonoBehaviour
     public PlayerController[] players;
     public SceneFader sceneFader;
     [SerializeField]
-    private Transform spawnPoint;
+    private Transform spawnPoint1;
+    [SerializeField]
+    private Transform spawnPoint2;
 
     public PlayerHealth player1;
     public PlayerHealth player2;
 
-    [SerializeField]
-    private GameObject[] BreakablePlatform;
+
+    private void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,22 +31,25 @@ public class GM : MonoBehaviour
         }
     }
 
-    public void SpawnPlayer()
+    public void SpawnPlayer1()
     {
-        if (!player1.playerAlive || !player2.playerAlive)
+        if (!player1.playerAlive)
         {
             Rigidbody2D playerRb = player1.GetComponent<Rigidbody2D>();
-            playerRb.transform.position = spawnPoint.position;
+            playerRb.transform.position = spawnPoint1.position;
             player1.playerAlive = true;
         }
-       
-       // if (!player2.playerAlive)
-       // {
-         //   Rigidbody2D playerRb = player2.GetComponent<Rigidbody2D>();
-        //    playerRb.transform.position = spawnPoint.position;
-       //     player2.playerAlive = true;
-       // }
+        
+    }
 
+    public void SpawnPlayer2()
+    {
+        if (!player2.playerAlive)
+        {
+            Rigidbody2D playerRb = player2.GetComponent<Rigidbody2D>();
+            playerRb.transform.position = spawnPoint2.position;
+            player2.playerAlive = true;
+        }
     }
 
     public void PlayerMovementOff()
@@ -51,10 +59,6 @@ public class GM : MonoBehaviour
             pc.GetComponent<PlayerController>().enabled = false;
         }
     }
-
-
-
-
 
     public void PlayerMovementOn()
     {
