@@ -7,7 +7,7 @@ public class BreakableIcePlatform : MonoBehaviour
 
     private bool start = false;
     private bool broken = false;
-    public bool platformDestroyed;
+    public bool platformDestroyed = false;
     private Animator anim;
     [SerializeField]
     private GameObject IceCollider;
@@ -26,7 +26,6 @@ public class BreakableIcePlatform : MonoBehaviour
         }
     }
       
-
     void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Player")
@@ -56,6 +55,7 @@ public class BreakableIcePlatform : MonoBehaviour
 
     void BoxColliderbreak()
     {
+        platformDestroyed = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         IceCollider.GetComponent<BoxCollider2D>().enabled = false;
 
