@@ -17,6 +17,19 @@ public class Lever : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+
+    private void OnTriggerStay2D(Collider2D player)
+    {
+        if (player.tag == "Player")
+        {
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightControl))
+            {
+                LeverOn();
+            }
+        }
+    }
+
+
     public void LeverOn()
     {
         anim.SetBool("Pulled", true);

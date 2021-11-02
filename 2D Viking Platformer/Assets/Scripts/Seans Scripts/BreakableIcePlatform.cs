@@ -11,11 +11,14 @@ public class BreakableIcePlatform : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private GameObject IceCollider;
-   
-    void Start()
+
+
+    private void Awake()
     {
         anim = GetComponentInParent<Animator>();
+        anim.SetBool("broken", false);
     }
+
    
     // Update is called once per frame
     void Update()
@@ -70,6 +73,7 @@ public class BreakableIcePlatform : MonoBehaviour
     public void RespawnIce()
     {
         gameObject.SetActive(true);
+        anim.enabled = true;
         start = false;
         anim.SetBool("broken", false);
         broken = false;
