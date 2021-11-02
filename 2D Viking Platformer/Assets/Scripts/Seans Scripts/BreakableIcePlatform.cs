@@ -69,8 +69,8 @@ public class BreakableIcePlatform : MonoBehaviour
 
     public void RespawnIce()
     {
-        start = false;
         gameObject.SetActive(true);
+        start = false;
         anim.SetBool("broken", false);
         broken = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
