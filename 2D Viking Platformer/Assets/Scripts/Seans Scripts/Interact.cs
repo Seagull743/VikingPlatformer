@@ -529,10 +529,10 @@ public class Interact : MonoBehaviour
             }
         }
         //Lever
-        else if (tag == "Lever")
-        {
-            grabcheck.collider.gameObject.GetComponent<Lever>().LeverOn();
-        }
+        //else if (tag == "Lever")
+        //{
+          //  grabcheck.collider.gameObject.GetComponent<Lever>().LeverOn();
+        //}
         //Axe
         else if (tag == "Axe" && grabcheck.collider.gameObject.GetComponent<Axe>() != null)
         {

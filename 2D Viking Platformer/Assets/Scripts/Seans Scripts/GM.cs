@@ -16,7 +16,6 @@ public class GM : MonoBehaviour
     public PlayerHealth player1;
     public PlayerHealth player2;
 
-
     private void Start()
     {
         
@@ -51,6 +50,7 @@ public class GM : MonoBehaviour
             player2.playerAlive = true;
         }
     }
+
 
     public void PlayerMovementOff()
     {
