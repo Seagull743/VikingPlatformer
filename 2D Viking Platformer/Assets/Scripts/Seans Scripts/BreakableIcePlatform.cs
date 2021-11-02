@@ -22,7 +22,7 @@ public class BreakableIcePlatform : MonoBehaviour
     {
         if(start)
         {       
-            anim.SetTrigger("broken");
+            anim.SetBool("broken", true);
         }
     }
       
@@ -63,8 +63,18 @@ public class BreakableIcePlatform : MonoBehaviour
 
     void DestroyIce()
     {
-        Destroy(gameObject);
+        platformDestroyed = true;
+        gameObject.SetActive(false);
     }
 
-
+    public void RespawnIce()
+    {
+        start = false;
+        gameObject.SetActive(true);
+        anim.SetBool("broken", false);
+        broken = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        IceCollider.GetComponent<BoxCollider2D>().enabled = true;
+        platformDestroyed = false;
+    }
 }

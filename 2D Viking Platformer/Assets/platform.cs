@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class platform : MonoBehaviour
 {
-   
-    [SerializeField]
-    private GameObject IcePlatform;
-    [SerializeField]
-    private GameObject IcePlatformCopy;
+    private BreakableIcePlatform IcePlatform;
     private bool called = false;
 
+    private void Start()
+    {
+        IcePlatform = GetComponentInChildren<BreakableIcePlatform>();
+    }
+
     private void Update()
-    {       
-        if(IcePlatform == null && !called)
+    {
+        if (IcePlatform.platformDestroyed && !called)
         {
             called = true;
-            Invoke("SpawnIcePlatform", 5f);        
+            Invoke("RestartIcePlatform", 3f);
+
         }
     }
 
-    public void SpawnIcePlatform()
+
+    public void RestartIcePlatform()
     {
-        Instantiate(IcePlatformCopy, gameObject.transform.position, gameObject.transform.rotation);
-        called = false; 
+        called = false;
+        IcePlatform.RespawnIce();
     }
-
-
 }
