@@ -47,47 +47,6 @@ public class Spear : MonoBehaviour
         }
     }
 
- //private void OnCollisionEnter2D(Collision2D collision)
- //{
- //    if (collision.gameObject.tag == "Enemy" && thrown)
- //    {
- //        if (collision.gameObject.GetComponent<MeleeDude>() != null)
- //        {
- //           /thrown = false;
- //            collision.gameObject.GetComponent<MeleeDude>().EnemyDieing();
- //            rb.velocity = Vector3.zero;
- //            rb.freezeRotation = true;
- //            rb.isKinematic = true;
- //            Invoke("KinematicToggle", 0.3f);
- //            //rb.transform.position = collision.gameObject.transform.position;
- //        }
- //        else if (collision.gameObject.GetComponent<Archer>() != null)
- //        {
- //            collision.gameObject.GetComponent<Archer>().EnemyDieing();
- //            rb.velocity = Vector3.zero;
- //            rb.freezeRotation = true;
- //            rb.isKinematic = true;
- //            Invoke("KinematicToggle", 0.3f);
- //            //rb.transform.position = collision.gameObject.transform.position;
- //        }
- //    }
-       // else if (collision.gameObject.tag == "IceWall" && thrown)
-      //  {
-            //rb.isKinematic = true;
-           //rb.velocity = Vector3.zero;
-            //rb.freezeRotation = true;
-            //gameObject.layer = 8;
-            //foreach(BoxCollider2D bc in bc)
-            //{
-                //bc.isTrigger = false;
-            //}
-       // }
-        //else if (collision.gameObject.tag != "Enemy" && thrown)
-       // {
-        //    thrown = false;
-            //Invoke("ThrownToggle", 1.5f);
-        //}
-   // }
 
     public void IceWallCollision()
     {
