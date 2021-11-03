@@ -7,11 +7,24 @@ public class HammerEnd : MonoBehaviour
 
     public Hammer hammer;
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        
-        if (collision.gameObject.tag == "Enemy" && hammer.thrown)
+     
+            if (hammer.canKill)
+            {
+                gameObject.layer = 15;
+            }
+            else if (hammer.canKill == false)
+            {
+                gameObject.layer = 21;
+            }
+
+        }
+
+
+        private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && hammer.canKill)
         {
             
             if (collision.gameObject.GetComponent<MeleeDude>() != null)
@@ -19,6 +32,7 @@ public class HammerEnd : MonoBehaviour
                 hammer.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 hammer.stopAnimation();
                 hammer.ThrownToggle();
+                hammer.CanStunHammerToggle();
                 collision.gameObject.GetComponent<MeleeDude>().EnemyStun();
             }
             else if (collision.gameObject.GetComponent<Archer>() != null)
@@ -26,6 +40,7 @@ public class HammerEnd : MonoBehaviour
                 hammer.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 hammer.stopAnimation();
                 hammer.ThrownToggle();
+                hammer.CanStunHammerToggle();
                 collision.gameObject.GetComponent<Archer>().Stunned();
             }
         }
@@ -35,11 +50,12 @@ public class HammerEnd : MonoBehaviour
             hammer.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             hammer.stopAnimation();
             hammer.ThrownToggle();
+            hammer.CanStunHammerToggle();
         }
         else if (collision.gameObject.tag != "Enemy" && hammer.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box")
         {
             hammer.ThrownToggle();
-            //hammer.Invoke("ThrownToggle", 2.5f);
+            hammer.Invoke("CanStunHammerToggle", 0.5f);
         }
 
     }

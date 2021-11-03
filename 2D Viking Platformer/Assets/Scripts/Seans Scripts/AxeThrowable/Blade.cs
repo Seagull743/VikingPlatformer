@@ -13,6 +13,18 @@ public class Blade : MonoBehaviour
         axe = GetComponentInParent<Axe>();
     }
 
+    private void Update()
+    {
+        if (axe.thrown)
+        {
+            gameObject.layer = 15;
+        }
+        else if(axe.thrown == false)
+        {
+            gameObject.layer = 21;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && axe.thrown)

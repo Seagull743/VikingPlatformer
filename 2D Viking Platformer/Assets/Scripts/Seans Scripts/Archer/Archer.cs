@@ -84,7 +84,7 @@ public class Archer : MonoBehaviour
         //fired = false;
         anim.SetBool("seen", false);
         anim.enabled = false;
-        Invoke("UnStun", 8f);
+        Invoke("UnStun", 6f);
     }
 
     public void UnStun()

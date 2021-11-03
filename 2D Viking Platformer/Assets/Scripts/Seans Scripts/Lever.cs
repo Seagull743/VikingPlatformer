@@ -8,10 +8,6 @@ public class Lever : MonoBehaviour
     [SerializeField]
     private Door door;
 
-
-    // Start is called before the first frame update
-
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -24,11 +20,17 @@ public class Lever : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightControl))
             {
-                LeverOn();
+                if (player.GetComponent<Interact>() != null)
+                {
+                    Interact interact = player.GetComponent<Interact>();
+                    if (!interact.pickedUpCrate && !interact.pickedUpPlayer)
+                    {
+                        LeverOn();
+                    }
+                }           
             }
         }
     }
-
 
     public void LeverOn()
     {
@@ -36,13 +38,5 @@ public class Lever : MonoBehaviour
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         door.OpenDoor();
     }
-
-    //void OnTriggerStay2D(Collider2D other)
-    //{
-    //    if(other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
-      //  {          
-      //      LeverOn();
-    //    }
-  //  }
 
 }
