@@ -3053,6 +3053,10 @@ PrefabInstance:
       propertyPath: sceneFader
       value: 
       objectReference: {fileID: 1314588756}
+    - target: {fileID: 1363299865238229305, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
+      propertyPath: levelToUnlock
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
 --- !u!4 &727458264 stripped
@@ -3340,6 +3344,54 @@ PrefabInstance:
     - target: {fileID: 1845170716975043834, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
       propertyPath: sentences.Array.data[0]
       value: Hammers stun enemies and break ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717097260720, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_margin.z
+      value: -405.55313
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717097260720, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_margin.x
+      value: -78.896706
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717097260720, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_margin.y
+      value: -128.92752
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717097260720, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_margin.w
+      value: -38.626945
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717097260720, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717097260720, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717097260726, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717097260726, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717351996852, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.271242
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717351996852, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.271242
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717351996852, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.271242
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845170717351996852, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.535
       objectReference: {fileID: 0}
     - target: {fileID: 5409817505173322901, guid: 3863abed3b3c5f04599c5093ef7f3226, type: 3}
       propertyPath: m_LocalPosition.x
