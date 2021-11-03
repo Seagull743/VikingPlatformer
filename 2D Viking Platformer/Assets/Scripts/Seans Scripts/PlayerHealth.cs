@@ -27,16 +27,17 @@ public class PlayerHealth : MonoBehaviour
     {
         if(gameObject.name == "Player 1")
         {
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            gm.SpawnParticalBeam1();
             gm.SpawnPlayer1();
         }
 
         if(gameObject.name == "Player 2")
         {
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            gm.SpawnParticalBeam2();
             gm.SpawnPlayer2();
         }
-        this.gameObject.GetComponent<Interact>().enabled = true;
-        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-        this.gameObject.GetComponent<PlayerController>().enabled = true;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

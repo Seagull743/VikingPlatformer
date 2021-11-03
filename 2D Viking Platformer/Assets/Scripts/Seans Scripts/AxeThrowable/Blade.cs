@@ -15,11 +15,11 @@ public class Blade : MonoBehaviour
 
     private void Update()
     {
-        if (axe.thrown)
+        if (axe.canKill)
         {
             gameObject.layer = 15;
         }
-        else if(axe.thrown == false)
+        else if(axe.canKill == false)
         {
             gameObject.layer = 21;
         }
@@ -32,18 +32,22 @@ public class Blade : MonoBehaviour
             if (collision.gameObject.GetComponent<MeleeDude>() != null)
             {
                 axe.HitEnemy();
+                axe.CanKillAxeToggle();
                 collision.gameObject.GetComponent<MeleeDude>().EnemyDieing();
             }
             else if (collision.gameObject.GetComponent<Archer>() != null)
             {
                 axe.HitEnemy();
+                axe.CanKillAxeToggle();
                 collision.gameObject.GetComponent<Archer>().EnemyDieing();
+
             }
         }
-        else if (collision.gameObject.tag != "Enemy" && axe.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box")
+        else if (collision.gameObject.tag != "Enemy" && axe.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box" && collision.gameObject.tag != "IceWall" && collision.gameObject.tag != "IceWallHammer")
         {
             axe.stopAnimation();
             axe.ThrownToggle();
+            axe.CanKillAxeToggle();
         }
 
     }

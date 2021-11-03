@@ -5,6 +5,7 @@ using UnityEngine;
 public class Axe : MonoBehaviour
 {
     public bool thrown = false;
+    public bool canKill = false;
     private Rigidbody2D rb;
     [SerializeField]
     private Animator anim;
@@ -21,12 +22,10 @@ public class Axe : MonoBehaviour
     {
         if (thrown)
         {
-            gameObject.layer = 15;
             anim.SetBool("thrown", true);
         }
         else
         {
-            gameObject.layer = 21;
             anim.SetBool("thrown", false);
         }
         
@@ -67,6 +66,10 @@ public class Axe : MonoBehaviour
         itemHighlight.SetActive(false);
     }
 
+    public void CanKillAxeToggle()
+    {
+        canKill = false;
+    }
 
     public void FreezeRotation()
     {

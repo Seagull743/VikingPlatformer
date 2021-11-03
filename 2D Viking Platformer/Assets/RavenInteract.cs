@@ -27,9 +27,12 @@ public class RavenInteract : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.RightControl))
             {
-                if (!pressed)
+                if(player.GetComponent<Interact>().pickedUpPlayer == false)
                 {
-                    StartCoroutine(PressCoolDown());
+                    if (!pressed)
+                    {
+                        StartCoroutine(PressCoolDown());
+                    }
                 }
             }
         }
@@ -40,7 +43,7 @@ public class RavenInteract : MonoBehaviour
     {
         pressed = true;
         dialogManager.TypeStarter();
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(13f);
         pressed = false;
     }
 

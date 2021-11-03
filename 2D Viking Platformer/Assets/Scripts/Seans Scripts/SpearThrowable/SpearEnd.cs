@@ -30,7 +30,7 @@ public class SpearEnd : MonoBehaviour
         {
             spear.IceWallCollision();
         }
-        else if (collision.gameObject.tag != "Enemy" && spear.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box" && collision.gameObject.tag != "IceWallHammer")
+        else if (collision.gameObject.tag != "Enemy" && spear.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box" && collision.gameObject.tag != "IceWallHammer" && collision.gameObject.tag != "Spear")
         {
             spear.ThrownToggle();
         }
