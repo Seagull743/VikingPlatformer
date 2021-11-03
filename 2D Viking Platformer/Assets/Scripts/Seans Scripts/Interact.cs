@@ -441,6 +441,7 @@ public class Interact : MonoBehaviour
                 interactive.GetComponent<Hammer>().enabled = true;
                 interactive.GetComponent<Hammer>().TurnOn();
                 interactive.GetComponent<Hammer>().thrown = true;
+                interactive.GetComponent<Hammer>().canKill = true;
                 pickedUpHammer = false;
                 irb.simulated = true;
                 irb.isKinematic = false;

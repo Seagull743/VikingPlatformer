@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hammer : MonoBehaviour
 {
     public bool thrown = false;
+    public bool canKill = false;
     private Rigidbody2D rb;
     [SerializeField]
     private Animator anim;
@@ -17,20 +18,17 @@ public class Hammer : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        if (thrown)
-        {
-            gameObject.layer = 15;
-            anim.SetBool("thrown", true);
-        }
-        else
-        {
-            gameObject.layer = 21;
-            anim.SetBool("thrown", false);
-        }
-    }
-
+   private void Update()
+   {
+       if (thrown)
+       {
+           anim.SetBool("thrown", true);
+       }
+       else if(!thrown)
+       {
+           anim.SetBool("thrown", false);
+       }
+   }
 
     public void HitEnemy()
     {
@@ -47,6 +45,11 @@ public class Hammer : MonoBehaviour
     public void stopAnimation()
     {
         anim.SetBool("thrown", false);
+    }
+
+    public void CanStunHammerToggle()
+    {
+        canKill = false;
     }
 
     public void TurnOff()

@@ -207,16 +207,20 @@ public class MeleeDude : MonoBehaviour
     public void EnemyStun()
     {
         stunEffect.SetActive(true);
+        hotZone.SetActive(false);
+        triggerArea.SetActive(false);
         cooling = true;
         anim.enabled = false;
         moveSpeed = 0;
-        Invoke("EnemyUnStun", 8f);
+        Invoke("EnemyUnStun", 6f);
     }
 
 
     private void EnemyUnStun()
     {
         stunEffect.SetActive(false);
+        hotZone.SetActive(true);
+        triggerArea.SetActive(true);
         anim.enabled = true;
         moveSpeed = SetMoveSpeed;
     }
