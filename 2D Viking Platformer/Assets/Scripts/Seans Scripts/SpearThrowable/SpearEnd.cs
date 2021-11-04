@@ -29,6 +29,7 @@ public class SpearEnd : MonoBehaviour
         else if (collision.gameObject.tag == "IceWall" && spear.thrown)
         {
             spear.IceWallCollision();
+            spear.ItemHighLight();
         }
         else if (collision.gameObject.tag != "Enemy" && spear.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box" && collision.gameObject.tag != "IceWallHammer" && collision.gameObject.tag != "Spear")
         {

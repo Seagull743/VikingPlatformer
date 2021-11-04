@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
         this.gameObject.GetComponent<Interact>().enabled = false;
         this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         this.gameObject.GetComponent<PlayerController>().enabled = false;
-        Invoke("ResetGame", 2.5f);
+        Invoke("ResetGame", 1.5f);
     }
 
 
