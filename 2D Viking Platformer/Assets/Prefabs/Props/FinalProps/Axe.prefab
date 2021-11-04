@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrown: 0
+  canKill: 0
   anim: {fileID: 1783072146265580265}
   itemHighlight: {fileID: 8765620886525257009}
 --- !u!61 &2307670203618098575
@@ -311,7 +312,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.022690535, y: 0.037383318}
+  m_Offset: {x: 0.025946498, y: 0.03901124}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -322,7 +323,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.22869825, y: 0.5111408}
+  m_Size: {x: 0.24172282, y: 0.527421}
   m_EdgeRadius: 0
 --- !u!1001 &1710135933
 PrefabInstance:
