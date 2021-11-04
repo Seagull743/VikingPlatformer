@@ -18,11 +18,6 @@ public class GM : MonoBehaviour
     public PlayerHealth player1;
     public PlayerHealth player2;
 
-    private void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -41,7 +36,7 @@ public class GM : MonoBehaviour
             Rigidbody2D playerRb = player1.GetComponent<Rigidbody2D>();
             playerRb.transform.position = spawnPoint1.position;
             player1.playerAlive = true;
-            Invoke("MovementSpawnPlayer1", 3.2f);
+            Invoke("MovementSpawnPlayer1", 3f);
         }
         
     }
@@ -55,19 +50,21 @@ public class GM : MonoBehaviour
             Rigidbody2D playerRb = player2.GetComponent<Rigidbody2D>();
             playerRb.transform.position = spawnPoint2.position;
             player2.playerAlive = true;
-            Invoke("MovementSpawnPlayer2", 3.2f);
+            Invoke("MovementSpawnPlayer2", 3f);
 
         }
     }
 
     private void MovementSpawnPlayer2()
     {
+            player2.GetComponent<SpriteRenderer>().enabled = true;
             player2.GetComponent<Interact>().enabled = true;
             player2.GetComponent<PlayerController>().enabled = true;
     }
 
     private void MovementSpawnPlayer1()
-    {           
+    {
+            player1.GetComponent<SpriteRenderer>().enabled = true;
             player1.GetComponent<Interact>().enabled = true;
             player1.GetComponent<PlayerController>().enabled = true;
     }

@@ -4,58 +4,84 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    private bool opened = false;
+    public bool opened = false;
     [SerializeField]
     private Animator anim;
     [SerializeField]
     private rune runeobject;
     [SerializeField]
     private DoorPressure DP;
-
-    private List<GameObject> CollisionItems = new List<GameObject>();
-
-
+    public List<GameObject> CollisionItems = new List<GameObject>();
+    [SerializeField]
+    private PressurePlate otherpressureplate;
 
     private void Update()
     {
-        if(CollisionItems.Count >= 1)
+        
+        if(otherpressureplate != null)
         {
-            if (!opened)
+            if (CollisionItems.Count >= 1 || otherpressureplate.CollisionItems.Count >= 1)
             {
-                opened = true;
-                anim.SetBool("isActivated", true);
-                runeobject.ToggleRuneOn();
-                DP.OpenDoor();
+                if (!opened)
+                {
+                    opened = true;
+                    //anim.SetBool("isActivated", true);
+                    runeobject.ToggleRuneOn();
+                    DP.OpenDoor();
+                }
+            }
+            else if (CollisionItems.Count <= 0 && otherpressureplate.CollisionItems.Count <= 0)
+            {
+                if (opened)
+                {
+                    opened = false;
+                    //anim.SetBool("isActivated", false);
+                    runeobject.ToggleRuneOff();
+                    DP.CloseDoor();
+                }
             }
         }
-        else if(CollisionItems.Count <= 0)
+        else if(otherpressureplate == null)
         {
-            if (opened)
+            if (CollisionItems.Count >= 1)
             {
-                opened = false;
-                anim.SetBool("isActivated", false);
-                runeobject.ToggleRuneOff();
-                DP.CloseDoor();
+                if (!opened)
+                {
+                    opened = true;
+                    //anim.SetBool("isActivated", true);
+                    runeobject.ToggleRuneOn();
+                    DP.OpenDoor();
+                }
+            }
+            else if (CollisionItems.Count <= 0)
+            {
+                if (opened)
+                {
+                    opened = false;
+                    //anim.SetBool("isActivated", false);
+                    runeobject.ToggleRuneOff();
+                    DP.CloseDoor();
+                }
             }
         }
+        
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
-        {
-            CollisionItems.Add(other.gameObject);
-        }
-    }
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+      if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
+      {
+          CollisionItems.Add(other.gameObject);
+          anim.SetBool("isActivated", true);
+      }
+  }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
-        {
-            CollisionItems.Remove(other.gameObject);
-        }    
-    }
-
-
-    
+  private void OnTriggerExit2D(Collider2D other)
+  {
+      if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
+      {
+          CollisionItems.Remove(other.gameObject);
+          anim.SetBool("isActivated", false);
+      }
+  } 
 }
