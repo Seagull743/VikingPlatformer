@@ -71,12 +71,12 @@ public class GM : MonoBehaviour
 
     public void SpawnParticalBeam1()
     {
-        Instantiate(SpawnPartical, spawnPoint1.position, spawnPoint1.rotation);
+        Instantiate(SpawnPartical, player1.BifrostLocation.position, player1.BifrostLocation.rotation);
     }
 
     public void SpawnParticalBeam2()
     {
-        Instantiate(SpawnPartical, spawnPoint2.position, spawnPoint2.rotation);
+        Instantiate(SpawnPartical, player2.BifrostLocation.position, player2.BifrostLocation.rotation);
     }
 
     public void PlayerMovementOff()

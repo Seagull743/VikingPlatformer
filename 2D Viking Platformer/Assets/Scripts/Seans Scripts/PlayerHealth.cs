@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public bool playerAlive = true;
     public GM gm;
+    public Transform BifrostLocation;
    
     public void PlayerDamaged()
     {
