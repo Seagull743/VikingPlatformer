@@ -5,7 +5,7 @@ using UnityEngine;
 public class Water : MonoBehaviour
 {
     [SerializeField]
-    private GameObject WaterSplash;
+    private ParticleSystem WaterSplash;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
