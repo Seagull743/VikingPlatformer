@@ -120,6 +120,36 @@ Transform:
   m_Father: {fileID: 8202259648194624552}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7312607968843528776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5625304876364531210}
+  m_Layer: 0
+  m_Name: BiFrostLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5625304876364531210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312607968843528776}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.008094311, y: -0.525, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8202259648194624552}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8202259647125923553
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +284,7 @@ Transform:
   - {fileID: 3664593451063745346}
   - {fileID: 1186036415219450979}
   - {fileID: 356482625}
+  - {fileID: 5625304876364531210}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -406,7 +437,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6176603863300c4ca9d923e6be9358f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAlive: 1
   gm: {fileID: 0}
+  BifrostLocation: {fileID: 5625304876364531210}
 --- !u!95 &8202259648194624553
 Animator:
   serializedVersion: 3
