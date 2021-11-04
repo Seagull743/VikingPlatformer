@@ -3629,6 +3629,10 @@ PrefabInstance:
       propertyPath: DP
       value: 
       objectReference: {fileID: 172198832}
+    - target: {fileID: 7564972036200557477, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
+      propertyPath: otherpressureplate
+      value: 
+      objectReference: {fileID: 1599425242}
     - target: {fileID: 8002647211398235926, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -3957,11 +3961,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 209667199, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.78
+      value: 3.359
       objectReference: {fileID: 0}
     - target: {fileID: 268254564, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.2
+      value: 5.88
       objectReference: {fileID: 0}
     - target: {fileID: 268254564, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4687,6 +4691,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6176603863300c4ca9d923e6be9358f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1061854462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7564972036200557477, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
+  m_PrefabInstance: {fileID: 472282262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec5f15d682d96049b89a9d73d3f9a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1064780900
@@ -5486,6 +5501,10 @@ PrefabInstance:
       propertyPath: DP
       value: 
       objectReference: {fileID: 172198832}
+    - target: {fileID: 7564972036200557477, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
+      propertyPath: otherpressureplate
+      value: 
+      objectReference: {fileID: 1061854462}
     - target: {fileID: 8002647211398235926, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -6221,6 +6240,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25d8cca027887ed4586a2fd174ae7f3c, type: 3}
+--- !u!114 &1599425242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7564972036200557477, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
+  m_PrefabInstance: {fileID: 1266411566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec5f15d682d96049b89a9d73d3f9a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1605799415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7342,6 +7372,10 @@ PrefabInstance:
       propertyPath: DP
       value: 
       objectReference: {fileID: 914520068}
+    - target: {fileID: 7564972036200557477, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
+      propertyPath: otherpressureplate
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8002647211398235926, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
       propertyPath: m_Mesh
       value: 
