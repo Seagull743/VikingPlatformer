@@ -91,6 +91,11 @@ public class Spear : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
+    public void ItemHighLight()
+    {
+        itemhighlight.SetActive(false);
+    }
+
     public void TurnOn()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
