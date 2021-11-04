@@ -81,8 +81,7 @@ public class Archer : MonoBehaviour
     {
         SkeletonRange = 0;
         StunPartical.SetActive(true);
-        //fired = false;
-        anim.SetBool("seen", false);
+        fired = false;
         anim.enabled = false;
         Invoke("UnStun", 6f);
     }
@@ -92,5 +91,6 @@ public class Archer : MonoBehaviour
         StunPartical.SetActive(false);
         SkeletonRange = NormalRange;
         anim.enabled = true;
+        fired = false;
     }
 }

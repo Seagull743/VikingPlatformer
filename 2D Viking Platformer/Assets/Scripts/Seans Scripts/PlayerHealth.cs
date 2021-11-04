@@ -30,11 +30,13 @@ public class PlayerHealth : MonoBehaviour
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             gm.SpawnParticalBeam1();
             gm.SpawnPlayer1();
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if(gameObject.name == "Player 2")
         {
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gm.SpawnParticalBeam2();
             gm.SpawnPlayer2();
         }
