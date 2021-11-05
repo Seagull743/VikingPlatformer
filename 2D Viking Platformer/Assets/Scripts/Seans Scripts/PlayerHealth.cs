@@ -24,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    private void ResetGame()
+    public void ResetGame()
     {
         if(gameObject.name == "Player 1")
         {
