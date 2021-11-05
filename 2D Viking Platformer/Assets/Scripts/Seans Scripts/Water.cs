@@ -14,6 +14,9 @@ public class Water : MonoBehaviour
         {
             Transform feet = collision.gameObject.GetComponent<PlayerHealth>().BifrostLocation;
             Instantiate(WaterSplash, feet.position, feet.transform.rotation);
+            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+            player.PlayerDamaged();
+            player.Invoke("ResetGame", 1.5f);
         }
     }
 }

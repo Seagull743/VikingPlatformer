@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-
     public float moveSpeed;
     [SerializeField]
     private float jumpForce;
@@ -26,8 +24,6 @@ public class PlayerController : MonoBehaviour
     private LayerMask ground;
     [SerializeField]
     private float groundCheckRadius;
-
-
 
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool LeftGrounded;
@@ -52,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private bool touchingIce = false;
     [SerializeField]
-    private float iceSpeed = 0.001f; //0.001  //0.1 for build 
+    private float iceSpeed = 0.0015f; //0.001  //0.1 for build 
 
     public bool facingLeft;
 
@@ -75,8 +71,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-           
+    {          
         if (!isGrounded)
         {
             isJumping = true;
@@ -139,7 +134,7 @@ public class PlayerController : MonoBehaviour
         if (touchingIce)
         {
             moveSpeed = 0;
-            jumpForce = 10;
+            jumpForce = 8.5f;
 
             if (!facingLeft)
             {

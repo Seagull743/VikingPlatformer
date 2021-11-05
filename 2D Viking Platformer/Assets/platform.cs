@@ -17,7 +17,7 @@ public class platform : MonoBehaviour
         if (IcePlatform.platformDestroyed && !called)
         {
             called = true;
-            Invoke("RestartIcePlatform", 10f);
+            Invoke("RestartIcePlatform", 7.5f);
 
         }
     }
