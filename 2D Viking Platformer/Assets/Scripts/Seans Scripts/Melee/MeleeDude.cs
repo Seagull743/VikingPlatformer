@@ -189,8 +189,11 @@ public class MeleeDude : MonoBehaviour
     {
         if (hit)
         {
+            PlayerHealth playerdeath = player.GetComponent<PlayerHealth>();
             Debug.Log("HitPlayer");
-            player.GetComponent<PlayerHealth>().PlayerDamaged();
+            playerdeath.PlayerDamaged();
+            playerdeath.Invoke("ResetGame", 1.5f);
+            
         }
     }
 
