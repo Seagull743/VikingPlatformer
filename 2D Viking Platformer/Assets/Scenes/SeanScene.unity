@@ -134,11 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0c13ffbb7fc4848b07940a7b0576da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &34156161 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4051630234152561894, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
-  m_PrefabInstance: {fileID: 1363299865644872729}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &35290582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3273,7 +3268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1363299865238229254, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.12
+      value: -1.24
       objectReference: {fileID: 0}
     - target: {fileID: 1363299865238229254, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3315,10 +3310,6 @@ PrefabInstance:
       propertyPath: youWonCanvas
       value: 
       objectReference: {fileID: 1802057392}
-    - target: {fileID: 1363299865238229305, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
-      propertyPath: waitingplayertext
-      value: 
-      objectReference: {fileID: 34156161}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
 --- !u!1001 &1546569668004798595

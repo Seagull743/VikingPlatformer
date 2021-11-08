@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1363299865238229255}
   - component: {fileID: 1363299865238229304}
   - component: {fileID: 1363299865238229305}
+  - component: {fileID: 1141800551}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1363299865238229252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.21, y: -1.12, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1720437931139439747}
   m_Father: {fileID: 0}
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 43fa37690c2a3594c801705943c0c0d0, type: 3}
+  m_Sprite: {fileID: 5213229242370633579, guid: e4b7a70769149a34fa8b3a039f785ec4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,18 +99,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.012562513, y: 0}
+  m_Offset: {x: 0.013230562, y: -0.07222098}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 1.5, y: 1.7}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5764966, y: 0.63930964}
+  m_Size: {x: 1.2883887, y: 1.5265952}
   m_EdgeRadius: 0
 --- !u!114 &1363299865238229305
 MonoBehaviour:
@@ -129,6 +130,26 @@ MonoBehaviour:
   waitingplayertext: {fileID: 4051630234152561894}
   youWonCanvas: {fileID: 0}
   gameManager: {fileID: 0}
+  anim: {fileID: 1141800551}
+--- !u!95 &1141800551
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363299865238229252}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 962f8d4c9a701d349957d0b1cf9225f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4051630234152561894
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,14 +177,14 @@ RectTransform:
   m_GameObject: {fileID: 4051630234152561894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75586, y: 0.75586, z: 0.75586}
+  m_LocalScale: {x: 2.443616, y: 2.443616, z: 2.443616}
   m_Children: []
   m_Father: {fileID: 1720437931139439747}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -357, y: -202}
+  m_AnchoredPosition: {x: -438, y: 78}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4140182927346379771
