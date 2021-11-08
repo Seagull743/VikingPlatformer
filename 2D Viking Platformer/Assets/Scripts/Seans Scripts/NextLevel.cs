@@ -19,7 +19,8 @@ public class NextLevel : MonoBehaviour
     [SerializeField]
     private GameObject youWonCanvas;
     public GM gameManager;
-
+    [SerializeField]
+    private Animator anim;
 
     void Start()
     {
@@ -30,7 +31,8 @@ public class NextLevel : MonoBehaviour
     private void Update()
     {
         if (Player1 && Player2 && !doorReached)
-        {       
+        {
+            anim.SetTrigger("open");
             StartCoroutine(Sceneloader());
             doorReached = true;
         }
