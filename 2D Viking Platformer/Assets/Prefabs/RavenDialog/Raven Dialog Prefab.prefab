@@ -47,7 +47,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06097603, y: 0.0625}
+  m_Offset: {x: -0.05543399, y: 0.289716}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.42857143}
@@ -58,9 +58,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2423363, y: 0.875}
+  m_Size: {x: 2.184451, y: 1.329432}
   m_EdgeRadius: 0
---- !u!114 &8311953759346080124
+--- !u!114 &769084158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1845170716975043833}
   - component: {fileID: 1845170716975043834}
-  m_Layer: 0
+  m_Layer: 24
   m_Name: Dialog Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,6 +699,10 @@ PrefabInstance:
     - target: {fileID: 5756852151685642008, guid: b181353ae1138514ea81424551795b9c, type: 3}
       propertyPath: m_TagString
       value: Raven
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756852151685642008, guid: b181353ae1138514ea81424551795b9c, type: 3}
+      propertyPath: m_Layer
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b181353ae1138514ea81424551795b9c, type: 3}

@@ -13,6 +13,8 @@ public class NextLevel : MonoBehaviour
     [SerializeField] LevelNamesData levelNamesData;
 
     public SceneFader sceneFader;
+    [SerializeField]
+    private GameObject waitingplayertext;
    
     [SerializeField]
     private GameObject youWonCanvas;
@@ -21,6 +23,7 @@ public class NextLevel : MonoBehaviour
 
     void Start()
     {
+        waitingplayertext.SetActive(false);
         youWonCanvas.SetActive(false);
     }
 
@@ -35,6 +38,11 @@ public class NextLevel : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "Player")
+        {
+            waitingplayertext.SetActive(true);
+        }
+
         if (collision.gameObject.name == "Player 1")
         {
             Player1 = true;
@@ -48,6 +56,10 @@ public class NextLevel : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Player")
+        {
+            waitingplayertext.SetActive(false);
+        }
         Player1 = false;
         Player2 = false;
     }

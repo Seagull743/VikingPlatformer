@@ -18,9 +18,10 @@ public class PlayerHealth : MonoBehaviour
         playerAlive = false;
         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0,10,0);
         this.gameObject.GetComponent<Interact>().enabled = false;
-        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        //this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         this.gameObject.GetComponent<PlayerController>().enabled = false;
-        Invoke("ResetGame", 1.5f);
+        Invoke("ResetGame", 1f);
     }
 
 
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(gameObject.name == "Player 1")
         {
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             gm.SpawnParticalBeam1();
             gm.SpawnPlayer1();
@@ -36,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
 
         if(gameObject.name == "Player 2")
         {
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gm.SpawnParticalBeam2();
