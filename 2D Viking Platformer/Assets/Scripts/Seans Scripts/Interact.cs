@@ -56,7 +56,7 @@ public class Interact : MonoBehaviour
     private float Offset;
 
     [SerializeField]
-    private LayerMask CamLayer;
+    private LayerMask InteractLayer;
 
     private ChangeAnimationStateController stateC;
 
@@ -123,7 +123,7 @@ public class Interact : MonoBehaviour
                 helddown = 1;
                 if (!isHolding)
                 {
-                    grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
+                    grabcheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, raydist, ~InteractLayer);
                     //timerThrow = 0;
                     //box
                     if (grabcheck.collider != null)
@@ -151,12 +151,12 @@ public class Interact : MonoBehaviour
             {
                 if (isHolding && !isthrowing)
                 {
-                    RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
+                    RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~InteractLayer);
                     if(grabRay.collider != null)
                     {
                         if (grabRay.collider.tag == "Box" || grabRay.collider.tag == "Player" || grabRay.collider.gameObject.layer == 15 || grabRay.collider.gameObject.layer == 21) // layer 15 throwable
                         {
-                            RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist, ~CamLayer);
+                            RaycastHit2D placeCheck = Physics2D.Raycast(placeChecker.position, Vector2.right * transform.localScale, raydist, ~InteractLayer);
                             if (placeCheck.collider == null)
                             {
                                 PuttingDownItem();
@@ -487,7 +487,7 @@ public class Interact : MonoBehaviour
 
     private void CheckHolding()
     {
-        RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~CamLayer);
+        RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~InteractLayer);
         if (grabRay.collider == null)
         {
             grabcheck = new RaycastHit2D();
@@ -543,6 +543,7 @@ public class Interact : MonoBehaviour
             isHolding = true;
             axe.TurnOff();
             axe.enabled = false;
+            axe.thrown = false;
 
         }
         //Spear
@@ -550,6 +551,7 @@ public class Interact : MonoBehaviour
         {
             Spear spear = grabcheck.collider.gameObject.GetComponent<Spear>();
             pickedUpSpear = true;
+            spear.thrown = false;
             isHolding = true;
             spear.GetComponent<Spear>().TurnOff();
             spear.GetComponent<Spear>().enabled = false;
@@ -570,6 +572,7 @@ public class Interact : MonoBehaviour
             isHolding = true;
             hammer.TurnOff();
             hammer.enabled = false;
+            hammer.thrown = false;
         }
     }
 

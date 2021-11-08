@@ -7,7 +7,8 @@ public class Lever : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private Door door;
-
+    [SerializeField]
+    private BoxCollider2D LeverCollider;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -35,6 +36,7 @@ public class Lever : MonoBehaviour
     public void LeverOn()
     {
         anim.SetBool("Pulled", true);
+        LeverCollider.enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         door.OpenDoor();
     }

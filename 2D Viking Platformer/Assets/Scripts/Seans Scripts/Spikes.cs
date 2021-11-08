@@ -9,6 +9,7 @@ public class Spikes : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerHealth>().PlayerDamaged();
+            collision.gameObject.GetComponent<PlayerHealth>().Invoke("ResetGame", 1f);
         }
     }
 }
