@@ -17,7 +17,16 @@ public class PressurePlate : MonoBehaviour
 
     private void Update()
     {
-        
+        if(CollisionItems.Count >= 1)
+        {
+            anim.SetBool("isActivated", true);
+        }
+        else if (CollisionItems.Count <= 0)
+        {
+            anim.SetBool("isActivated", false);
+        }
+
+
         if(otherpressureplate != null)
         {
             if (CollisionItems.Count >= 1 || otherpressureplate.CollisionItems.Count >= 1)
@@ -72,7 +81,7 @@ public class PressurePlate : MonoBehaviour
       if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
       {
           CollisionItems.Add(other.gameObject);
-          anim.SetBool("isActivated", true);
+          //anim.SetBool("isActivated", true);
       }
   }
 
@@ -81,7 +90,7 @@ public class PressurePlate : MonoBehaviour
       if (other.gameObject.tag == "Player" || other.gameObject.tag == "Box")
       {
           CollisionItems.Remove(other.gameObject);
-          anim.SetBool("isActivated", false);
+          //anim.SetBool("isActivated", false);
       }
   } 
 }

@@ -24,6 +24,21 @@ public class PlayerHealth : MonoBehaviour
         Invoke("ResetGame", 1f);
     }
 
+    public void PlayerDrown()
+    {
+        if (gameObject.GetComponent<Interact>().isHolding)
+        {
+            gameObject.GetComponent<Interact>().Drop();
+        }
+        playerAlive = false;
+        this.gameObject.GetComponent<Interact>().enabled = false;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        //this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        //this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        this.gameObject.GetComponent<PlayerController>().enabled = false;
+
+        Invoke("ResetGame", 2f);
+    }
 
     public void ResetGame()
     {
@@ -31,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
         {
             this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-            gm.SpawnParticalBeam1();
+            //gm.SpawnParticalBeam1();
             gm.SpawnPlayer1();
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
@@ -41,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
             this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gm.SpawnParticalBeam2();
+            //gm.SpawnParticalBeam2();
             gm.SpawnPlayer2();
         }
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -35,6 +35,7 @@ public class GM : MonoBehaviour
             player1.GetComponent<PlayerController>().enabled = false;
             Rigidbody2D playerRb = player1.GetComponent<Rigidbody2D>();
             playerRb.transform.position = spawnPoint1.position;
+            SpawnParticalBeam1();
             player1.playerAlive = true;
             Invoke("MovementSpawnPlayer1", 3f);
         }
@@ -49,6 +50,7 @@ public class GM : MonoBehaviour
             player2.GetComponent<PlayerController>().enabled = false;
             Rigidbody2D playerRb = player2.GetComponent<Rigidbody2D>();
             playerRb.transform.position = spawnPoint2.position;
+            SpawnParticalBeam2();
             player2.playerAlive = true;
             Invoke("MovementSpawnPlayer2", 3f);
 

@@ -32,6 +32,7 @@ public class NextLevel : MonoBehaviour
     {
         if (Player1 && Player2 && !doorReached)
         {
+            waitingplayertext.SetActive(false);
             anim.SetTrigger("open");
             StartCoroutine(Sceneloader());
             doorReached = true;
@@ -40,7 +41,7 @@ public class NextLevel : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" && !doorReached)
         {
             waitingplayertext.SetActive(true);
         }
@@ -58,7 +59,7 @@ public class NextLevel : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && !doorReached)
         {
             waitingplayertext.SetActive(false);
         }
