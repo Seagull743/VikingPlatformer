@@ -193,19 +193,11 @@ public class MeleeDude : MonoBehaviour
             Debug.Log("HitPlayer");
             playerdeath.PlayerDamaged();
             playerdeath.Invoke("ResetGame", 1f);
-            
+            EnemyLogic();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Box")
-        {
-            anim.SetBool("Death", true);
-            moveSpeed = 0;
-            enemyBody.enabled = false;
-        }
-    }
+  
 
     public void EnemyStun()
     {
