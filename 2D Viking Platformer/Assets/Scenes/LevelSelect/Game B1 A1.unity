@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1363299865238229254, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.527
+      value: -5.506
       objectReference: {fileID: 0}
     - target: {fileID: 1363299865238229254, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -220,9 +220,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoneSpike
       objectReference: {fileID: 0}
+    - target: {fileID: 4472050955917648837, guid: c50a52aad9dc6c94192cbc70f1552ee7, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472050956000894880, guid: c50a52aad9dc6c94192cbc70f1552ee7, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 4472050957227360692, guid: c50a52aad9dc6c94192cbc70f1552ee7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472050957900458620, guid: c50a52aad9dc6c94192cbc70f1552ee7, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 6963695086702125146, guid: c50a52aad9dc6c94192cbc70f1552ee7, type: 3}
       propertyPath: m_LocalPosition.x
