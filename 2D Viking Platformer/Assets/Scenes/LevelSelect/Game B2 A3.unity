@@ -529,7 +529,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1480,19 +1480,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 209667199, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.69
+      value: 23.307
       objectReference: {fileID: 0}
     - target: {fileID: 209667199, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.08
+      value: 12.803
       objectReference: {fileID: 0}
     - target: {fileID: 268254564, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.57
+      value: 22.236
       objectReference: {fileID: 0}
     - target: {fileID: 268254564, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.04
+      value: 12.812
       objectReference: {fileID: 0}
     - target: {fileID: 6894281642205524856, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
       propertyPath: m_Name
@@ -2483,13 +2483,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 743497831, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 743497831, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.57
+      objectReference: {fileID: 0}
     - target: {fileID: 924291858, guid: f5d451599b7e54841a59349d1a934112, type: 3}
       propertyPath: m_SortingOrder
-      value: -3
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 924291859, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 924291859, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.79
       objectReference: {fileID: 0}
     - target: {fileID: 1717299363588802605, guid: f5d451599b7e54841a59349d1a934112, type: 3}
       propertyPath: m_Name
       value: DarkSkyClondBG
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393944552112695950, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.78
       objectReference: {fileID: 0}
     - target: {fileID: 6586056761800020653, guid: f5d451599b7e54841a59349d1a934112, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2497,7 +2517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6586056761800020653, guid: f5d451599b7e54841a59349d1a934112, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.4252634
+      value: 6.22
       objectReference: {fileID: 0}
     - target: {fileID: 6586056761800020653, guid: f5d451599b7e54841a59349d1a934112, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2534,6 +2554,18 @@ PrefabInstance:
     - target: {fileID: 6586056761800020653, guid: f5d451599b7e54841a59349d1a934112, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092800634900259767, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092800634900259767, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774308144773601399, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.09
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5d451599b7e54841a59349d1a934112, type: 3}
