@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GM : MonoBehaviour
 {
@@ -18,7 +19,20 @@ public class GM : MonoBehaviour
     public PlayerHealth player1;
     public PlayerHealth player2;
 
+    public Text arnedeathtext;
+    public Text ulfdeathtext;
+
+    public int arnedeathcounter = 0;
+    public int ulfdeathcounter = 0;
+
     // Update is called once per frame
+
+    private void Start()
+    {
+        arnedeathtext.text = arnedeathcounter.ToString() + " Deaths";
+        ulfdeathtext.text = ulfdeathcounter.ToString() + " Deaths";
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -79,6 +93,18 @@ public class GM : MonoBehaviour
     public void SpawnParticalBeam2()
     {
         Instantiate(SpawnPartical, player2.BifrostLocation.position, player2.BifrostLocation.rotation);
+    }
+
+    public void AddPlayer1Death()
+    {
+        arnedeathcounter += 1;
+        arnedeathtext.text = arnedeathcounter.ToString() + " Deaths";
+    }
+
+    public void AddPlayer2Death()
+    {
+        ulfdeathcounter += 1;
+        ulfdeathtext.text = arnedeathcounter.ToString() + " Deaths";
     }
 
     public void PlayerMovementOff()

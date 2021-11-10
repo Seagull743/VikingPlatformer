@@ -804,6 +804,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 792932559, guid: 444e7efe8fedd784ea4d700af12fc8a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 218239294811583969, guid: 444e7efe8fedd784ea4d700af12fc8a1, type: 3}
       propertyPath: m_Name
       value: Stone Portle
@@ -851,6 +855,22 @@ PrefabInstance:
     - target: {fileID: 218239294811583971, guid: 444e7efe8fedd784ea4d700af12fc8a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838341021065351530, guid: 444e7efe8fedd784ea4d700af12fc8a1, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0334208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838341021065351530, guid: 444e7efe8fedd784ea4d700af12fc8a1, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.029130936
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838341021065351530, guid: 444e7efe8fedd784ea4d700af12fc8a1, type: 3}
+      propertyPath: m_Size.y
+      value: 1.9014659
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838341021065351530, guid: 444e7efe8fedd784ea4d700af12fc8a1, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0368714
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 444e7efe8fedd784ea4d700af12fc8a1, type: 3}
@@ -1595,7 +1615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1592576061692366475, guid: 3b1e680409a25e34ea8d706a513549fe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1e680409a25e34ea8d706a513549fe, type: 3}
@@ -2796,11 +2816,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2feb5a048ffcfe54a9bfb3fcfc1ffd70, type: 3}
---- !u!1 &1802057392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6412372873184374582, guid: 25f1b1aeba141ee499293c72c24a2e8d, type: 3}
-  m_PrefabInstance: {fileID: 6412372871463065990}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1890551279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2934,7 +2949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1592576061692366475, guid: 3b1e680409a25e34ea8d706a513549fe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1e680409a25e34ea8d706a513549fe, type: 3}
@@ -3534,7 +3549,7 @@ PrefabInstance:
     - target: {fileID: 1363299865238229305, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
       propertyPath: youWonCanvas
       value: 
-      objectReference: {fileID: 1802057392}
+      objectReference: {fileID: 986867038749136821, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc7e8e79168e3c4daeeb4e18f7901f0, type: 3}
 --- !u!1001 &1546569668004798595
