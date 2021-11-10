@@ -254,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483091072407801115, guid: 80d31adccb4077741ac661cf198d96c5, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4483091072407801117, guid: 80d31adccb4077741ac661cf198d96c5, type: 3}
       propertyPath: m_Name
@@ -503,7 +503,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3475,7 +3475,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3945,6 +3945,10 @@ PrefabInstance:
     - target: {fileID: 8986609848634999010, guid: 5d10e238252f62e44969e9d0b1b769a1, type: 3}
       propertyPath: m_Name
       value: Snow layer 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986609848634999011, guid: 5d10e238252f62e44969e9d0b1b769a1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d10e238252f62e44969e9d0b1b769a1, type: 3}
@@ -6798,6 +6802,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: snow layer 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6437354760997727771, guid: 77988c8f55268fe46bdcc7f18328ca72, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6437354760997727772, guid: 77988c8f55268fe46bdcc7f18328ca72, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5
@@ -7664,7 +7672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4483091072407801115, guid: 80d31adccb4077741ac661cf198d96c5, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4483091072407801117, guid: 80d31adccb4077741ac661cf198d96c5, type: 3}
       propertyPath: m_Name
