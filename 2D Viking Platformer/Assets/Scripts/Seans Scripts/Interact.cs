@@ -79,7 +79,7 @@ public class Interact : MonoBehaviour
     private float interacttimer = 0.25f;
     private float currenttimer;
     public bool  Interactpressed = false;
-
+    public bool pickingup = false;
     void Start()
     {
         currenttimer = interacttimer;
@@ -342,7 +342,8 @@ public class Interact : MonoBehaviour
             interactive.transform.position = holdLocation.position;
             irb.isKinematic = true;
         }
-        Invoke("CheckHolding", 0.2f);
+        Invoke("CheckHolding", 0.1f);
+        Invoke("PickingUpFalseToggle", 0.4f);
     }
     private void Throw()
     {
@@ -487,6 +488,7 @@ public class Interact : MonoBehaviour
 
     private void CheckHolding()
     {
+        
         RaycastHit2D grabRay = Physics2D.Raycast(holdCheck.position, Vector2.up * transform.localScale, raydist, ~InteractLayer);
         if (grabRay.collider == null)
         {
@@ -501,15 +503,28 @@ public class Interact : MonoBehaviour
             pc.canJump = true;
             //Physics2D.IgnoreCollision(grabcheck.collider.gameObject.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
             ResetThrow();
+            gameObject.GetComponent<PlayerController>().moveSpeed = 5;
         }
         else if (grabRay.collider != null)
         {
-            isHolding = true;
+            
+            if (grabRay.collider.gameObject.GetComponent<Interact>() != null)
+            {
+                if (grabRay.collider.gameObject.GetComponent<Interact>().pickedUpCrate)
+                {
+                    isHolding = false;
+                }
+            }
+            else
+            {
+                isHolding = true;
+            }          
         }
     }
 
     public void PickingUpItem()
     {
+        pickingup = true;
         string tag = grabcheck.collider.tag;
         StartCoroutine(InteractStop());
         if (tag == "Box")
@@ -523,7 +538,7 @@ public class Interact : MonoBehaviour
         //player
         else if (tag == "Player")
         {
-            if (grabcheck.collider.gameObject.GetComponent<Interact>().pickedUpCrate == false)
+            if (grabcheck.collider.gameObject.GetComponent<Interact>().pickedUpCrate == false && grabcheck.collider.gameObject.GetComponent<Interact>().pickingup == false)
             {
                 isHolding = true;
                 pickedUpPlayer = true;
@@ -599,6 +614,17 @@ public class Interact : MonoBehaviour
         //canThrow = true;
         //timerThrow = 0;
     }
+
+    public void PickingUpToggle()
+    {
+        pickingup = true;
+    }
+
+    public void PickingUpFalseToggle()
+    {
+        pickingup = false;
+    }
+
 
     private void DropItems()
     {
