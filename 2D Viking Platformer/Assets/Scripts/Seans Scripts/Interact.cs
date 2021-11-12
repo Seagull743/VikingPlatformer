@@ -311,7 +311,7 @@ public class Interact : MonoBehaviour
             pickedUpCrate = false;
             interactive.transform.position = dropLocation.position;
             interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false);
+            Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false); //check this
         }
         interactive.transform.parent = null;
         isHolding = false;
@@ -521,7 +521,6 @@ public class Interact : MonoBehaviour
             }          
         }
     }
-
     public void PickingUpItem()
     {
         pickingup = true;
@@ -624,7 +623,6 @@ public class Interact : MonoBehaviour
     {
         pickingup = false;
     }
-
 
     private void DropItems()
     {
