@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -3949,7 +3949,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4134,33 +4134,33 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0, b: 0, a: 0}
-        key1: {r: 0, g: 0.12371922, b: 0.40579912, a: 1}
-        key2: {r: 0.2519591, g: 0, b: 0.7264151, a: 1}
-        key3: {r: 0, g: 0.9400835, b: 1, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0, g: 0.07796321, b: 0.4245283, a: 0}
+        key1: {r: 0.2519591, g: 0, b: 0.7264151, a: 1}
+        key2: {r: 0, g: 0.9400835, b: 1, a: 1}
+        key3: {r: 0.2509804, g: 0, b: 0.7254902, a: 1}
+        key4: {r: 0.2509804, g: 0, b: 0.7254902, a: 1}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 25058
-        ctime2: 31611
-        ctime3: 39321
+        ctime1: 31611
+        ctime2: 39321
+        ctime3: 65535
         ctime4: 65535
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
         atime1: 32768
-        atime2: 53392
+        atime2: 65535
         atime3: 65535
-        atime4: 0
+        atime4: 65535
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 5
-        m_NumAlphaKeys: 4
+        m_NumColorKeys: 4
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5317,7 +5317,6 @@ GameObject:
   - component: {fileID: 218239294811583971}
   - component: {fileID: 218239294811583970}
   - component: {fileID: 3838341021065351530}
-  - component: {fileID: 267793636}
   m_Layer: 0
   m_Name: Stone Portle
   m_TagString: Untagged
@@ -5420,22 +5419,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3549898, y: 1.5450282}
   m_EdgeRadius: 0
---- !u!114 &267793636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218239294811583969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5582410f8dc03e143adca7845a9942ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelToUnlock: 0
-  levelNamesData: {fileID: 11400000, guid: f47a9037df0bf0543b19aba1c1fbdf99, type: 2}
-  sceneFader: {fileID: 0}
-  waitingplayertext: {fileID: 0}
-  youWonCanvas: {fileID: 0}
-  gameManager: {fileID: 0}
-  anim: {fileID: 0}
