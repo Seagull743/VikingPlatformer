@@ -36,8 +36,7 @@ public class PlayerHealth : MonoBehaviour
         //this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         //this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         this.gameObject.GetComponent<PlayerController>().enabled = false;
-
-        Invoke("ResetGame", 2f);
+        Invoke("ResetGame", 1f);
     }
 
     public void ResetGame()
@@ -47,12 +46,14 @@ public class PlayerHealth : MonoBehaviour
             this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             //gm.SpawnParticalBeam1();
+            //gm.arnedeathcounter ++;
             gm.SpawnPlayer1();
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if(gameObject.name == "Player 2")
         {
+            //gm.ulfdeathcounter ++;
             this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;

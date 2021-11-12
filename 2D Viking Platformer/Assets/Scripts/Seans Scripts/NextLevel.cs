@@ -11,11 +11,9 @@ public class NextLevel : MonoBehaviour
    
     public int levelToUnlock;
     [SerializeField] LevelNamesData levelNamesData;
-
     public SceneFader sceneFader;
     [SerializeField]
     private GameObject waitingplayertext;
-   
     [SerializeField]
     private GameObject youWonCanvas;
     public GM gameManager;

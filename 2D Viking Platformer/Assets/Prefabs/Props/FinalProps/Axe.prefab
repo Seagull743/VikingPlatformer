@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 5057696875838966794}
   - component: {fileID: 5540892616243529818}
   - component: {fileID: 1874924450565592539}
-  - component: {fileID: 1857806500257248231}
   m_Layer: 15
   m_Name: Blade
   m_TagString: Axe
@@ -173,32 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bab31a3ab00c14f875309e58d18985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &1857806500257248231
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6103320837002586728}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.09954926, y: -0.26291966}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.03876687, y: 0.28700733}
-  m_EdgeRadius: 0
 --- !u!1 &7774665763347249756
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +243,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.037261248, y: 0.023489475}
+  m_Offset: {x: -0.033794403, y: 0.023489475}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -281,7 +254,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.029698849, y: 0.45882845}
+  m_Size: {x: 0.050499916, y: 0.45882845}
   m_EdgeRadius: 0
 --- !u!114 &406850986
 MonoBehaviour:
@@ -312,7 +285,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024663687, y: 0.041576862}
+  m_Offset: {x: 0.027570844, y: 0.063865066}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -323,7 +296,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28533888, y: 0.5530772}
+  m_Size: {x: 0.3376677, y: 0.5976536}
   m_EdgeRadius: 0
 --- !u!1001 &1710135933
 PrefabInstance:

@@ -11,11 +11,11 @@ public class SceneLoader : MonoBehaviour
     public GM gameManager;
     
     public SceneFader sceneFader;
+
     public void PlayGame()
     {
         //sceneFader.FadeTo(levelToLoad);
         SceneManager.LoadScene("LevelSelect");
-
     }
 
     public void BacktoMenu()
@@ -47,6 +47,5 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("LevelSelect");
     }
-
 
 }
