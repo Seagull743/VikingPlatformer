@@ -18,7 +18,8 @@ public class Arrow : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             trail.Stop();
-            other.gameObject.GetComponent<PlayerHealth>().PlayerDamaged();
+            PlayerHealth playerdeath = other.gameObject.GetComponent<PlayerHealth>();
+            playerdeath.PlayerDamaged();
             Destroy(gameObject);
         }
         else if (other.gameObject.tag != "Player")

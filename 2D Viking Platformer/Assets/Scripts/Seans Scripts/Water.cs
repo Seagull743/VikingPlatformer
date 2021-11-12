@@ -30,7 +30,7 @@ public class Water : MonoBehaviour
             Rigidbody2D playerRB = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRB.velocity = Vector3.zero;
             player.PlayerDrown();
-            player.Invoke("ResetGame", 2f);
+            //player.Invoke("ResetGame", 2f);
         }
     }
 

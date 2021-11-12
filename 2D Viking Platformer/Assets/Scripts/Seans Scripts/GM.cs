@@ -29,8 +29,8 @@ public class GM : MonoBehaviour
 
     private void Start()
     {
-        arnedeathtext.text = arnedeathcounter.ToString() + " Deaths";
-        ulfdeathtext.text = ulfdeathcounter.ToString() + " Deaths";
+        arnedeathtext.text = arnedeathcounter.ToString();
+        ulfdeathtext.text = ulfdeathcounter.ToString();
     }
 
     void Update()
@@ -45,6 +45,7 @@ public class GM : MonoBehaviour
     {
         if (!player1.playerAlive)
         {
+            arnedeathcounter ++;
             player1.GetComponent<Interact>().enabled = false;
             player1.GetComponent<PlayerController>().enabled = false;
             Rigidbody2D playerRb = player1.GetComponent<Rigidbody2D>();
@@ -55,11 +56,11 @@ public class GM : MonoBehaviour
         }
         
     }
-
     public void SpawnPlayer2()
     {
         if (!player2.playerAlive)
         {
+            ulfdeathcounter ++;
             player2.GetComponent<Interact>().enabled = false;
             player2.GetComponent<PlayerController>().enabled = false;
             Rigidbody2D playerRb = player2.GetComponent<Rigidbody2D>();
@@ -67,7 +68,6 @@ public class GM : MonoBehaviour
             SpawnParticalBeam2();
             player2.playerAlive = true;
             Invoke("MovementSpawnPlayer2", 3f);
-
         }
     }
 
@@ -93,18 +93,6 @@ public class GM : MonoBehaviour
     public void SpawnParticalBeam2()
     {
         Instantiate(SpawnPartical, player2.BifrostLocation.position, player2.BifrostLocation.rotation);
-    }
-
-    public void AddPlayer1Death()
-    {
-        arnedeathcounter += 1;
-        arnedeathtext.text = arnedeathcounter.ToString() + " Deaths";
-    }
-
-    public void AddPlayer2Death()
-    {
-        ulfdeathcounter += 1;
-        ulfdeathtext.text = arnedeathcounter.ToString() + " Deaths";
     }
 
     public void PlayerMovementOff()
