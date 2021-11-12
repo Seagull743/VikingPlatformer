@@ -754,6 +754,14 @@ PrefabInstance:
       propertyPath: player2
       value: 
       objectReference: {fileID: 923557913}
+    - target: {fileID: 6894281642205524859, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
+      propertyPath: ulfdeathtext
+      value: 
+      objectReference: {fileID: 1663716211}
+    - target: {fileID: 6894281642205524859, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
+      propertyPath: arnedeathtext
+      value: 
+      objectReference: {fileID: 1663716212}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fc7ce1073270aa4fbc984f28d04dfe7, type: 3}
 --- !u!1001 &205179433
@@ -4134,7 +4142,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4397,8 +4405,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 8948785174439969117, guid: 06f38da0a35874f4ca6f232f0cbf778e, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -6340851234947878021, guid: 06f38da0a35874f4ca6f232f0cbf778e, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 13
@@ -4423,8 +4431,8 @@ Tilemap:
     m_Data: {fileID: -509709759700661339, guid: 06f38da0a35874f4ca6f232f0cbf778e, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: 4827218903997025594, guid: 893b56f6243469c45a4789f7701af173, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -6340851234947878021, guid: 06f38da0a35874f4ca6f232f0cbf778e, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 8606503318694456595, guid: 06f38da0a35874f4ca6f232f0cbf778e, type: 3}
   - m_RefCount: 23
@@ -6158,8 +6166,34 @@ PrefabInstance:
       propertyPath: sceneFader
       value: 
       objectReference: {fileID: 796656806}
+    - target: {fileID: 8711889304863270258, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
+      propertyPath: gamemanager
+      value: 
+      objectReference: {fileID: 1081199047}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
+--- !u!114 &1663716211 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6613951308618641133, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
+  m_PrefabInstance: {fileID: 1663716210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1663716212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8054503851121041136, guid: d7670cd0970fb9e4e9356676c2eafca3, type: 3}
+  m_PrefabInstance: {fileID: 1663716210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1736945358
 GameObject:
   m_ObjectHideFlags: 0
