@@ -5076,7 +5076,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2838695468461907654, guid: 8d5395965c0463146a69431f8018207d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838695468461907655, guid: 8d5395965c0463146a69431f8018207d, type: 3}
+      propertyPath: curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838695468461907655, guid: 8d5395965c0463146a69431f8018207d, type: 3}
+      propertyPath: curve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838695468461907655, guid: 8d5395965c0463146a69431f8018207d, type: 3}
+      propertyPath: curve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838695468461907655, guid: 8d5395965c0463146a69431f8018207d, type: 3}
+      propertyPath: curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838695468461907655, guid: 8d5395965c0463146a69431f8018207d, type: 3}
+      propertyPath: curve.m_Curve.Array.data[1].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2838695468461907656, guid: 8d5395965c0463146a69431f8018207d, type: 3}
       propertyPath: m_LocalPosition.x
