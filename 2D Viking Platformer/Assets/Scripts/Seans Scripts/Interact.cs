@@ -80,6 +80,7 @@ public class Interact : MonoBehaviour
     private float currenttimer;
     public bool  Interactpressed = false;
     public bool pickingup = false;
+
     void Start()
     {
         currenttimer = interacttimer;
@@ -311,7 +312,7 @@ public class Interact : MonoBehaviour
             pickedUpCrate = false;
             interactive.transform.position = dropLocation.position;
             interactive.transform.SetPositionAndRotation(dropLocation.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false); //check this
+            //Physics2D.IgnoreCollision(interactive.GetComponent<BoxCollider2D>(), this.gameObject.GetComponent<BoxCollider2D>(), false); //check this
         }
         interactive.transform.parent = null;
         isHolding = false;
@@ -323,7 +324,7 @@ public class Interact : MonoBehaviour
         Rigidbody2D irb = interactive.GetComponent<Rigidbody2D>();
         isHolding = true;
         if (interactive.GetComponent<PlayerController>() != null)
-        {
+        {    
             interactive.GetComponent<PlayerController>().enabled = false;
             interactive.GetComponent<ChangeAnimationStateController>().enabled = false;
             interactive.GetComponent<Animator>().enabled = false;

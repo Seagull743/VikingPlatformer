@@ -5,6 +5,10 @@ using UnityEngine;
 public class SpearEnd : MonoBehaviour
 {
     private Spear spear;
+    [SerializeField]
+    private ParticleSystem IceEffect;
+    [SerializeField]
+    private Transform spearend;
 
     private void Start()
     {
@@ -30,8 +34,9 @@ public class SpearEnd : MonoBehaviour
         {
             spear.IceWallCollision();
             spear.ItemHighLight();
+            Instantiate(IceEffect, spearend.position, spearend.rotation);
         }
-        else if (collision.gameObject.tag != "Enemy" && spear.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box" && collision.gameObject.tag != "IceWallHammer" && collision.gameObject.tag != "Spear")
+        else if (collision.gameObject.tag != "Enemy" && spear.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box" && collision.gameObject.tag != "IceWallHammer" && collision.gameObject.tag != "Spear" && collision.gameObject.tag != "BreakableIce")
         {
             spear.ThrownToggle();
         }

@@ -43,7 +43,7 @@ public class Blade : MonoBehaviour
 
             }
         }
-        else if (collision.gameObject.tag != "Enemy" && axe.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box" && collision.gameObject.tag != "IceWall" && collision.gameObject.tag != "IceWallHammer")
+        else if (collision.gameObject.tag != "Enemy" && axe.thrown && collision.gameObject.tag != "wall" && collision.gameObject.tag != "Box" && collision.gameObject.tag != "IceWall" && collision.gameObject.tag != "IceWallHammer" && collision.gameObject.tag != "BreakableIce" && collision.gameObject.tag != "Spear")
         {
             axe.stopAnimation();
             axe.ThrownToggle();
