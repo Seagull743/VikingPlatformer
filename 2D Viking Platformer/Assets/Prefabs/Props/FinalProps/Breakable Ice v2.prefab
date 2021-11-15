@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3135403078326953043}
   m_Layer: 8
   m_Name: BottomCollider
-  m_TagString: Untagged
+  m_TagString: BreakableIce
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 3135403078423445535}
   m_Layer: 8
   m_Name: Breakable Ice v2
-  m_TagString: Untagged
+  m_TagString: BreakableIce
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,4 +200,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d8788ece47b96429fe03e31dcd3d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformDestroyed: 0
   IceCollider: {fileID: 3135403078326953041}
