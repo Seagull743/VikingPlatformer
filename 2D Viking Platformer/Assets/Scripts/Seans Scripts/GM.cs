@@ -60,6 +60,7 @@ public class GM : MonoBehaviour
     {
         if (!player2.playerAlive)
         {
+            Debug.Log("Peet Gives a good massage");
             ulfdeathcounter ++;
             player2.GetComponent<Interact>().enabled = false;
             player2.GetComponent<PlayerController>().enabled = false;
