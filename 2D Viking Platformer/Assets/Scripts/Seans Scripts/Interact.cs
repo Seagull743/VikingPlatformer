@@ -135,7 +135,7 @@ public class Interact : MonoBehaviour
                
                 //first frame of pressing
             }
-            else if(helddown > 68 && isHolding)  //was 68 //build needs to be 9
+            else if(helddown > 8 && isHolding)  //was 68 //build needs to be 9
             {
                 ChargingThrow();
             }
@@ -148,7 +148,7 @@ public class Interact : MonoBehaviour
                 PickingUpItem();
             }
             //release behavior
-            if(helddown < 68)  //9 for build  //68 for unity
+            if(helddown < 8)  //9 for build  //68 for unity
             {
                 if (isHolding && !isthrowing)
                 {
