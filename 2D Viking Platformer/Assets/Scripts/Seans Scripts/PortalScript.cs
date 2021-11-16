@@ -66,7 +66,7 @@ public class PortalScript : MonoBehaviour
     public void LoadNextScene()
     {
         Debug.Log("Next Level");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Midgard");
     }
 
     IEnumerator Sceneloader()
