@@ -179,10 +179,10 @@ public class Interact : MonoBehaviour
         {
             helddown = 0;
         }
-
-            if (Input.GetKeyUp(interact) && throwforce <= 2.6f && isthrowing)
+            //less throw was 2.6f to 2.7f
+            if (Input.GetKeyUp(interact) && throwforce <= 4.7f && isthrowing)
             {
-                throwforce = 2.7f;
+                throwforce = 4.8f;
                 Thrown = true;
             }
             if (throwforce >= maxThrowForce && isHolding && isthrowing)
@@ -343,7 +343,7 @@ public class Interact : MonoBehaviour
             interactive.transform.position = holdLocation.position;
             irb.isKinematic = true;
         }
-        Invoke("CheckHolding", 0.1f);
+        Invoke("CheckHolding", 0.15f);
         Invoke("PickingUpFalseToggle", 0.4f);
     }
     private void Throw()
