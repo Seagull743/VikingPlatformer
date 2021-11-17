@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour
     public void PlayGame()
     {
         //sceneFader.FadeTo(levelToLoad);
-        SceneManager.LoadScene("LevelSelect");
+        SceneManager.LoadScene("Introduction");
     }
 
     public void BacktoMenu()
