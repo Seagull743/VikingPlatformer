@@ -22,6 +22,7 @@ public class NextLevel : MonoBehaviour
 
     void Start()
     {
+        
         waitingplayertext.SetActive(false);
         youWonCanvas.SetActive(false);
     }
