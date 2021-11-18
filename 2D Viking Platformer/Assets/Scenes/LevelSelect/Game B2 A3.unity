@@ -883,11 +883,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &43796235 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-  m_PrefabInstance: {fileID: 1670302759}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &78121196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,7 +2484,6 @@ Transform:
   - {fileID: 1221844861}
   - {fileID: 474104858}
   - {fileID: 2112409689}
-  - {fileID: 43796235}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7519,67 +7513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1670302759
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 602256407}
-    m_Modifications:
-    - target: {fileID: 6696036455225698380, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1b20f93b21c584949b340c0a3ec61750, type: 2}
-    - target: {fileID: 6696036455225698383, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_Name
-      value: Ice Crate with Snow (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696036455225698483, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 526fce8c716ee8d40adb51fe3046fa70, type: 3}
 --- !u!1 &1736945358
 GameObject:
   m_ObjectHideFlags: 0
