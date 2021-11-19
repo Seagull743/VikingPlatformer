@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private bool touchingIce = false;
     [SerializeField]
-    private float iceSpeed = 0.0015f; //0.001  //0.1 for build 
+    private float iceSpeed = 0.0090f; //0.001  //0.1 for build   0.0015
 
     public bool facingLeft;
 
@@ -138,11 +138,13 @@ public class PlayerController : MonoBehaviour
 
             if (!facingLeft)
             {
+                rb.mass = 0.001f;
                 rb.AddForce(new Vector2(iceSpeed, 0));
                 isRunning = false;
             }
             else if (facingLeft)
             {
+                rb.mass = 0.001f;
                 rb.AddForce(new Vector2(-iceSpeed, 0));
                 isRunning = false;
             }
@@ -150,6 +152,7 @@ public class PlayerController : MonoBehaviour
         else if (!touchingIce)
         {
             touchingIce = false;
+            rb.mass = 100;
             //rb.AddForce(new Vector2(0, 0));
             moveSpeed = 5;
             jumpForce = 13;

@@ -101,7 +101,7 @@ public class MeleeDude : MonoBehaviour
         {
             StopAttack();
         }
-        else if(attackDistance >= distance && cooling == false)
+        else if(attackDistance >= distance && cooling == false && isGrounded)
         {
             Attack();
         }
