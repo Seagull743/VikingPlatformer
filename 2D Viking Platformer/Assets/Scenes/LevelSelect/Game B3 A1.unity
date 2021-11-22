@@ -4724,6 +4724,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 743497830, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_SortingOrder
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 924291858, guid: f5d451599b7e54841a59349d1a934112, type: 3}
+      propertyPath: m_SortingOrder
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 1717299363588802605, guid: f5d451599b7e54841a59349d1a934112, type: 3}
       propertyPath: m_Name
       value: DarkSkyClondBG
