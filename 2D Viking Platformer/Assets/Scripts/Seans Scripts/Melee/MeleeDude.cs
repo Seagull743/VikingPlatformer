@@ -226,6 +226,7 @@ public class MeleeDude : MonoBehaviour
     
     public void EnemyDieing()
     {
+        this.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         moveSpeed = 0;
         anim.SetBool("Death", true);
         enemyBody.enabled = false;
