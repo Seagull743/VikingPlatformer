@@ -216,6 +216,7 @@ public class MeleeDude : MonoBehaviour
         triggerArea.SetActive(true);
         anim.enabled = true;
         moveSpeed = SetMoveSpeed;
+        SelectTarget();
     }
 
 
