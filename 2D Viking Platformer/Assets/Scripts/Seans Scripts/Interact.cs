@@ -385,7 +385,7 @@ public class Interact : MonoBehaviour
                 interactive.GetComponent<Axe>().enabled = true;
                 interactive.GetComponent<Axe>().TurnOn();
                 interactive.GetComponent<Axe>().thrown = true;
-                interactive.GetComponent<Axe>().canKill = true;
+                //interactive.GetComponent<Axe>().canKill = true;
                 pickedUpAxe = false;
                 irb.simulated = true;
                 irb.isKinematic = false;

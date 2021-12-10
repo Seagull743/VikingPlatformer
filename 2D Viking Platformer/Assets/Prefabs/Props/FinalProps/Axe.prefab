@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 5348586265240387580}
   - component: {fileID: 406850986}
   - component: {fileID: 2307670203618098575}
-  m_Layer: 15
+  m_Layer: 21
   m_Name: Axe
   m_TagString: Axe
   m_Icon: {fileID: 0}
@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrown: 0
-  canKill: 0
   anim: {fileID: 1783072146265580265}
   itemHighlight: {fileID: 8765620886525257009}
 --- !u!61 &2307670203618098575
