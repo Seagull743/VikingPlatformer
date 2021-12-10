@@ -10,12 +10,24 @@ public class LevelSeletor : MonoBehaviour
 
     public Button[] levelButtons;
     public LevelNamesData levelNameData;
+    bool notFirstLaunch = false;
 
     private void Awake()
     {
+        notFirstLaunch = PlayerPrefs.GetInt("Launch") == 0 ? false : true;
+
+        if (!notFirstLaunch)
+        {
+            PlayerPrefs.SetInt("Launch", 1);
+        }
         if (!PlayerPrefs.HasKey("levelReached"))
         {
             ResetLevelReachedProgress();
+        }
+
+        if (!notFirstLaunch)
+        {
+            PlayerPrefs.SetInt("levelReached", 1);
         }
     }
 
@@ -41,6 +53,7 @@ public class LevelSeletor : MonoBehaviour
 
         for(int i = 0; i < levelButtons.Length; i++)
         {
+
             if (i < levelReached)
             {
                 levelButtons[i].interactable = true;
@@ -82,6 +95,11 @@ public class LevelSeletor : MonoBehaviour
             SetLevelReachedProgress(3);
             ShowButtons();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SetLevelReachedProgress(13);
+            ShowButtons();
+        }
 #endif
-    }
+        }
 }
