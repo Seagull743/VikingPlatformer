@@ -15,11 +15,11 @@ public class Blade : MonoBehaviour
 
     private void Update()
     {
-        if (axe.canKill)
+        if (axe.thrown)
         {
             gameObject.layer = 15;
         }
-        else if(axe.canKill == false)
+        else if(axe.thrown == false)
         {
             gameObject.layer = 21;
         }
@@ -32,13 +32,13 @@ public class Blade : MonoBehaviour
             if (collision.gameObject.GetComponent<MeleeDude>() != null)
             {
                 axe.HitEnemy();
-                axe.CanKillAxeToggle();
+                axe.ThrownToggle();
                 collision.gameObject.GetComponent<MeleeDude>().EnemyDieing();
             }
             else if (collision.gameObject.GetComponent<Archer>() != null)
             {
                 axe.HitEnemy();
-                axe.CanKillAxeToggle();
+                axe.ThrownToggle();
                 collision.gameObject.GetComponent<Archer>().EnemyDieing();
 
             }
@@ -47,9 +47,9 @@ public class Blade : MonoBehaviour
         {
             axe.stopAnimation();
             axe.ThrownToggle();
-            axe.CanKillAxeToggle();
         }
 
     }
+
 
 }
